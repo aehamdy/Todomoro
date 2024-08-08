@@ -17,12 +17,13 @@ export default App;
  # [x] add X icon to input to clear the field
  # [x] check/uncheck task upon click on it
  # [x] choose category (All, personal, work and study) when inserting a task
- # [ ] categorize tasks by their category
  # [ ] handle empty lists (message: lets add new tasks)
  # [ ] save to local storage (saveToLocalStorage)
  # [ ] get from local storage (getFromLocalStorage)
  # [ ] delete button to each task
  # [ ] edit button to each task
+ # [ ] categorize tasks by their category
+ # [ ] show category of each task underneath the task value
  # [ ] focus on input when enter the app, after adding a task and after clearing the field
  # [ ] show number of tasks of each category 4(done)/8(category tasks)
 

@@ -62,7 +62,6 @@ function InputForm() {
         </div>
       </section>
       <List todos={todos} setTodos={setTodos} />
-      {console.log(todos)}
     </>
   );
 }
