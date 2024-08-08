@@ -1,19 +1,15 @@
-import icon from "../public/Category.svg";
 import "./App.css";
+import TodoApp from "./components/TodoApp";
 
 function App() {
-  return (
-    <h1>
-      Hello there <img className="fill-blur-500" src={icon} alt="" />
-    </h1>
-  );
+  return <TodoApp />;
 }
 
 export default App;
 
 /**
  # TODOS: Todod-List-lets acheive targets
- # [ ] form input
+ # [x] form input
  # [ ] adding button
  # [ ] choose category (All, personal, work and study) when inserting a task
  # [ ] validate inserted input 
