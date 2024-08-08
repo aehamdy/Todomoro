@@ -12,10 +12,16 @@ function InputForm() {
     setUserInput(e.target.value);
   };
 
+  const save = (items) => {
+    const list = JSON.stringify(items);
+    localStorage.setItem("TodomoroTasks", list);
+  };
+
   const handleClick = () => {
     if (userInput.trim()) {
       setInputError(false);
-      setTodos([
+
+      const newTodos = [
         {
           id: todos.length + 1,
           value: userInput,
@@ -23,7 +29,11 @@ function InputForm() {
           isChecked: false,
         },
         ...todos,
-      ]);
+      ];
+
+      setTodos(newTodos);
+      save(newTodos);
+
       setUserInput("");
     } else {
       setInputError(true);

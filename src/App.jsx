@@ -17,7 +17,7 @@ export default App;
  # [x] add X icon to input to clear the field
  # [x] check/uncheck task upon click on it
  # [x] choose category (All, personal, work and study) when inserting a task
- # [ ] handle empty lists (message: lets add new tasks)
+ # [x] handle empty lists (message: lets add new tasks)
  # [ ] save to local storage (saveToLocalStorage)
  # [ ] get from local storage (getFromLocalStorage)
  # [ ] delete button to each task
