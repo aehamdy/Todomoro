@@ -2,6 +2,8 @@ import { useState } from "react";
 import List from "./List";
 import TodoCategories from "./TodoCategories";
 
+export const LOCAL_STORAGE_KEY = "TodomoroTasks";
+
 function InputForm() {
   const [userInput, setUserInput] = useState("");
   const [inputError, setInputError] = useState(false);
@@ -12,9 +14,13 @@ function InputForm() {
     setUserInput(e.target.value);
   };
 
+  const handleClear = () => {
+    setUserInput("");
+  };
+
   const save = (items) => {
     const list = JSON.stringify(items);
-    localStorage.setItem("TodomoroTasks", list);
+    localStorage.setItem(LOCAL_STORAGE_KEY, list);
   };
 
   const handleClick = () => {
@@ -38,10 +44,6 @@ function InputForm() {
     } else {
       setInputError(true);
     }
-  };
-
-  const handleClear = () => {
-    setUserInput("");
   };
 
   return (

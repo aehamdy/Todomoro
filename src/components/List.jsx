@@ -2,6 +2,8 @@
 import Circle from "../../public/circle.svg";
 import TickedCircle from "../../public/circle-tick.svg";
 import emptyList from "../../public/list-solid.svg";
+import { useEffect } from "react";
+import { LOCAL_STORAGE_KEY } from "./InputForm";
 
 function List(props) {
   const { todos, setTodos } = props;
@@ -14,6 +16,18 @@ function List(props) {
       )
     );
   };
+
+  const load = () => {
+    const listItems = localStorage.getItem(LOCAL_STORAGE_KEY);
+
+    if (listItems) {
+      setTodos(JSON.parse(listItems));
+    }
+  };
+
+  useEffect(() => {
+    load();
+  }, []);
 
   return (
     <ul className="border border-black rounded-lg py-2 px-4">
