@@ -10,12 +10,13 @@ export default App;
 /**
  # TODOS: Todod-List-lets acheive targets
  # [x] form input
- # [ ] adding button
- # [ ] choose category (All, personal, work and study) when inserting a task
+ # [x] adding button
  # [ ] validate inserted input 
  # [ ] focus on input when enter the app and after adding a task
- # [ ] add tasks to tasks list upon click on add button
+ # [ ] choose category (All, personal, work and study) when inserting a task
+ # [x] add tasks to tasks list upon click on add button
  # [ ] check/uncheck task upon click on it
+ # [ ] add X icon to input to clear the field
  # [ ] categorize tasks by their category
  # [ ] handle empty lists (message: lets add new tasks)
  # [ ] save to local storage (saveToLocalStorage)

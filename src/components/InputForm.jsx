@@ -1,15 +1,16 @@
 import { useState } from "react";
+import List from "./List";
 
 function InputForm() {
   const [userInput, setUserInput] = useState("");
-  const [tasks, setTasks] = useState([]);
+  const [todos, setTodos] = useState([]);
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
   };
 
   const handleClick = () => {
-    setTasks([userInput, ...tasks]);
+    setTodos([userInput, ...todos]);
   };
 
   return (
@@ -18,6 +19,7 @@ function InputForm() {
       <button type="button" onClick={handleClick}>
         Add Task
       </button>
+      <List todos={todos} />
     </section>
   );
 }
