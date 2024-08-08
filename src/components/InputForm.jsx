@@ -73,7 +73,7 @@ function InputForm() {
           </button>
         </div>
       </section>
-      <List todos={todos} setTodos={setTodos} />
+      <List todos={todos} setTodos={setTodos} save={save} />
     </>
   );
 }

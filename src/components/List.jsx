@@ -6,15 +6,15 @@ import { useEffect } from "react";
 import { LOCAL_STORAGE_KEY } from "./InputForm";
 
 function List(props) {
-  const { todos, setTodos } = props;
+  const { todos, setTodos, save } = props;
   const emptyListIcon = 60;
 
   const handleTaskCheck = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, isChecked: !todo.isChecked } : todo
-      )
+    const items = todos.map((todo) =>
+      todo.id === id ? { ...todo, isChecked: !todo.isChecked } : todo
     );
+    setTodos(items);
+    save(items);
   };
 
   const load = () => {
