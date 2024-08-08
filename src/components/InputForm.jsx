@@ -11,6 +11,7 @@ function InputForm() {
 
   const handleClick = () => {
     setTodos([userInput, ...todos]);
+    setUserInput("");
   };
 
   return (

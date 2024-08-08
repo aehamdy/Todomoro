@@ -12,6 +12,7 @@ export default App;
  # [x] form input
  # [x] adding button
  # [ ] validate inserted input 
+ # [x] clear input field upon click on adding button
  # [ ] focus on input when enter the app and after adding a task
  # [ ] choose category (All, personal, work and study) when inserting a task
  # [x] add tasks to tasks list upon click on add button
