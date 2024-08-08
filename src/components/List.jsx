@@ -3,11 +3,14 @@ import Circle from "../../public/circle.svg";
 import TickedCircle from "../../public/circle-tick.svg";
 import emptyList from "../../public/list-solid.svg";
 import TrashBin from "../../public/trash-bin.svg";
-import { useEffect } from "react";
+import EditIcon from "../../public/edit.svg";
+import { useEffect, useState } from "react";
 import { LOCAL_STORAGE_KEY } from "./InputForm";
 
 function List(props) {
   const { todos, setTodos, save } = props;
+  const [editTaskId, setEditTaskId] = useState(null);
+  const [newValue, setNewValue] = useState("");
   const emptyListIcon = 60;
 
   const handleDeletion = (e, id) => {
@@ -16,6 +19,34 @@ function List(props) {
     const updatedList = todos.filter((todo) => todo.id !== id);
     setTodos(updatedList);
     save(updatedList);
+  };
+
+  const handleEdit = (e, id) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setEditTaskId(id);
+    const currentTask = todos.find((todo) => todo.id === id);
+    setNewValue(currentTask.value);
+  };
+
+  const handleEditChange = (e) => {
+    setNewValue(e.target.value);
+  };
+
+  const handleEditSave = (e, id) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const updatedTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, value: newValue } : todo
+    );
+    setTodos(updatedTodos);
+    save(updatedTodos);
+    setEditTaskId(null);
+  };
+
+  const handleTaskChecking = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
   };
 
   const handleTaskCheck = (id) => {
@@ -65,9 +96,29 @@ function List(props) {
               width="17"
               height="17"
             />
-            <p>{todo.value}</p>
-            <div>
-              <span onClick={(e) => handleDeletion(e, todo.id)}>
+            {editTaskId === todo.id ? (
+              <input
+                type="text"
+                value={newValue}
+                onChange={handleEditChange}
+                onClick={handleTaskChecking}
+                onBlur={(e) => handleEditSave(e, todo.id)}
+              />
+            ) : (
+              <p>{todo.value}</p>
+            )}
+
+            <div className="flex">
+              <span
+                className="cursor-pointer"
+                onClick={(e) => handleEdit(e, todo.id)}
+              >
+                <img src={EditIcon} alt="edit icon" width="22" />
+              </span>
+              <span
+                className="cursor-pointer"
+                onClick={(e) => handleDeletion(e, todo.id)}
+              >
                 <img
                   className="cursor-pointer"
                   src={TrashBin}

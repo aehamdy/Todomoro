@@ -22,7 +22,7 @@ export default App;
  # [x] get from local storage (getFromLocalStorage)
  # [x] update local storage when check/uncheck todos
  # [x] delete button to each task
- # [ ] edit button to each task
+ # [x] edit button to each task
  # [ ] categorize tasks by their category
  # [ ] show category of each task underneath the task value
  # [ ] focus on input when enter the app, after adding a task and after clearing the field
