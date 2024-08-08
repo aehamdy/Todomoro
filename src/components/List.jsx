@@ -2,12 +2,21 @@
 import Circle from "../../public/circle.svg";
 import TickedCircle from "../../public/circle-tick.svg";
 import emptyList from "../../public/list-solid.svg";
+import TrashBin from "../../public/trash-bin.svg";
 import { useEffect } from "react";
 import { LOCAL_STORAGE_KEY } from "./InputForm";
 
 function List(props) {
   const { todos, setTodos, save } = props;
   const emptyListIcon = 60;
+
+  const handleDeletion = (e, id) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const updatedList = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedList);
+    save(updatedList);
+  };
 
   const handleTaskCheck = (id) => {
     const items = todos.map((todo) =>
@@ -57,6 +66,16 @@ function List(props) {
               height="17"
             />
             <p>{todo.value}</p>
+            <div>
+              <span onClick={(e) => handleDeletion(e, todo.id)}>
+                <img
+                  className="cursor-pointer"
+                  src={TrashBin}
+                  alt="trash icon"
+                  width="20"
+                />
+              </span>
+            </div>
           </li>
         ))
       )}

@@ -18,9 +18,10 @@ export default App;
  # [x] check/uncheck task upon click on it
  # [x] choose category (All, personal, work and study) when inserting a task
  # [x] handle empty lists (message: lets add new tasks)
- # [ ] save to local storage (saveToLocalStorage)
- # [ ] get from local storage (getFromLocalStorage)
- # [ ] delete button to each task
+ # [x] save to local storage (saveToLocalStorage)
+ # [x] get from local storage (getFromLocalStorage)
+ # [x] update local storage when check/uncheck todos
+ # [x] delete button to each task
  # [ ] edit button to each task
  # [ ] categorize tasks by their category
  # [ ] show category of each task underneath the task value
