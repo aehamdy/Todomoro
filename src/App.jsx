@@ -16,14 +16,14 @@ export default App;
  # [x] add tasks to tasks list upon click on add button
  # [x] add X icon to input to clear the field
  # [x] check/uncheck task upon click on it
- # [ ] focus on input when enter the app, after adding a task and after clearing the field
- # [ ] choose category (All, personal, work and study) when inserting a task
+ # [x] choose category (All, personal, work and study) when inserting a task
  # [ ] categorize tasks by their category
  # [ ] handle empty lists (message: lets add new tasks)
  # [ ] save to local storage (saveToLocalStorage)
  # [ ] get from local storage (getFromLocalStorage)
  # [ ] delete button to each task
  # [ ] edit button to each task
+ # [ ] focus on input when enter the app, after adding a task and after clearing the field
  # [ ] show number of tasks of each category 4(done)/8(category tasks)
 
  Colors:

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import List from "./List";
+import TodoCategories from "./TodoCategories";
 
 function InputForm() {
   const [userInput, setUserInput] = useState("");
   const [inputError, setInputError] = useState(false);
+  const [category, setCategory] = useState("personal");
   const [todos, setTodos] = useState([]);
 
   const handleInputChange = (e) => {
@@ -14,7 +16,12 @@ function InputForm() {
     if (userInput.trim()) {
       setInputError(false);
       setTodos([
-        { id: todos.length + 1, value: userInput, isChecked: false },
+        {
+          id: todos.length + 1,
+          value: userInput,
+          category: category,
+          isChecked: false,
+        },
         ...todos,
       ]);
       setUserInput("");
@@ -31,19 +38,31 @@ function InputForm() {
     <>
       <section className="flex">
         <div>
-          <input type="text" value={userInput} onChange={handleInputChange} />
-          <span className="text-black cursor-pointer" onClick={handleClear}>
-            X
-          </span>
+          <label htmlFor="taskInput" className="relative">
+            <input
+              type="text"
+              id="taskInput"
+              value={userInput}
+              onChange={handleInputChange}
+            />
+            <span
+              className="absolute end-2 text-white cursor-pointer"
+              onClick={handleClear}
+            >
+              X
+            </span>
+          </label>
           <p>{inputError && "Please insert a valid task"}</p>
         </div>
+        <TodoCategories setCategory={setCategory} />
         <div>
           <button type="button" onClick={handleClick}>
-            Add Task
+            +
           </button>
         </div>
       </section>
       <List todos={todos} setTodos={setTodos} />
+      {console.log(todos)}
     </>
   );
 }
