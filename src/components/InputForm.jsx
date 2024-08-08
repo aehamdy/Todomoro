@@ -3,6 +3,7 @@ import List from "./List";
 
 function InputForm() {
   const [userInput, setUserInput] = useState("");
+  const [inputError, setInputError] = useState(false);
   const [todos, setTodos] = useState([]);
 
   const handleInputChange = (e) => {
@@ -10,18 +11,30 @@ function InputForm() {
   };
 
   const handleClick = () => {
-    setTodos([userInput, ...todos]);
-    setUserInput("");
+    if (userInput.trim()) {
+      setInputError(false);
+      setTodos([userInput, ...todos]);
+      setUserInput("");
+    } else {
+      setInputError(true);
+    }
   };
 
   return (
-    <section>
-      <input type="text" value={userInput} onChange={handleInputChange} />
-      <button type="button" onClick={handleClick}>
-        Add Task
-      </button>
+    <>
+      <section className="flex">
+        <div>
+          <input type="text" value={userInput} onChange={handleInputChange} />
+          <p>{inputError && "Please insert a valid task"}</p>
+        </div>
+        <div>
+          <button type="button" onClick={handleClick}>
+            Add Task
+          </button>
+        </div>
+      </section>
       <List todos={todos} />
-    </section>
+    </>
   );
 }
 

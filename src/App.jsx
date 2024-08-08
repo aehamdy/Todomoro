@@ -11,7 +11,7 @@ export default App;
  # TODOS: Todod-List-lets acheive targets
  # [x] form input
  # [x] adding button
- # [ ] validate inserted input 
+ # [x] validate inserted input 
  # [x] clear input field upon click on adding button
  # [ ] focus on input when enter the app and after adding a task
  # [ ] choose category (All, personal, work and study) when inserting a task
