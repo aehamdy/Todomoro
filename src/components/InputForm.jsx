@@ -13,11 +13,18 @@ function InputForm() {
   const handleClick = () => {
     if (userInput.trim()) {
       setInputError(false);
-      setTodos([userInput, ...todos]);
+      setTodos([
+        { id: todos.length + 1, value: userInput, isChecked: false },
+        ...todos,
+      ]);
       setUserInput("");
     } else {
       setInputError(true);
     }
+  };
+
+  const handleClear = () => {
+    setUserInput("");
   };
 
   return (
@@ -25,6 +32,9 @@ function InputForm() {
       <section className="flex">
         <div>
           <input type="text" value={userInput} onChange={handleInputChange} />
+          <span className="text-black cursor-pointer" onClick={handleClear}>
+            X
+          </span>
           <p>{inputError && "Please insert a valid task"}</p>
         </div>
         <div>
@@ -33,7 +43,7 @@ function InputForm() {
           </button>
         </div>
       </section>
-      <List todos={todos} />
+      <List todos={todos} setTodos={setTodos} />
     </>
   );
 }

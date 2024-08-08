@@ -13,11 +13,11 @@ export default App;
  # [x] adding button
  # [x] validate inserted input 
  # [x] clear input field upon click on adding button
- # [ ] focus on input when enter the app and after adding a task
- # [ ] choose category (All, personal, work and study) when inserting a task
  # [x] add tasks to tasks list upon click on add button
- # [ ] check/uncheck task upon click on it
- # [ ] add X icon to input to clear the field
+ # [x] add X icon to input to clear the field
+ # [x] check/uncheck task upon click on it
+ # [ ] focus on input when enter the app, after adding a task and after clearing the field
+ # [ ] choose category (All, personal, work and study) when inserting a task
  # [ ] categorize tasks by their category
  # [ ] handle empty lists (message: lets add new tasks)
  # [ ] save to local storage (saveToLocalStorage)
