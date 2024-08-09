@@ -49,7 +49,7 @@ function InputForm() {
 
   useEffect(() => {
     inputRef.current.focus();
-  });
+  }, []);
 
   return (
     <>
