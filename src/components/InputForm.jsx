@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import List from "./List";
 import TodoCategories from "./TodoCategories";
 
@@ -9,6 +9,7 @@ function InputForm() {
   const [inputError, setInputError] = useState(false);
   const [category, setCategory] = useState("personal");
   const [todos, setTodos] = useState([]);
+  const inputRef = useRef();
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
@@ -46,6 +47,10 @@ function InputForm() {
     }
   };
 
+  useEffect(() => {
+    inputRef.current.focus();
+  });
+
   return (
     <>
       <section className="flex">
@@ -56,6 +61,7 @@ function InputForm() {
               id="taskInput"
               value={userInput}
               onChange={handleInputChange}
+              ref={inputRef}
             />
             <span
               className="absolute end-2 text-white cursor-pointer"
