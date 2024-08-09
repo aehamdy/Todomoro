@@ -65,11 +65,13 @@ function List(props) {
 
     if (listItems) {
       setTodos(JSON.parse(listItems));
+    } else {
+      setTodos([]);
     }
   };
 
   const filterTodos = (category) => {
-    const listItems = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    const listItems = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
 
     let filteredTodos;
 
