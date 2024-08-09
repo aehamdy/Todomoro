@@ -45,6 +45,8 @@ function InputForm() {
     } else {
       setInputError(true);
     }
+
+    inputRef.current.focus();
   };
 
   useEffect(() => {

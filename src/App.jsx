@@ -25,7 +25,7 @@ export default App;
  # [x] edit button to each task
  # [x] categorize tasks by their category
  # [x] show category of each task underneath the task value
- # [ ] focus on input when enter the app, after adding a task and after clearing the field
+ # [x] focus on input when enter the app and after adding a task
  # [ ] show number of tasks of each category 4(done)/8(category tasks)
 
  Colors:
