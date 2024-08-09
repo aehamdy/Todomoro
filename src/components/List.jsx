@@ -140,7 +140,10 @@ function List(props) {
                 onBlur={(e) => handleEditSave(e, todo.id)}
               />
             ) : (
-              <p>{todo.value}</p>
+              <div>
+                <p>{todo.value}</p>
+                <p>{todo.category}</p>
+              </div>
             )}
 
             <div className="flex">

@@ -23,8 +23,8 @@ export default App;
  # [x] update local storage when check/uncheck todos
  # [x] delete button to each task
  # [x] edit button to each task
- # [ ] categorize tasks by their category
- # [ ] show category of each task underneath the task value
+ # [x] categorize tasks by their category
+ # [x] show category of each task underneath the task value
  # [ ] focus on input when enter the app, after adding a task and after clearing the field
  # [ ] show number of tasks of each category 4(done)/8(category tasks)
 
