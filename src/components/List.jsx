@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import Circle from "../../public/circle.svg";
 import TickedCircle from "../../public/circle-tick.svg";
@@ -6,11 +7,13 @@ import TrashBin from "../../public/trash-bin.svg";
 import EditIcon from "../../public/edit.svg";
 import { useEffect, useState } from "react";
 import { LOCAL_STORAGE_KEY } from "./InputForm";
+import CategorySelection from "./CategorySelection";
 
 function List(props) {
   const { todos, setTodos, save } = props;
   const [editTaskId, setEditTaskId] = useState(null);
   const [newValue, setNewValue] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const emptyListIcon = 60;
 
   const handleDeletion = (e, id) => {
@@ -65,12 +68,42 @@ function List(props) {
     }
   };
 
+  const filterTodos = (category) => {
+    const listItems = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+
+    let filteredTodos;
+
+    if (category === "all") {
+      filteredTodos = listItems;
+    } else {
+      filteredTodos = listItems.filter((item) => item.category === category);
+    }
+
+    setTodos(filteredTodos);
+  };
+
   useEffect(() => {
     load();
   }, []);
 
+  useEffect(() => {
+    if (selectedCategory === "all") {
+      filterTodos("all");
+    } else if (selectedCategory === "personal") {
+      filterTodos("personal");
+    } else if (selectedCategory === "work") {
+      filterTodos("work");
+    } else if (selectedCategory === "study") {
+      filterTodos("study");
+    } else {
+      filterTodos("other");
+    }
+  }, [selectedCategory]);
+
   return (
     <ul className="border border-black rounded-lg py-2 px-4">
+      <CategorySelection setSelectedCategory={setSelectedCategory} />
+      {selectedCategory && <p>selected category is: {selectedCategory}</p>}
       {todos.length < 1 ? (
         <>
           <img

@@ -12,7 +12,7 @@ function TodoCategories(props) {
         <option value="personal">Personal</option>
         <option value="work">Work</option>
         <option value="study">Study</option>
-        <option value="Other">Other</option>
+        <option value="other">Other</option>
       </select>
     </div>
   );
