@@ -104,7 +104,10 @@ function List(props) {
 
   return (
     <ul className="border border-black rounded-lg py-2 px-4">
-      <CategorySelection setSelectedCategory={setSelectedCategory} />
+      <CategorySelection
+        setSelectedCategory={setSelectedCategory}
+        todos={todos}
+      />
       {selectedCategory && <p>selected category is: {selectedCategory}</p>}
       {todos.length < 1 ? (
         <>

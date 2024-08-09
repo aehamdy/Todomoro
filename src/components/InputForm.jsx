@@ -30,7 +30,7 @@ function InputForm() {
 
       const newTodos = [
         {
-          id: todos.length + 1,
+          id: Date.now(),
           value: userInput,
           category: category,
           isChecked: false,
