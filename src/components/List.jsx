@@ -8,12 +8,14 @@ import EditIcon from "../../public/edit.svg";
 import { useEffect, useState } from "react";
 import { LOCAL_STORAGE_KEY } from "./InputForm";
 import CategorySelection from "./CategorySelection";
+import LeftTodos from "./LeftTodos";
 
 function List(props) {
   const { todos, setTodos, save } = props;
   const [editTaskId, setEditTaskId] = useState(null);
   const [newValue, setNewValue] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [leftTodos, setLeftTodos] = useState();
   const emptyListIcon = 60;
 
   const handleDeletion = (e, id) => {
@@ -84,6 +86,10 @@ function List(props) {
     setTodos(filteredTodos);
   };
 
+  const handleLeftTodos = (todoRemain) => {
+    setLeftTodos(todoRemain);
+  };
+
   useEffect(() => {
     load();
   }, []);
@@ -107,8 +113,9 @@ function List(props) {
       <CategorySelection
         setSelectedCategory={setSelectedCategory}
         todos={todos}
+        handleLeftTodos={handleLeftTodos}
       />
-      <p>selected category is: {selectedCategory}</p>
+      <LeftTodos handleLeftTodos={leftTodos} />
       {todos.length < 1 ? (
         <>
           <img

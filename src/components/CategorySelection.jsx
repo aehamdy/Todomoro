@@ -9,37 +9,56 @@ export const ALL = "all",
   OTHER = "other";
 
 function CategorySelection(props) {
-  const { setSelectedCategory, todos } = props;
+  const { setSelectedCategory, todos, handleLeftTodos } = props;
 
   //   const todosLength = (categoryType, phrase) => {
   //     const length = todos.filter((todo) => todo[categoryType] === phrase).length;
   //     return length;
   //   };
 
-  const allTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+  const allTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
 
   const allCheckedTodos = allTodos.filter((todo) => todo.isChecked === true);
-  //   const uncheckedTodos = allTodos - allCheckedTodos;
+  const uncheckedTodos = allTodos.length - allCheckedTodos.length;
 
   const personalTodos = allTodos.filter((todo) => todo.category === PERSONAL);
   const checkedPersonalTodos = allTodos.filter(
     (todo) => todo.category === PERSONAL && todo.isChecked
   );
+  const leftPersonal = personalTodos.length - checkedPersonalTodos.length;
 
   const workTodos = allTodos.filter((todo) => todo.category === WORK);
   const checkedWorkTodos = allTodos.filter(
     (todo) => todo.category === "work" && todo.isChecked
   );
+  const leftWork = workTodos.length - checkedWorkTodos.length;
 
   const studyTodos = allTodos.filter((todo) => todo.category === STUDY);
   const checkedStudyTodos = allTodos.filter(
     (todo) => todo.category === STUDY && todo.isChecked
   );
+  const leftStudy = studyTodos.length - checkedStudyTodos.length;
 
   const otherTodos = allTodos.filter((todo) => todo.category === OTHER);
   const checkedOtherTodos = allTodos.filter(
     (todo) => todo.category === OTHER && todo.isChecked
   );
+  const leftOther = otherTodos.length - checkedOtherTodos.length;
+
+  const calcLeftTodos = (type) => {
+    switch (type) {
+      case ALL:
+        return uncheckedTodos;
+      case PERSONAL:
+        return leftPersonal;
+      case WORK:
+        return leftWork;
+      case STUDY:
+        return leftStudy;
+      case OTHER:
+        return leftOther;
+    }
+  };
 
   const clickHandler = (category) => {
     switch (category) {
@@ -61,6 +80,7 @@ function CategorySelection(props) {
       default:
         setSelectedCategory(ALL);
     }
+    handleLeftTodos(calcLeftTodos(category));
   };
 
   useEffect(() => {}, [todos]);
