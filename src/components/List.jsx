@@ -9,6 +9,10 @@ import { useEffect, useState } from "react";
 import { LOCAL_STORAGE_KEY } from "./InputForm";
 import CategorySelection from "./CategorySelection";
 import LeftTodos from "./LeftTodos";
+import personalIcon from "../../public/personal.svg";
+import workIcon from "../../public/work.svg";
+import studyIcon from "../../public/study.svg";
+import otherIcon from "../../public/other.svg";
 
 function List(props) {
   const { todos, setTodos, save } = props;
@@ -108,6 +112,18 @@ function List(props) {
     }
   }, [selectedCategory]);
 
+  const handleIcon = (category) => {
+    if (category === "personal") {
+      return personalIcon;
+    } else if (category === "work") {
+      return workIcon;
+    } else if (category === "study") {
+      return studyIcon;
+    } else if (category === "other") {
+      return otherIcon;
+    }
+  };
+
   return (
     <ul className="border border-black rounded-lg py-2 px-4">
       <CategorySelection
@@ -131,7 +147,7 @@ function List(props) {
           <li
             key={todo.id}
             onClick={() => handleTaskCheck(todo.id)}
-            className="flex justify-between items-center border border-black rounded-lg text-black py-1 px-3 cursor-pointer"
+            className="flex justify-between items-center border border-tabs-text rounded-lg text-xl text-black py-2 px-3 mb-2 last:mb-0 cursor-pointer"
             style={{ textDecoration: todo.isChecked ? "line-through" : "none" }}
           >
             <div className="flex justify-between items-center gap 4">
@@ -151,9 +167,14 @@ function List(props) {
                   onBlur={(e) => handleEditSave(e, todo.id)}
                 />
               ) : (
-                <div>
+                <div className="flex">
+                  <img
+                    src={handleIcon(todo.category)}
+                    alt="icon"
+                    width="18"
+                    className="me-2"
+                  />
                   <p>{todo.value}</p>
-                  <p>{todo.category}</p>
                 </div>
               )}
             </div>
