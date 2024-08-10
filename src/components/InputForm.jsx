@@ -55,36 +55,40 @@ function InputForm() {
 
   return (
     <>
-      <section className="flex justify-between items-center border-2 border-solid rounded-lg py-2 px-4 mb-4">
-        <div>
-          <label htmlFor="taskInput" className="flex items-center relative">
-            <input
-              type="text"
-              id="taskInput"
-              className="p-1 rounded-md focus:outline-none"
-              value={userInput}
-              onChange={handleInputChange}
-              ref={inputRef}
-            />
-            <span
-              className="absolute end-2 text-white hover:text-warning-color transition duration-medium cursor-pointer"
-              onClick={handleClear}
+      <section className="flex flex-col">
+        <div className="flex justify-between items-center border-2 border-solid rounded-lg py-2 px-4 mb-4">
+          <div>
+            <label htmlFor="taskInput" className="flex items-center relative">
+              <input
+                type="text"
+                id="taskInput"
+                className="p-1 rounded-md focus:outline-none"
+                value={userInput}
+                onChange={handleInputChange}
+                ref={inputRef}
+              />
+              <span
+                className="absolute end-2 text-white hover:text-warning-color transition duration-medium cursor-pointer"
+                onClick={handleClear}
+              >
+                X
+              </span>
+            </label>
+          </div>
+          <TodoCategories setCategory={setCategory} />
+          <div>
+            <button
+              type="button"
+              onClick={handleClick}
+              className="flex items-center justify-center w-12 h-10 py-2 px-4 rounded-md hover:border-transparent"
             >
-              X
-            </span>
-          </label>
-          <p>{inputError && "Please insert a valid task"}</p>
+              +
+            </button>
+          </div>
         </div>
-        <TodoCategories setCategory={setCategory} />
-        <div>
-          <button
-            type="button"
-            onClick={handleClick}
-            className="flex items-center justify-center w-12 h-10 py-2 px-4 rounded-md hover:border-transparent"
-          >
-            +
-          </button>
-        </div>
+        <p className="text-warning-color">
+          {inputError && "Please insert valid text"}
+        </p>
       </section>
       <List todos={todos} setTodos={setTodos} save={save} />
     </>

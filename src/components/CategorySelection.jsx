@@ -87,32 +87,52 @@ function CategorySelection(props) {
   useEffect(() => {}, [todos]);
 
   return (
-    <section>
-      <button type="button" onClick={() => clickHandler(ALL)}>
+    <section className="flex gap-4 py-2">
+      <button
+        type="button"
+        onClick={() => clickHandler(ALL)}
+        className="flex justify-between items-center gap-2 w-fit h-fit py-1 px-2 text-tabs-text bg-tabs-bg rounded-lg hover:border-none focus:outline-none focus:text-white focus:bg-all-color"
+      >
         All
         <span className="block">
           {allCheckedTodos.length}/{allTodos.length}
         </span>
       </button>
-      <button type="button" onClick={() => clickHandler(PERSONAL)}>
+      <button
+        type="button"
+        onClick={() => clickHandler(PERSONAL)}
+        className="flex justify-between items-center gap-2 w-fit h-fit py-1 px-2 text-tabs-text bg-tabs-bg rounded-lg hover:border-none focus:outline-none focus:text-white focus:bg-personal-color"
+      >
         Personal
         <span className="block">
           {checkedPersonalTodos.length}/{personalTodos.length}
         </span>
       </button>
-      <button type="button" onClick={() => clickHandler(WORK)}>
+      <button
+        type="button"
+        onClick={() => clickHandler(WORK)}
+        className="flex justify-between items-center gap-2 w-fit h-fit py-1 px-2 text-tabs-text bg-tabs-bg rounded-lg hover:border-none focus:outline-none focus:text-white focus:bg-work-color focus"
+      >
         Work
         <span className="block">
           {checkedWorkTodos.length}/{workTodos.length}
         </span>
       </button>
-      <button type="button" onClick={() => clickHandler(STUDY)}>
+      <button
+        type="button"
+        onClick={() => clickHandler(STUDY)}
+        className="flex justify-between items-center gap-2 w-fit h-fit py-1 px-2 text-tabs-text bg-tabs-bg rounded-lg hover:border-none focus:outline-none focus:text-white focus:bg-study-color"
+      >
         Study
         <span className="block">
           {checkedStudyTodos.length}/{studyTodos.length}
         </span>
       </button>
-      <button type="button" onClick={() => clickHandler(OTHER)}>
+      <button
+        type="button"
+        onClick={() => clickHandler(OTHER)}
+        className="flex justify-between items-center gap-2 w-fit h-fit py-1 px-2 text-tabs-text bg-tabs-bg rounded-lg hover:border-none focus:outline-none focus:text-white focus:bg-other-color"
+      >
         Other
         <span className="block">
           {checkedOtherTodos.length}/{otherTodos.length}
