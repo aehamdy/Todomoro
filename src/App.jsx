@@ -2,7 +2,11 @@ import "./App.css";
 import TodoApp from "./components/TodoApp";
 
 function App() {
-  return <TodoApp />;
+  return (
+    <main className="bg-app-bg py-20 px-8 rounded-3xl">
+      <TodoApp className="bg-app-bg" />
+    </main>
+  );
 }
 
 export default App;
@@ -28,9 +32,10 @@ export default App;
  # [x] focus on input when enter the app and after adding a task
  # [x] show number of tasks of each category 4(done)/8(category tasks)
  # [x] FIX: number of toods change when click on any category button!
- # [ ] clear all completed todos button
+ # [x] clear all completed todos button
+ # [x] a flag that displays a number of left todos
+ # [ ] add keyboard accessebility to input field
  # [ ] clear all checked todos of the selected category button
- # [ ] a flag that displays a number of left todos
 
 
  Colors:

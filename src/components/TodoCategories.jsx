@@ -8,7 +8,7 @@ function TodoCategories(props) {
 
   return (
     <div>
-      <select onChange={handleCategorySelection}>
+      <select onChange={handleCategorySelection} className="p-1 rounded-md">
         <option value="personal">Personal</option>
         <option value="work">Work</option>
         <option value="study">Study</option>
