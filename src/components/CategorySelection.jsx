@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { LOCAL_STORAGE_KEY } from "./InputForm";
-import workIcon from "../../public/work.svg";
 import personalIcon from "../../public/personal.svg";
+import workIcon from "../../public/work.svg";
 import studyIcon from "../../public/study.svg";
 import otherIcon from "../../public/other.svg";
 
@@ -110,7 +110,7 @@ function CategorySelection(props) {
             src={personalIcon}
             alt="personal-icon"
             width={iconSize}
-            className=""
+            className="fill-red-500"
           />
         </div>
         Personal

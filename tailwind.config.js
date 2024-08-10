@@ -9,6 +9,8 @@ export default {
       colors: {
         'warning-color': '#e20807',
         'app-bg' : 'rgb(245, 236, 227)',
+        'todo-bg': 'rgb(255, 255 ,255, .7)',
+        'todo-bg-hover': 'rgb(255, 255, 255)',
         'tabs-text': 'rgb(208, 204, 192)',
         // 'tabs-text': 'rgb(209, 202, 184)',
         'tabs-bg': 'rgb(255, 255 ,255, .8)',
