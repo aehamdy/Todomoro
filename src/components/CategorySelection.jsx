@@ -15,6 +15,7 @@ function CategorySelection(props) {
   //     const length = todos.filter((todo) => todo[categoryType] === phrase).length;
   //     return length;
   //   };
+  console.log(localStorage.getItem(LOCAL_STORAGE_KEY));
 
   const allTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
 

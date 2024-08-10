@@ -115,7 +115,7 @@ function List(props) {
         todos={todos}
         handleLeftTodos={handleLeftTodos}
       />
-      <LeftTodos handleLeftTodos={leftTodos} />
+      <LeftTodos handleLeftTodos={leftTodos} save={save} setTodos={setTodos} />
       {todos.length < 1 ? (
         <>
           <img
