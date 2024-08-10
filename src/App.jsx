@@ -26,7 +26,12 @@ export default App;
  # [x] categorize tasks by their category
  # [x] show category of each task underneath the task value
  # [x] focus on input when enter the app and after adding a task
- # [ ] show number of tasks of each category 4(done)/8(category tasks)
+ # [x] show number of tasks of each category 4(done)/8(category tasks)
+ # [ ] clear all completed todos of all categories button
+ # [ ] clear all checked todos of the selected category button
+ # [ ] a flag that displays a number of left todos
+
+ # FIXME: number of toods change when click on any category button!
 
  Colors:
    Headings Color => rgb(32, 27, 23)

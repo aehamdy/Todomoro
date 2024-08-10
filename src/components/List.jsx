@@ -108,7 +108,7 @@ function List(props) {
         setSelectedCategory={setSelectedCategory}
         todos={todos}
       />
-      {selectedCategory && <p>selected category is: {selectedCategory}</p>}
+      <p>selected category is: {selectedCategory}</p>
       {todos.length < 1 ? (
         <>
           <img
