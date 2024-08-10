@@ -91,7 +91,7 @@ function CategorySelection(props) {
       <button
         type="button"
         onClick={() => clickHandler(ALL)}
-        className="flex justify-between items-center gap-2 w-fit h-fit py-1 px-2 text-tabs-text bg-tabs-bg rounded-lg hover:border-none focus:outline-none focus:text-white focus:bg-all-color"
+        className="appearance-none flex justify-between items-center gap-2 w-fit h-fit py-1 px-2 text-tabs-text bg-tabs-bg rounded-lg hover:border-none focus:outline-none focus:text-white focus:bg-all-color"
       >
         All
         <span className="block">

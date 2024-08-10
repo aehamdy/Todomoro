@@ -4,9 +4,9 @@ import ClearButton from "./ClearButton";
 function LeftTodos(props) {
   const { handleLeftTodos, save, setTodos } = props;
   return (
-    <section>
+    <section className="flex justify-between px-2 mb-1">
       <div>
-        <p>
+        <p className="text-label-color ">
           {handleLeftTodos === 1
             ? `${handleLeftTodos} todo left`
             : handleLeftTodos > 1

@@ -80,7 +80,7 @@ function InputForm() {
             <button
               type="button"
               onClick={handleClick}
-              className="flex items-center justify-center w-12 h-10 py-2 px-4 rounded-md hover:border-transparent"
+              className="flex items-center justify-center w-12 h-10 py-2 px-4 rounded-md bg-[#111]"
             >
               +
             </button>

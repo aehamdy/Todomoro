@@ -13,6 +13,7 @@ export default {
         // 'tabs-text': 'rgb(209, 202, 184)',
         'tabs-bg': 'rgb(255, 255 ,255, .8)',
         // 'tabs-bg': 'rgb(220, 220, 220)',
+        'label-color': 'rgb(111, 100, 108)',
         // 'all-color': 'rgb(123, 162, 205)',
         // 'all-color': 'rgb(190, 208, 210)',
         'all-color': 'rgb(190, 209, 226)',

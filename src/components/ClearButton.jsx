@@ -16,7 +16,11 @@ function ClearButton(props) {
   };
 
   return (
-    <button type="button" onClick={handleClear}>
+    <button
+      type="button"
+      onClick={handleClear}
+      className="appearance-none text-warning-color hover:underline"
+    >
       Clear completed
     </button>
   );
