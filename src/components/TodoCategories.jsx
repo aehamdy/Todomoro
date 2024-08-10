@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+
 function TodoCategories(props) {
   const { setCategory } = props;
 

@@ -131,32 +131,34 @@ function List(props) {
           <li
             key={todo.id}
             onClick={() => handleTaskCheck(todo.id)}
-            className="border border-black rounded-lg text-black flex px-2 py-2 cursor-pointer"
+            className="flex justify-between items-center border border-black rounded-lg text-black py-1 px-3 cursor-pointer"
             style={{ textDecoration: todo.isChecked ? "line-through" : "none" }}
           >
-            <img
-              className="me-2 fill-blue-500"
-              src={!todo.isChecked ? Circle : TickedCircle}
-              alt="taskCircle"
-              width="17"
-              height="17"
-            />
-            {editTaskId === todo.id ? (
-              <input
-                type="text"
-                value={newValue}
-                onChange={handleEditChange}
-                onClick={handleTaskChecking}
-                onBlur={(e) => handleEditSave(e, todo.id)}
+            <div className="flex justify-between items-center gap 4">
+              <img
+                className="me-2 fill-blue-500"
+                src={!todo.isChecked ? Circle : TickedCircle}
+                alt="taskCircle"
+                width="17"
+                height="17"
               />
-            ) : (
-              <div>
-                <p>{todo.value}</p>
-                <p>{todo.category}</p>
-              </div>
-            )}
+              {editTaskId === todo.id ? (
+                <input
+                  type="text"
+                  value={newValue}
+                  onChange={handleEditChange}
+                  onClick={handleTaskChecking}
+                  onBlur={(e) => handleEditSave(e, todo.id)}
+                />
+              ) : (
+                <div>
+                  <p>{todo.value}</p>
+                  <p>{todo.category}</p>
+                </div>
+              )}
+            </div>
 
-            <div className="flex">
+            <div className="flex gap-2">
               <span
                 className="cursor-pointer"
                 onClick={(e) => handleEdit(e, todo.id)}

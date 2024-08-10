@@ -1,5 +1,9 @@
 import { useEffect } from "react";
 import { LOCAL_STORAGE_KEY } from "./InputForm";
+import workIcon from "../../public/work.svg";
+import personalIcon from "../../public/personal.svg";
+import studyIcon from "../../public/study.svg";
+import otherIcon from "../../public/other.svg";
 
 /* eslint-disable react/prop-types */
 export const ALL = "all",
@@ -8,13 +12,11 @@ export const ALL = "all",
   STUDY = "study",
   OTHER = "other";
 
+const iconSize = "15";
+
 function CategorySelection(props) {
   const { setSelectedCategory, todos, handleLeftTodos } = props;
 
-  //   const todosLength = (categoryType, phrase) => {
-  //     const length = todos.filter((todo) => todo[categoryType] === phrase).length;
-  //     return length;
-  //   };
   console.log(localStorage.getItem(LOCAL_STORAGE_KEY));
 
   const allTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
@@ -101,10 +103,18 @@ function CategorySelection(props) {
       <button
         type="button"
         onClick={() => clickHandler(PERSONAL)}
-        className="flex justify-between items-center gap-2 w-fit h-fit py-1 px-2 text-tabs-text bg-tabs-bg rounded-lg hover:border-none focus:outline-none focus:text-white focus:bg-personal-color"
+        className="flex justify-between items-center gap-1 w-fit h-fit py-1 px-2 text-tabs-text bg-tabs-bg rounded-lg hover:border-none focus:outline-none focus:text-white focus:bg-personal-color"
       >
+        <div>
+          <img
+            src={personalIcon}
+            alt="personal-icon"
+            width={iconSize}
+            className=""
+          />
+        </div>
         Personal
-        <span className="block">
+        <span className="inline-block">
           {checkedPersonalTodos.length}/{personalTodos.length}
         </span>
       </button>
@@ -113,6 +123,7 @@ function CategorySelection(props) {
         onClick={() => clickHandler(WORK)}
         className="flex justify-between items-center gap-2 w-fit h-fit py-1 px-2 text-tabs-text bg-tabs-bg rounded-lg hover:border-none focus:outline-none focus:text-white focus:bg-work-color focus"
       >
+        <img src={workIcon} alt="work-icon" width={iconSize} />
         Work
         <span className="block">
           {checkedWorkTodos.length}/{workTodos.length}
@@ -123,6 +134,7 @@ function CategorySelection(props) {
         onClick={() => clickHandler(STUDY)}
         className="flex justify-between items-center gap-2 w-fit h-fit py-1 px-2 text-tabs-text bg-tabs-bg rounded-lg hover:border-none focus:outline-none focus:text-white focus:bg-study-color"
       >
+        <img src={studyIcon} alt="study-icon" width={iconSize} />
         Study
         <span className="block">
           {checkedStudyTodos.length}/{studyTodos.length}
@@ -133,6 +145,7 @@ function CategorySelection(props) {
         onClick={() => clickHandler(OTHER)}
         className="flex justify-between items-center gap-2 w-fit h-fit py-1 px-2 text-tabs-text bg-tabs-bg rounded-lg hover:border-none focus:outline-none focus:text-white focus:bg-other-color"
       >
+        <img src={otherIcon} alt="other-icon" width={iconSize} />
         Other
         <span className="block">
           {checkedOtherTodos.length}/{otherTodos.length}
