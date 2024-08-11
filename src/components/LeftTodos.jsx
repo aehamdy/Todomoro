@@ -11,7 +11,7 @@ function LeftTodos(props) {
             ? `${handleLeftTodos} todo left`
             : handleLeftTodos > 1
             ? `${handleLeftTodos} todos left`
-            : ""}
+            : "No todos to work on :)"}
         </p>
       </div>
       <div>

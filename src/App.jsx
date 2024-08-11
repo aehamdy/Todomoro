@@ -38,7 +38,6 @@ export default App;
  # [ ] add keyboard accessebility to input field
  # [ ] clear all checked todos of the selected category button
 
- # FIXME: all other todos are deleted when you click on a category button and delete a random todo
 
 
  Colors:

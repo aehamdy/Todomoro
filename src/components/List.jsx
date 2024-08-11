@@ -154,7 +154,7 @@ function List(props) {
   };
 
   const handleLeftTodos = (todoRemain) => {
-    setLeftTodos(todoRemain);
+    // setLeftTodos(todoRemain);
   };
 
   useEffect(() => {
