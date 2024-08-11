@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { LOCAL_STORAGE_KEY } from "./InputForm";
 import personalIcon from "../../public/personal.svg";
 import workIcon from "../../public/work.svg";
@@ -12,14 +11,14 @@ export const ALL = "all",
   STUDY = "study",
   OTHER = "other";
 
-const iconSize = "15";
+const iconSize = 15;
 
 function CategorySelection(props) {
-  const { setSelectedCategory, todos, handleLeftTodos } = props;
+  const { setSelectedCategory, handleLeftTodos } = props;
 
-  console.log(localStorage.getItem(LOCAL_STORAGE_KEY));
+  const list = localStorage.getItem(LOCAL_STORAGE_KEY) || "[]";
 
-  const allTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+  const allTodos = JSON.parse(list);
 
   const allCheckedTodos = allTodos.filter((todo) => todo.isChecked === true);
   const uncheckedTodos = allTodos.length - allCheckedTodos.length;
@@ -60,6 +59,8 @@ function CategorySelection(props) {
         return leftStudy;
       case OTHER:
         return leftOther;
+      default:
+        return 0;
     }
   };
 
@@ -71,7 +72,7 @@ function CategorySelection(props) {
       case PERSONAL:
         setSelectedCategory(PERSONAL);
         break;
-      case "work":
+      case WORK:
         setSelectedCategory(WORK);
         break;
       case STUDY:
@@ -85,8 +86,6 @@ function CategorySelection(props) {
     }
     handleLeftTodos(calcLeftTodos(category));
   };
-
-  useEffect(() => {}, [todos]);
 
   return (
     <section className="flex gap-4 py-2">
@@ -105,14 +104,12 @@ function CategorySelection(props) {
         onClick={() => clickHandler(PERSONAL)}
         className="flex justify-between items-center gap-1 w-fit h-fit py-1 px-2 text-tabs-text bg-tabs-bg rounded-lg hover:border-none focus:outline-none focus:text-white focus:bg-personal-color"
       >
-        <div>
-          <img
-            src={personalIcon}
-            alt="personal-icon"
-            width={iconSize}
-            className="fill-red-500"
-          />
-        </div>
+        <img
+          src={personalIcon}
+          alt="personal-icon"
+          width={iconSize}
+          className="fill-red-500"
+        />
         Personal
         <span className="inline-block">
           {checkedPersonalTodos.length}/{personalTodos.length}

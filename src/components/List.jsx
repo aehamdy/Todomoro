@@ -10,7 +10,7 @@ import { LOCAL_STORAGE_KEY } from "./InputForm";
 import CategorySelection from "./CategorySelection";
 import LeftTodos from "./LeftTodos";
 
-const iconSize = "25";
+const iconSize = "20";
 const personalIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +84,11 @@ function List(props) {
   const handleDeletion = (e, id) => {
     e.preventDefault();
     e.stopPropagation();
-    const updatedList = todos.filter((todo) => todo.id !== id);
+    const items =
+      localStorage.getItem(LOCAL_STORAGE_KEY) &&
+      localStorage.getItem(LOCAL_STORAGE_KEY);
+    const allTodos = JSON.parse(items);
+    const updatedList = allTodos.filter((todo) => todo.id !== id);
     setTodos(updatedList);
     save(updatedList);
   };
@@ -220,6 +224,7 @@ function List(props) {
               {editTaskId === todo.id ? (
                 <input
                   type="text"
+                  className="bg-slate-200 rounded-md ps-2"
                   value={newValue}
                   onChange={handleEditChange}
                   onClick={handleTaskChecking}

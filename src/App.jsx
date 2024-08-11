@@ -34,8 +34,11 @@ export default App;
  # [x] FIX: number of toods change when click on any category button!
  # [x] clear all completed todos button
  # [x] a flag that displays a number of left todos
+ # [ ] button to hide all checked todos
  # [ ] add keyboard accessebility to input field
  # [ ] clear all checked todos of the selected category button
+
+ # FIXME: all other todos are deleted when you click on a category button and delete a random todo
 
 
  Colors:
