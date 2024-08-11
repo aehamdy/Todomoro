@@ -190,7 +190,7 @@ function CategorySelection(props) {
           </span>
         </button>
       </section> */}
-      <section className="flex justify-between gap-2 p-1">
+      <section className="flex justify-between gap-2 p-1 mb-2">
         {categoryButtons.map((button, i) => (
           <React.Fragment key={i}>
             <label

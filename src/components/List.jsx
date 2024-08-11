@@ -216,80 +216,84 @@ function List(props) {
   };
 
   return (
-    <ul className="border border-black rounded-lg py-2 px-4">
+    <>
       <CategorySelection
         setSelectedCategory={setSelectedCategory}
         todos={todos}
         handleLeftTodos={handleLeftTodos}
       />
       <LeftTodos handleLeftTodos={leftTodos} save={save} setTodos={setTodos} />
-      {todos.length < 1 ? (
-        <div className="flex flex-col items-center gap-2">
-          <span>{emptyList}</span>
-          <p className="text-slate-500">
-            The list is empty,
-            <br /> lets add tasks
-          </p>
-        </div>
-      ) : (
-        todos.map((todo) => (
-          <li
-            key={todo.id}
-            onClick={() => handleTaskCheck(todo.id)}
-            className="flex justify-between items-center hover:shadow-md hover:bg-todo-bg-hover duration-short rounded-lg text-xl text-black bg-todo-bg py-2 px-3 mb-2 last:mb-0 cursor-pointer"
-            style={{ textDecoration: todo.isChecked ? "line-through" : "none" }}
-          >
-            <div className="flex justify-between items-center gap 4">
-              <img
-                className="me-2 fill-blue-500"
-                src={!todo.isChecked ? Circle : TickedCircle}
-                alt="taskCircle"
-                width="17"
-                height="17"
-              />
-              {editTaskId === todo.id ? (
-                <input
-                  type="text"
-                  className="bg-slate-200 rounded-md ps-2"
-                  value={newValue}
-                  onChange={handleEditChange}
-                  // onClick={handleTodoCheck}
-                  onClick={handleTaskCheck(todo.id)}
-                  onBlur={(e) => handleEditSave(e, todo.id)}
-                />
-              ) : (
-                <div className="flex">
-                  <span className="flex items-center me-2">
-                    {handleIcon(todo.category)}
-                  </span>
-                  <p>{todo.value}</p>
-                </div>
-              )}
-            </div>
-
-            <div className="flex gap-2">
-              <span
-                className="cursor-pointer"
-                onClick={(e) => handleEdit(e, todo.id)}
-              >
-                <img src={EditIcon} alt="edit icon" width="22" />
-              </span>
-              <span
-                className="cursor-pointer"
-                onClick={(e) => handleDeletion(e, todo.id)}
-              >
+      <ul className="scrollbar border border-white rounded-lg h-[370px] overflow-y-auto overflow-x-hidden py-2 px-4">
+        {todos.length < 1 ? (
+          <div className="flex flex-col items-center gap-2">
+            <span>{emptyList}</span>
+            <p className="text-slate-500">
+              The list is empty,
+              <br /> lets add tasks
+            </p>
+          </div>
+        ) : (
+          todos.map((todo) => (
+            <li
+              key={todo.id}
+              onClick={() => handleTaskCheck(todo.id)}
+              className="flex justify-between items-center hover:shadow-md hover:bg-todo-bg-hover duration-short rounded-lg text-xl text-black bg-todo-bg py-2 px-3 mb-2 last:mb-0 cursor-pointer"
+              style={{
+                textDecoration: todo.isChecked ? "line-through" : "none",
+              }}
+            >
+              <div className="flex justify-between items-center gap 4">
                 <img
-                  className="cursor-pointer"
-                  src={TrashBin}
-                  alt="trash icon"
-                  width="20"
+                  className="me-2 fill-blue-500"
+                  src={!todo.isChecked ? Circle : TickedCircle}
+                  alt="taskCircle"
+                  width="17"
+                  height="17"
                 />
-              </span>
-            </div>
-          </li>
-        ))
-      )}
-    </ul>
+                {editTaskId === todo.id ? (
+                  <input
+                    type="text"
+                    className="bg-slate-200 rounded-md ps-2"
+                    value={newValue}
+                    onChange={handleEditChange}
+                    // onClick={handleTodoCheck}
+                    onClick={handleTaskCheck(todo.id)}
+                    onBlur={(e) => handleEditSave(e, todo.id)}
+                  />
+                ) : (
+                  <div className="flex">
+                    <span className="flex items-center me-2">
+                      {handleIcon(todo.category)}
+                    </span>
+                    <p>{todo.value}</p>
+                  </div>
+                )}
+              </div>
+
+              <div className="flex gap-2">
+                <span
+                  className="cursor-pointer"
+                  onClick={(e) => handleEdit(e, todo.id)}
+                >
+                  <img src={EditIcon} alt="edit icon" width="22" />
+                </span>
+                <span
+                  className="cursor-pointer"
+                  onClick={(e) => handleDeletion(e, todo.id)}
+                >
+                  <img
+                    className="cursor-pointer"
+                    src={TrashBin}
+                    alt="trash icon"
+                    width="20"
+                  />
+                </span>
+              </div>
+            </li>
+          ))
+        )}
+      </ul>
+    </>
   );
 }
 

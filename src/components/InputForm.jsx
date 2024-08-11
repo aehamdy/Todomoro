@@ -56,13 +56,13 @@ function InputForm() {
   return (
     <>
       <section className="flex flex-col">
-        <div className="flex justify-between items-center border-2 border-solid rounded-lg py-2 px-4 mb-4">
+        <div className="flex justify-between items-center border-2 border-solid rounded-lg py-2 px-4 mb-2">
           <div>
             <label htmlFor="taskInput" className="flex items-center relative">
               <input
                 type="text"
                 id="taskInput"
-                className="p-1 rounded-md focus:outline-none"
+                className="p-1 px-2 bg-[#ddd] border-2 rounded-md focus:outline-none"
                 value={userInput}
                 onChange={handleInputChange}
                 ref={inputRef}
@@ -80,7 +80,7 @@ function InputForm() {
             <button
               type="button"
               onClick={handleClick}
-              className="flex items-center justify-center w-12 h-10 py-2 px-4 rounded-md bg-[#111]"
+              className="flex items-center justify-center w-12 h-10 py-2 px-4 rounded-md bg-[#111] "
             >
               +
             </button>
