@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 import ClearButton from "./ClearButton";
 
-/* eslint-disable react/prop-types */
 function LeftTodos(props) {
   const { handleLeftTodos, save, setTodos } = props;
   return (

@@ -5,7 +5,7 @@ import TickedCircle from "../../public/circle-tick.svg";
 import emptyList from "../../public/list-solid.svg";
 import TrashBin from "../../public/trash-bin.svg";
 import EditIcon from "../../public/edit.svg";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LOCAL_STORAGE_KEY } from "./InputForm";
 import CategorySelection from "./CategorySelection";
 import LeftTodos from "./LeftTodos";
@@ -116,10 +116,10 @@ function List(props) {
     setEditTaskId(null);
   };
 
-  const handleTaskChecking = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-  };
+  // let handleTodoCheck = (e) => {
+  // e.preventDefault();
+  // e.stopPropagation();
+  // };
 
   const handleTaskCheck = (id) => {
     const items = todos.map((todo) =>
@@ -154,12 +154,22 @@ function List(props) {
   };
 
   const handleLeftTodos = (todoRemain) => {
-    // setLeftTodos(todoRemain);
+    setLeftTodos(todoRemain);
   };
 
   useEffect(() => {
     load();
   }, []);
+
+  useEffect(() => {
+    // handleTodoCheck = (id) => {
+    //   const items = todos.map((todo) =>
+    //     todo.id === id ? { ...todo, isChecked: !todo.isChecked } : todo
+    //   );
+    //   setTodos(items);
+    //   save(items);
+    // };
+  }, [leftTodos]);
 
   useEffect(() => {
     if (selectedCategory === "all") {
@@ -227,7 +237,8 @@ function List(props) {
                   className="bg-slate-200 rounded-md ps-2"
                   value={newValue}
                   onChange={handleEditChange}
-                  onClick={handleTaskChecking}
+                  // onClick={handleTodoCheck}
+                  onClick={handleTaskCheck(todo.id)}
                   onBlur={(e) => handleEditSave(e, todo.id)}
                 />
               ) : (
