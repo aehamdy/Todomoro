@@ -3,7 +3,7 @@ import personalIcon from "../../public/personal.svg";
 import workIcon from "../../public/work.svg";
 import studyIcon from "../../public/study.svg";
 import otherIcon from "../../public/other.svg";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 /* eslint-disable react/prop-types */
 export const ALL = "all",
