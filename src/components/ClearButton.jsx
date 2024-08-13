@@ -2,7 +2,7 @@
 import { LOCAL_STORAGE_KEY } from "./InputForm";
 
 function ClearButton(props) {
-  const { save, setTodos } = props;
+  const { save, setTodos, todos } = props;
 
   const handleClear = () => {
     const allTodos =
@@ -15,14 +15,20 @@ function ClearButton(props) {
     save(uncheckedTodos);
   };
 
+  const checkedTodos = (todos) => {
+    return todos.isChecked;
+  };
+
   return (
-    <button
-      type="button"
-      onClick={handleClear}
-      className="appearance-none text-warning-color hover:underline"
-    >
-      Clear completed
-    </button>
+    todos.find(checkedTodos) && (
+      <button
+        type="button"
+        onClick={handleClear}
+        className="appearance-none text-warning-color hover:underline"
+      >
+        Clear completed
+      </button>
+    )
   );
 }
 

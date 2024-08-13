@@ -222,7 +222,12 @@ function List(props) {
         todos={todos}
         handleLeftTodos={handleLeftTodos}
       />
-      <LeftTodos handleLeftTodos={leftTodos} save={save} setTodos={setTodos} />
+      <LeftTodos
+        handleLeftTodos={leftTodos}
+        save={save}
+        setTodos={setTodos}
+        todos={todos}
+      />
       <ul className="scrollbar relative border border-white rounded-lg h-[370px] overflow-y-auto overflow-x-hidden py-2 px-4">
         {todos.length < 1 ? (
           <div className="flex flex-col items-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] gap-2">

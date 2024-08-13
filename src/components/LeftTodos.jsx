@@ -2,7 +2,7 @@
 import ClearButton from "./ClearButton";
 
 function LeftTodos(props) {
-  const { handleLeftTodos, save, setTodos } = props;
+  const { handleLeftTodos, save, setTodos, todos } = props;
   return (
     <section className="flex justify-between px-2 mb-1">
       <div>
@@ -15,7 +15,7 @@ function LeftTodos(props) {
         </p>
       </div>
       <div>
-        <ClearButton save={save} setTodos={setTodos} />
+        <ClearButton save={save} setTodos={setTodos} todos={todos} />
       </div>
     </section>
   );
