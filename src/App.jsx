@@ -35,6 +35,7 @@ export default App;
  # [x] clear all completed todos button
  # [x] a flag that displays a number of left todos
  # [ ] button to hide all checked todos
+ # [ ] show/hide Clear Completed button depending on checked todos
  # [ ] add keyboard accessebility to input field
  # [ ] clear all checked todos of the selected category button
 

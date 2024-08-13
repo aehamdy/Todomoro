@@ -223,9 +223,9 @@ function List(props) {
         handleLeftTodos={handleLeftTodos}
       />
       <LeftTodos handleLeftTodos={leftTodos} save={save} setTodos={setTodos} />
-      <ul className="scrollbar border border-white rounded-lg h-[370px] overflow-y-auto overflow-x-hidden py-2 px-4">
+      <ul className="scrollbar relative border border-white rounded-lg h-[370px] overflow-y-auto overflow-x-hidden py-2 px-4">
         {todos.length < 1 ? (
-          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] gap-2">
             <span>{emptyList}</span>
             <p className="text-slate-500">
               The list is empty,
@@ -240,6 +240,16 @@ function List(props) {
               className="flex justify-between items-center hover:shadow-md hover:bg-todo-bg-hover duration-short rounded-lg text-xl text-black bg-todo-bg py-2 px-3 mb-2 last:mb-0 cursor-pointer"
               style={{
                 textDecoration: todo.isChecked ? "line-through" : "none",
+                backgroundColor:
+                  todo.isChecked && todo.category === "personal"
+                    ? "rgb(203, 161, 201, .3)"
+                    : todo.isChecked && todo.category === "work"
+                    ? "rgb(242, 160, 172, .4)"
+                    : todo.isChecked && todo.category === "study"
+                    ? "rgb(0, 174, 161, .3)"
+                    : todo.isChecked && todo.category === "other"
+                    ? "rgb(227, 126, 98, .5)"
+                    : "",
               }}
             >
               <div className="flex justify-between items-center gap 4">
