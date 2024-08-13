@@ -9,7 +9,10 @@ function TodoCategories(props) {
 
   return (
     <div>
-      <select onChange={handleCategorySelection} className="p-1 rounded-md ">
+      <select
+        onChange={handleCategorySelection}
+        className="w-32 p-1 rounded-md text-black bg-orange-50 hover:shadow-lg transition duration-medium cursor-pointer"
+      >
         <option value="personal">Personal</option>
         <option value="work">Work</option>
         <option value="study">Study</option>

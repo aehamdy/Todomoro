@@ -62,13 +62,13 @@ function InputForm() {
               <input
                 type="text"
                 id="taskInput"
-                className="p-1 px-2 bg-[#ddd] border-2 rounded-md focus:outline-none"
+                className="p-1 px-2 bg-orange-50 border-0 rounded-md focus:outline-none hover:shadow-lg focus:shadow-lg transition duration-medium caret-black"
                 value={userInput}
                 onChange={handleInputChange}
                 ref={inputRef}
               />
               <span
-                className="absolute end-2 text-white hover:text-warning-color transition duration-medium cursor-pointer"
+                className="absolute end-3 text-black hover:text-warning-color transition duration-medium cursor-pointer"
                 onClick={handleClear}
               >
                 X
@@ -80,7 +80,7 @@ function InputForm() {
             <button
               type="button"
               onClick={handleClick}
-              className="flex items-center justify-center w-12 h-10 py-2 px-4 rounded-md bg-[#111] "
+              className="flex items-center justify-center w-12 h-10 py-2 px-4 rounded-md bg-orange-50 text-black hover:shadow-lg transition duration-medium"
             >
               +
             </button>
