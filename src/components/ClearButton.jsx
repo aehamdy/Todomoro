@@ -2,7 +2,7 @@
 import { LOCAL_STORAGE_KEY } from "./InputForm";
 
 function ClearButton(props) {
-  const { save, setTodos, todos } = props;
+  const { save, setTodos, todos, handleLeftTodos, leftTodos } = props;
 
   const handleClear = () => {
     const allTodos =
@@ -10,8 +10,10 @@ function ClearButton(props) {
       JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 
     const uncheckedTodos = allTodos.filter((todo) => todo.isChecked === false);
+    console.log(uncheckedTodos);
 
     setTodos(uncheckedTodos);
+    handleLeftTodos(uncheckedTodos);
     save(uncheckedTodos);
   };
 

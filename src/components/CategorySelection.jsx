@@ -96,32 +96,51 @@ function CategorySelection(props) {
 
   const allTodos = JSON.parse(list);
 
-  const allCheckedTodos = allTodos.filter((todo) => todo.isChecked === true);
-  const uncheckedTodos = allTodos.length - allCheckedTodos.length;
+  const getTodosCount = (category) => {
+    if (category === ALL) {
+      const totalTodos = allTodos.length;
+      const checkedTodos = allTodos.filter((todo) => todo.isChecked).length;
 
-  const personalTodos = allTodos.filter((todo) => todo.category === PERSONAL);
-  const checkedPersonalTodos = allTodos.filter(
-    (todo) => todo.category === PERSONAL && todo.isChecked
-  );
-  const leftPersonal = personalTodos.length - checkedPersonalTodos.length;
+      return `${checkedTodos}/${totalTodos}`;
+    } else {
+      const categoryTodos = allTodos.filter(
+        (todo) => todo.category === category
+      );
+      const totalTodos = categoryTodos.length;
+      const checkedTodos = categoryTodos.filter(
+        (todo) => todo.isChecked
+      ).length;
 
-  const workTodos = allTodos.filter((todo) => todo.category === WORK);
-  const checkedWorkTodos = allTodos.filter(
-    (todo) => todo.category === "work" && todo.isChecked
-  );
-  const leftWork = workTodos.length - checkedWorkTodos.length;
+      return `${checkedTodos}/${totalTodos}`;
+    }
+  };
 
-  const studyTodos = allTodos.filter((todo) => todo.category === STUDY);
-  const checkedStudyTodos = allTodos.filter(
-    (todo) => todo.category === STUDY && todo.isChecked
-  );
-  const leftStudy = studyTodos.length - checkedStudyTodos.length;
+  // const allCheckedTodos = allTodos.filter((todo) => todo.isChecked === true);
+  // const uncheckedTodos = allTodos.length - allCheckedTodos.length;
 
-  const otherTodos = allTodos.filter((todo) => todo.category === OTHER);
-  const checkedOtherTodos = allTodos.filter(
-    (todo) => todo.category === OTHER && todo.isChecked
-  );
-  const leftOther = otherTodos.length - checkedOtherTodos.length;
+  // const personalTodos = allTodos.filter((todo) => todo.category === PERSONAL);
+  // const checkedPersonalTodos = allTodos.filter(
+  //   (todo) => todo.category === PERSONAL && todo.isChecked
+  // );
+  // const leftPersonal = personalTodos.length - checkedPersonalTodos.length;
+
+  // const workTodos = allTodos.filter((todo) => todo.category === WORK);
+  // const checkedWorkTodos = allTodos.filter(
+  //   (todo) => todo.category === "work" && todo.isChecked
+  // );
+  // const leftWork = workTodos.length - checkedWorkTodos.length;
+
+  // const studyTodos = allTodos.filter((todo) => todo.category === STUDY);
+  // const checkedStudyTodos = allTodos.filter(
+  //   (todo) => todo.category === STUDY && todo.isChecked
+  // );
+  // const leftStudy = studyTodos.length - checkedStudyTodos.length;
+
+  // const otherTodos = allTodos.filter((todo) => todo.category === OTHER);
+  // const checkedOtherTodos = allTodos.filter(
+  //   (todo) => todo.category === OTHER && todo.isChecked
+  // );
+  // const leftOther = otherTodos.length - checkedOtherTodos.length;
 
   const calcLeftTodos = (type) => {
     switch (type) {
@@ -184,86 +203,66 @@ function CategorySelection(props) {
       default:
         setSelectedCategory(ALL);
     }
-    // handleLeftTodos(calcLeftTodos(category));
   };
 
   const categoryButtons = [
-    { id: "all", name: "category", value: "All", bg: "bg-all-color" },
+    {
+      id: "all",
+      name: "category",
+      value: "All",
+      bg: "bg-all-color",
+      icon: allIcon,
+    },
     {
       id: "personal",
       name: "category",
       value: "Personal",
       bg: "bg-personal-color",
+      icon: personalIcon,
     },
-    { id: "work", name: "category", value: "Work", bg: "bg-work-color" },
-    { id: "study", name: "category", value: "Study", bg: "bg-study-color" },
-    { id: "other", name: "category", value: "Other", bg: "bg-other-color" },
+    {
+      id: "work",
+      name: "category",
+      value: "Work",
+      bg: "bg-work-color",
+      icon: workIcon,
+    },
+    {
+      id: "study",
+      name: "category",
+      value: "Study",
+      bg: "bg-study-color",
+      icon: studyIcon,
+    },
+    {
+      id: "other",
+      name: "category",
+      value: "Other",
+      bg: "bg-other-color",
+      icon: otherIcon,
+    },
   ];
+
+  const handleRemainTodos = (category) => {
+    // switch (category) {
+    //   case ALL:
+    //     return `${allCheckedTodos.length}/${allTodos.length}`;
+    //   case PERSONAL:
+    //     return `${checkedPersonalTodos.length}/${personalTodos.length}`;
+    //   case WORK:
+    //     return `${checkedWorkTodos.length}/${workTodos.length}`;
+    //   case STUDY:
+    //     return `${checkedStudyTodos.length}/${studyTodos.length}`;
+    //   case OTHER:
+    //     return `${checkedOtherTodos.length}/${otherTodos.length}`;
+    //   default:
+    //     return `${allCheckedTodos.length}/${allTodos.length}`;
+    // }
+    return getTodosCount(category);
+  };
 
   return (
     <>
-      {/* all button */}
-      {/* <section className="flex gap-4 py-2">
-        <button
-          type="button"
-          onClick={() => clickHandler(ALL)}
-          className="appearance-none flex justify-between items-center gap-2 w-fit h-fit py-1 px-2 text-tabs-text bg-tabs-bg rounded-lg hover:border-none focus:outline-none focus:text-white focus:bg-all-color"
-        >
-          All
-          <span className="block">
-            {allCheckedTodos.length}/{allTodos.length}
-          </span>
-        </button>
-        <button
-          type="button"
-          onClick={() => clickHandler(PERSONAL)}
-          className="flex justify-between items-center gap-1 w-fit h-fit py-1 px-2 text-tabs-text bg-tabs-bg rounded-lg hover:border-none focus:outline-none focus:text-white focus:bg-personal-color"
-        >
-          <img
-            src={personalIcon}
-            alt="personal-icon"
-            width={iconSize}
-            className="fill-red-500"
-          />
-          Personal
-          <span className="inline-block">
-            {checkedPersonalTodos.length}/{personalTodos.length}
-          </span>
-        </button>
-        <button
-          type="button"
-          onClick={() => clickHandler(WORK)}
-          className="flex justify-between items-center gap-2 w-fit h-fit py-1 px-2 text-tabs-text bg-tabs-bg rounded-lg hover:border-none focus:outline-none focus:text-white focus:bg-work-color focus"
-        >
-          <img src={workIcon} alt="work-icon" width={iconSize} />
-          Work
-          <span className="block">
-            {checkedWorkTodos.length}/{workTodos.length}
-          </span>
-        </button>
-        <button
-          type="button"
-          onClick={() => clickHandler(STUDY)}
-          className="flex justify-between items-center gap-2 w-fit h-fit py-1 px-2 text-tabs-text bg-tabs-bg rounded-lg hover:border-none focus:outline-none focus:text-white focus:bg-study-color"
-        >
-          <img src={studyIcon} alt="study-icon" width={iconSize} />
-          Study
-          <span className="block">
-            {checkedStudyTodos.length}/{studyTodos.length}
-          </span>
-        </button>
-        <button
-          type="button"
-          onClick={() => clickHandler(OTHER)}
-          className="flex justify-between items-center gap-2 w-fit h-fit py-1 px-2 text-tabs-text bg-tabs-bg rounded-lg hover:border-none focus:outline-none focus:text-white focus:bg-other-color"
-        >
-          <img src={otherIcon} alt="other-icon" width={iconSize} />
-          Other
-          <span className="block">
-            {checkedOtherTodos.length}/{otherTodos.length}
-          </span>
-        </button>
-      </section> */}
       <section className="flex justify-between gap-2 p-1 mb-2">
         {categoryButtons.map((button, i) => (
           <React.Fragment key={i}>
@@ -275,19 +274,7 @@ function CategorySelection(props) {
                 selectedButton === button.id ? button.bg : "bg-tabs-bg"
               } rounded-lg cursor-pointer`}
             >
-              <span>
-                {button.id === ALL
-                  ? allIcon
-                  : button.id === PERSONAL
-                  ? personalIcon
-                  : button.id === WORK
-                  ? workIcon
-                  : button.id === STUDY
-                  ? studyIcon
-                  : button.id === OTHER
-                  ? otherIcon
-                  : ""}
-              </span>
+              <span>{button.icon}</span>
               <input
                 type="radio"
                 id={button.id}
@@ -296,19 +283,11 @@ function CategorySelection(props) {
                 className="appearance-none"
                 onChange={() => handleRadioChange(button.id)}
                 onClick={() => clickHandler(button.id)}
+                // onClick={() => getTodosCount(button.category)}
               />
               {button.value}
-              <span>
-                {button.id === "all"
-                  ? `${allCheckedTodos.length}/${allTodos.length}`
-                  : button.id === "personal"
-                  ? `${checkedPersonalTodos.length}/${personalTodos.length}`
-                  : button.id === "work"
-                  ? `${checkedWorkTodos.length}/${workTodos.length}`
-                  : button.id === "study"
-                  ? `${checkedStudyTodos.length}/${studyTodos.length}`
-                  : `${checkedOtherTodos.length}/${otherTodos.length}`}
-              </span>
+              <span>{handleRemainTodos(button.id)}</span>
+              {/* <span>{getTodosCount(button.category)}</span> */}
             </label>
           </React.Fragment>
         ))}

@@ -9,6 +9,7 @@ import { LOCAL_STORAGE_KEY } from "./InputForm";
 import CategorySelection from "./CategorySelection";
 import LeftTodos from "./LeftTodos";
 
+const iconSize = "20";
 const emptyList = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +30,6 @@ const emptyList = (
     />
   </svg>
 );
-const iconSize = "20";
 const personalIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -223,7 +223,8 @@ function List(props) {
         handleLeftTodos={handleLeftTodos}
       />
       <LeftTodos
-        handleLeftTodos={leftTodos}
+        handleLeftTodos={handleLeftTodos}
+        leftTodos={leftTodos}
         save={save}
         setTodos={setTodos}
         todos={todos}

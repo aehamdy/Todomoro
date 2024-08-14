@@ -62,7 +62,7 @@ function InputForm() {
               <input
                 type="text"
                 id="taskInput"
-                className="p-1 px-2 bg-orange-50 border-0 rounded-md focus:outline-none hover:shadow-lg focus:shadow-lg transition duration-medium caret-black"
+                className="p-1 px-2 text-black bg-orange-50 border-0 rounded-md focus:outline-none hover:shadow-lg focus:shadow-lg transition duration-medium caret-black"
                 value={userInput}
                 onChange={handleInputChange}
                 ref={inputRef}
