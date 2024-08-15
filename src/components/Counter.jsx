@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 function Counter() {
   const [value, setValue] = useState(0);
   const [timer, setTimer] = useState({ minutes: 0, seconds: 0 });
+  const [isTimerFinished, setIsTimerFinished] = useState(false);
   const timerInterval = useRef(null);
 
   const onInputChange = (e) => {
@@ -10,7 +11,8 @@ function Counter() {
   };
 
   const onStartTimer = () => {
-    setTimer({ minutes: value - 1, seconds: 5 });
+    setTimer({ minutes: value - 1, seconds: 59 });
+    setIsTimerFinished(false);
 
     timerInterval.current = setInterval(() => {
       setTimer((prevValue) => {
@@ -18,9 +20,10 @@ function Counter() {
 
         if (minutes === 0 && seconds === 0) {
           clearInterval(timerInterval.current);
+          setIsTimerFinished(true);
           return { minutes: 0, seconds: 0 };
         } else if (seconds === 0) {
-          return { minutes: timer - 1, seconds: 59 };
+          return { minutes: minutes - 1, seconds: 59 };
         } else {
           return { minutes: minutes, seconds: seconds - 1 };
         }
@@ -30,7 +33,7 @@ function Counter() {
 
   useEffect(() => {
     return () => clearInterval(timerInterval.current);
-  });
+  }, []);
 
   return (
     <section>
@@ -43,11 +46,14 @@ function Counter() {
       <button type="button" onClick={onStartTimer} className="text-black">
         Start
       </button>
-      <div className="text-black">
-        <div>00</div>
-        <div>{timer.minutes < 10 ? `0${timer.minutes}` : timer.minutes}</div>
-        <div>{timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}</div>
-      </div>
+      {isTimerFinished ? (
+        <div>TIME'S UP!</div>
+      ) : (
+        <div className="text-black">
+          <div>{timer.minutes < 10 ? `0${timer.minutes}` : timer.minutes}</div>
+          <div>{timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}</div>
+        </div>
+      )}
     </section>
   );
 }
