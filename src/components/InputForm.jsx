@@ -4,7 +4,7 @@ import TodoCategories from "./TodoCategories";
 import { LOCAL_STORAGE_KEY } from "./TodoApp";
 
 function InputForm(props) {
-  const { todos, setTodos, save, setLeftTodos, leftTodos } = props;
+  const { todos, setTodos, save, setLeftTodos } = props;
   const [userInput, setUserInput] = useState("");
   const [inputError, setInputError] = useState(false);
   const [category, setCategory] = useState("personal");
@@ -35,6 +35,7 @@ function InputForm(props) {
       setTodos(newTodos);
       save(newTodos);
 
+      //calculate left todos upon adding a new todo
       const allTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
       const filteredTodos = allTodos.filter((todo) => !todo.isChecked);
       setLeftTodos(filteredTodos.length);
@@ -54,7 +55,6 @@ function InputForm(props) {
   return (
     <>
       <section className="flex flex-col">
-        {console.log({ todos: todos, leftTodos: leftTodos })}
         <div className="flex justify-between items-center border-2 border-solid rounded-lg py-2 px-4 mb-2">
           <div>
             <label htmlFor="taskInput" className="flex items-center relative">

@@ -91,14 +91,7 @@ const otherIcon = (
 );
 
 function List(props) {
-  const {
-    todos,
-    setTodos,
-    save,
-    setLeftTodos,
-    selectedCategory,
-    handleLeftTodos,
-  } = props;
+  const { todos, setTodos, save, setLeftTodos, selectedCategory } = props;
   const [editTaskId, setEditTaskId] = useState(null);
   const [newValue, setNewValue] = useState("");
 
@@ -143,6 +136,8 @@ function List(props) {
     );
     setTodos(items);
     save(items);
+
+    //calculate left todos upon check/uncheck a todo
     const allTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     const filteredTodos = allTodos.filter((todo) => !todo.isChecked);
     setLeftTodos(filteredTodos.length);
