@@ -36,22 +36,29 @@ function Counter() {
   }, []);
 
   return (
-    <section>
-      <input
-        type="number"
-        value={value}
-        onChange={onInputChange}
-        className="bg-slate-300"
-      />
-      <button type="button" onClick={onStartTimer} className="text-black">
-        Start
-      </button>
+    <section className="w-1/2 mx-auto">
+      <div className="flex justify-evenly">
+        <input
+          type="number"
+          value={value}
+          onChange={onInputChange}
+          className="w-16 p-1 rounded-md bg-slate-300 hover:shadow-lg"
+        />
+        <button
+          type="button"
+          onClick={onStartTimer}
+          className="p-1 rounded-md text-white bg-black hover:shadow-lg"
+        >
+          Start
+        </button>
+      </div>
       {isTimerFinished ? (
         <div>TIME'S UP!</div>
       ) : (
-        <div className="text-black">
-          <div>{timer.minutes < 10 ? `0${timer.minutes}` : timer.minutes}</div>
-          <div>{timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}</div>
+        <div className="flex justify-center text-2xl text-black">
+          <div>{timer.minutes < 10 ? `0${timer.minutes}` : timer.minutes} </div>
+          <div> {" : "} </div>
+          <div> {timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}</div>
         </div>
       )}
     </section>
