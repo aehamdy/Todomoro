@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function Counter() {
   const [value, setValue] = useState(0);
   const [timer, setTimer] = useState({ minutes: 0, seconds: 0 });
+  const timerInterval = useRef(null);
 
   const onInputChange = (e) => {
     setValue(e.target.value);
@@ -11,11 +12,12 @@ function Counter() {
   const onStartTimer = () => {
     setTimer({ minutes: value - 1, seconds: 5 });
 
-    setInterval(() => {
+    timerInterval.current = setInterval(() => {
       setTimer((prevValue) => {
         const { minutes, seconds } = prevValue;
 
         if (minutes === 0 && seconds === 0) {
+          clearInterval(timerInterval.current);
           return { minutes: 0, seconds: 0 };
         } else if (seconds === 0) {
           return { minutes: timer - 1, seconds: 59 };
@@ -25,6 +27,10 @@ function Counter() {
       });
     }, 1000);
   };
+
+  useEffect(() => {
+    return () => clearInterval(timerInterval.current);
+  });
 
   return (
     <section>
