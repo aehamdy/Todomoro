@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
-import ClearButton from "./ClearButton";
 
 function LeftTodos(props) {
-  const { handleLeftTodos, leftTodos, save, setTodos, todos } = props;
+  const { leftTodos } = props;
   return (
     <section className="flex justify-between px-2 mb-1">
       <div>
@@ -14,15 +13,7 @@ function LeftTodos(props) {
             : ""}
         </p>
       </div>
-      <div>
-        <ClearButton
-          save={save}
-          setTodos={setTodos}
-          todos={todos}
-          handleLeftTodos={handleLeftTodos}
-          leftTodos={leftTodos}
-        />
-      </div>
+      <div></div>
     </section>
   );
 }

@@ -5,9 +5,7 @@ import TickedCircle from "../../public/circle-tick.svg";
 import TrashBin from "../../public/trash-bin.svg";
 import EditIcon from "../../public/edit.svg";
 import { useEffect, useState } from "react";
-import { LOCAL_STORAGE_KEY } from "./InputForm";
-import CategorySelection from "./CategorySelection";
-import LeftTodos from "./LeftTodos";
+import { LOCAL_STORAGE_KEY } from "./TodoApp";
 
 const iconSize = "20";
 const emptyList = (
@@ -93,11 +91,9 @@ const otherIcon = (
 );
 
 function List(props) {
-  const { todos, setTodos, save } = props;
+  const { todos, setTodos, save, selectedCategory, leftTodos } = props;
   const [editTaskId, setEditTaskId] = useState(null);
   const [newValue, setNewValue] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [leftTodos, setLeftTodos] = useState();
 
   const handleDeletion = (e, id) => {
     e.preventDefault();
@@ -134,11 +130,6 @@ function List(props) {
     setEditTaskId(null);
   };
 
-  // let handleTodoCheck = (e) => {
-  // e.preventDefault();
-  // e.stopPropagation();
-  // };
-
   const handleTaskCheck = (id) => {
     const items = todos.map((todo) =>
       todo.id === id ? { ...todo, isChecked: !todo.isChecked } : todo
@@ -169,10 +160,6 @@ function List(props) {
     }
 
     setTodos(filteredTodos);
-  };
-
-  const handleLeftTodos = (todoRemain) => {
-    setLeftTodos(todoRemain);
   };
 
   useEffect(() => {
@@ -217,18 +204,6 @@ function List(props) {
 
   return (
     <>
-      <CategorySelection
-        setSelectedCategory={setSelectedCategory}
-        todos={todos}
-        handleLeftTodos={handleLeftTodos}
-      />
-      <LeftTodos
-        handleLeftTodos={handleLeftTodos}
-        leftTodos={leftTodos}
-        save={save}
-        setTodos={setTodos}
-        todos={todos}
-      />
       <ul className="scrollbar relative border border-white rounded-lg h-[370px] overflow-y-auto overflow-x-hidden py-2 px-4">
         {todos.length < 1 ? (
           <div className="flex flex-col items-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] gap-2">

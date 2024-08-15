@@ -1,7 +1,7 @@
-import { LOCAL_STORAGE_KEY } from "./InputForm";
-import React, { useState } from "react";
-
 /* eslint-disable react/prop-types */
+import React, { useState } from "react";
+import { LOCAL_STORAGE_KEY } from "./TodoApp";
+
 export const ALL = "all",
   PERSONAL = "personal",
   WORK = "work",
@@ -87,9 +87,11 @@ const otherIcon = (
     />
   </svg>
 );
+// TODO: refresh left todos number upon click on any todo
 
 function CategorySelection(props) {
   const { setSelectedCategory, handleLeftTodos } = props;
+
   const [selectedButton, setSelectedButton] = useState("all");
 
   const list = localStorage.getItem(LOCAL_STORAGE_KEY) || "[]";
@@ -115,45 +117,33 @@ function CategorySelection(props) {
     }
   };
 
-  // const allCheckedTodos = allTodos.filter((todo) => todo.isChecked === true);
-  // const uncheckedTodos = allTodos.length - allCheckedTodos.length;
-
-  // const personalTodos = allTodos.filter((todo) => todo.category === PERSONAL);
-  // const checkedPersonalTodos = allTodos.filter(
-  //   (todo) => todo.category === PERSONAL && todo.isChecked
-  // );
-  // const leftPersonal = personalTodos.length - checkedPersonalTodos.length;
-
-  // const workTodos = allTodos.filter((todo) => todo.category === WORK);
-  // const checkedWorkTodos = allTodos.filter(
-  //   (todo) => todo.category === "work" && todo.isChecked
-  // );
-  // const leftWork = workTodos.length - checkedWorkTodos.length;
-
-  // const studyTodos = allTodos.filter((todo) => todo.category === STUDY);
-  // const checkedStudyTodos = allTodos.filter(
-  //   (todo) => todo.category === STUDY && todo.isChecked
-  // );
-  // const leftStudy = studyTodos.length - checkedStudyTodos.length;
-
-  // const otherTodos = allTodos.filter((todo) => todo.category === OTHER);
-  // const checkedOtherTodos = allTodos.filter(
-  //   (todo) => todo.category === OTHER && todo.isChecked
-  // );
-  // const leftOther = otherTodos.length - checkedOtherTodos.length;
+  const getUncheckedTodos = (category) => {
+    if (category === ALL) {
+      const totalCheckedTodos = allTodos.filter((todo) => todo.isChecked);
+      const allLeftTodos = allTodos.length - totalCheckedTodos.length;
+      return allLeftTodos;
+    } else {
+      const categoryTodos = allTodos.filter(
+        (todo) => todo.category === category
+      );
+      const checkedTodos = categoryTodos.filter((todo) => todo.isChecked);
+      const leftTodos = categoryTodos.length - checkedTodos.length;
+      return leftTodos;
+    }
+  };
 
   const calcLeftTodos = (type) => {
     switch (type) {
       case ALL:
-        return uncheckedTodos;
+        return getUncheckedTodos(type);
       case PERSONAL:
-        return leftPersonal;
+        return getUncheckedTodos(type);
       case WORK:
-        return leftWork;
+        return getUncheckedTodos(type);
       case STUDY:
-        return leftStudy;
+        return getUncheckedTodos(type);
       case OTHER:
-        return leftOther;
+        return getUncheckedTodos(type);
       default:
         return 0;
     }
@@ -183,7 +173,6 @@ function CategorySelection(props) {
   };
 
   const handleRadioChange = (category) => {
-    // setSelectedButton(id);
     switch (category) {
       case ALL:
         setSelectedCategory(ALL);
@@ -203,6 +192,7 @@ function CategorySelection(props) {
       default:
         setSelectedCategory(ALL);
     }
+    handleLeftTodos(calcLeftTodos(category));
   };
 
   const categoryButtons = [
@@ -244,20 +234,6 @@ function CategorySelection(props) {
   ];
 
   const handleRemainTodos = (category) => {
-    // switch (category) {
-    //   case ALL:
-    //     return `${allCheckedTodos.length}/${allTodos.length}`;
-    //   case PERSONAL:
-    //     return `${checkedPersonalTodos.length}/${personalTodos.length}`;
-    //   case WORK:
-    //     return `${checkedWorkTodos.length}/${workTodos.length}`;
-    //   case STUDY:
-    //     return `${checkedStudyTodos.length}/${studyTodos.length}`;
-    //   case OTHER:
-    //     return `${checkedOtherTodos.length}/${otherTodos.length}`;
-    //   default:
-    //     return `${allCheckedTodos.length}/${allTodos.length}`;
-    // }
     return getTodosCount(category);
   };
 
@@ -283,11 +259,9 @@ function CategorySelection(props) {
                 className="appearance-none"
                 onChange={() => handleRadioChange(button.id)}
                 onClick={() => clickHandler(button.id)}
-                // onClick={() => getTodosCount(button.category)}
               />
               {button.value}
               <span>{handleRemainTodos(button.id)}</span>
-              {/* <span>{getTodosCount(button.category)}</span> */}
             </label>
           </React.Fragment>
         ))}

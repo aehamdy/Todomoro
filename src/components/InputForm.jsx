@@ -1,14 +1,12 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from "react";
-import List from "./List";
 import TodoCategories from "./TodoCategories";
 
-export const LOCAL_STORAGE_KEY = "TodomoroTasks";
-
-function InputForm() {
+function InputForm(props) {
+  const { todos, setTodos, save } = props;
   const [userInput, setUserInput] = useState("");
   const [inputError, setInputError] = useState(false);
   const [category, setCategory] = useState("personal");
-  const [todos, setTodos] = useState([]);
   const inputRef = useRef();
 
   const handleInputChange = (e) => {
@@ -17,11 +15,6 @@ function InputForm() {
 
   const handleClear = () => {
     setUserInput("");
-  };
-
-  const save = (items) => {
-    const list = JSON.stringify(items);
-    localStorage.setItem(LOCAL_STORAGE_KEY, list);
   };
 
   const handleClick = () => {
@@ -90,7 +83,6 @@ function InputForm() {
           {inputError && "Please insert valid text"}
         </p>
       </section>
-      <List todos={todos} setTodos={setTodos} save={save} />
     </>
   );
 }

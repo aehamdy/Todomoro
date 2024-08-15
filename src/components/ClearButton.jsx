@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import { LOCAL_STORAGE_KEY } from "./InputForm";
+import { LOCAL_STORAGE_KEY } from "./TodoApp";
 
 function ClearButton(props) {
-  const { save, setTodos, todos, handleLeftTodos, leftTodos } = props;
+  const { save, setTodos, todos, handleLeftTodos } = props;
 
   const handleClear = () => {
     const allTodos =
