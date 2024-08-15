@@ -143,6 +143,9 @@ function List(props) {
     );
     setTodos(items);
     save(items);
+    const allTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    const filteredTodos = allTodos.filter((todo) => !todo.isChecked);
+    setLeftTodos(filteredTodos.length);
   };
 
   const load = () => {
