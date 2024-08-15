@@ -6,7 +6,7 @@ function TodoFlags(props) {
   const { leftTodos, save, setTodos, todos, handleLeftTodos } = props;
 
   return (
-    <section>
+    <section className="flex justify-between p-1">
       <LeftTodos leftTodos={leftTodos} />
       <ClearButton
         save={save}

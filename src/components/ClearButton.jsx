@@ -10,7 +10,6 @@ function ClearButton(props) {
       JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 
     const uncheckedTodos = allTodos.filter((todo) => todo.isChecked === false);
-    console.log(uncheckedTodos);
 
     setTodos(uncheckedTodos);
     handleLeftTodos(uncheckedTodos);

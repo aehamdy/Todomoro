@@ -91,7 +91,14 @@ const otherIcon = (
 );
 
 function List(props) {
-  const { todos, setTodos, save, selectedCategory, leftTodos } = props;
+  const {
+    todos,
+    setTodos,
+    save,
+    setLeftTodos,
+    selectedCategory,
+    handleLeftTodos,
+  } = props;
   const [editTaskId, setEditTaskId] = useState(null);
   const [newValue, setNewValue] = useState("");
 
@@ -167,16 +174,6 @@ function List(props) {
   }, []);
 
   useEffect(() => {
-    // handleTodoCheck = (id) => {
-    //   const items = todos.map((todo) =>
-    //     todo.id === id ? { ...todo, isChecked: !todo.isChecked } : todo
-    //   );
-    //   setTodos(items);
-    //   save(items);
-    // };
-  }, [leftTodos]);
-
-  useEffect(() => {
     if (selectedCategory === "all") {
       filterTodos("all");
     } else if (selectedCategory === "personal") {
@@ -247,7 +244,6 @@ function List(props) {
                     className="bg-slate-200 rounded-md ps-2"
                     value={newValue}
                     onChange={handleEditChange}
-                    // onClick={handleTodoCheck}
                     onClick={handleTaskCheck(todo.id)}
                     onBlur={(e) => handleEditSave(e, todo.id)}
                   />

@@ -3,7 +3,7 @@
 function LeftTodos(props) {
   const { leftTodos } = props;
   return (
-    <section className="flex justify-between px-2 mb-1">
+    <section className="flex justify-between">
       <div>
         <p className="text-label-color ">
           {leftTodos === 1

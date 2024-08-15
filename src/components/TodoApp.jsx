@@ -22,7 +22,13 @@ function TodoApp() {
 
   return (
     <section>
-      <InputForm todos={todos} setTodos={setTodos} save={save} />
+      <InputForm
+        todos={todos}
+        setTodos={setTodos}
+        save={save}
+        setLeftTodos={setLeftTodos}
+        leftTodos={leftTodos}
+      />
       <CategorySelection
         setSelectedCategory={setSelectedCategory}
         handleLeftTodos={handleLeftTodos}
@@ -42,6 +48,7 @@ function TodoApp() {
         setSelectedCategory={setSelectedCategory}
         selectedCategory={selectedCategory}
         leftTodos={leftTodos}
+        handleLeftTodos={handleLeftTodos}
       />
     </section>
   );
