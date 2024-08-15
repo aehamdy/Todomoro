@@ -9,13 +9,15 @@ function Counter() {
   };
 
   const onStartTimer = () => {
-    setTimer({ minutes: value - 1, seconds: 59 });
+    setTimer({ minutes: value - 1, seconds: 5 });
 
     setInterval(() => {
       setTimer((prevValue) => {
         const { minutes, seconds } = prevValue;
 
-        if (seconds === 0) {
+        if (minutes === 0 && seconds === 0) {
+          return { minutes: 0, seconds: 0 };
+        } else if (seconds === 0) {
           return { minutes: timer - 1, seconds: 59 };
         } else {
           return { minutes: minutes, seconds: seconds - 1 };
