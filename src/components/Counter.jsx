@@ -7,7 +7,7 @@ function Counter() {
   const timerInterval = useRef(null);
 
   const onInputChange = (e) => {
-    setValue(e.target.value);
+    setValue(Number(e.target.value));
   };
 
   const onStartTimer = () => {
@@ -39,10 +39,11 @@ function Counter() {
     <section className="w-1/2 mx-auto">
       <div className="flex justify-evenly">
         <input
-          type="number"
+          type="text"
           value={value}
           onChange={onInputChange}
-          className="w-16 p-1 rounded-md bg-slate-300 hover:shadow-lg"
+          className="w-16 p-1 rounded-md bg-slate-300 hover:shadow-lg focus:outline-none"
+          placeholder="Insert time in minutes"
         />
         <button
           type="button"
