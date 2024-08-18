@@ -64,6 +64,15 @@ function Counter() {
     setIsPaused(!isPaused);
   };
 
+  const onStopClick = () => {
+    clearInterval(timerInterval.current);
+    setTimer({ minutes: 0, seconds: 0 });
+
+    setTimeout(() => {
+      setIsTimerRunning(false);
+    }, 200);
+  };
+
   useEffect(() => {
     return () => clearInterval(timerInterval.current);
   }, []);
@@ -74,6 +83,7 @@ function Counter() {
         <div className="flex justify-evenly">
           <button
             type="button"
+            onClick={onStopClick}
             className="p-1 rounded-md text-white bg-red-600 hover:shadow-lg"
           >
             Stop
