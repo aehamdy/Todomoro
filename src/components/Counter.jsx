@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import tickSound from "../sounds/1.wav";
 import { useEffect, useRef, useState } from "react";
 
 function Counter() {
@@ -9,12 +10,17 @@ function Counter() {
   const [isPaused, setIsPaused] = useState(false);
   const timerInterval = useRef(null);
 
+  function playSound() {
+    let beat = new Audio(tickSound);
+    beat.play();
+  }
+
   const onInputChange = (e) => {
     setValue(Number(e.target.value));
   };
 
   const onStartTimer = () => {
-    setTimer({ minutes: value - 1, seconds: 10 });
+    setTimer({ minutes: value - 1, seconds: 59 });
     setIsTimerFinished(false);
     setIsTimerRunning(true);
 
@@ -33,6 +39,8 @@ function Counter() {
           return { minutes: minutes, seconds: seconds - 1 };
         }
       });
+
+      playSound();
     }, 1000);
   };
 
@@ -59,6 +67,8 @@ function Counter() {
           return { minutes: minutes, seconds: seconds - 1 };
         }
       });
+
+      playSound();
     }, 1000);
 
     setIsPaused(!isPaused);
@@ -141,9 +151,9 @@ function Counter() {
 export default Counter;
 
 /*
- # [ ] show a 'pause' and 'stop" buttons when the timer starts
- # [ ] hide the input and the 'start' button when timer starts
- # [ ] enlarge the minutes and seconds and add proper styling
+ # [x] show a 'pause' and 'stop" buttons when the timer starts
+ # [x] hide the input and the 'start' button when timer starts
  # [ ] add a clock sound while timer is counting
  # [ ] add mute button to mute that sound
+ # [ ] enlarge the minutes and seconds and add proper styling
  */
