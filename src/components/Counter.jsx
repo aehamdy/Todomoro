@@ -39,6 +39,7 @@ const speakerOff = (
 
 function Counter() {
   const [value, setValue] = useState(0);
+  const [error, setError] = useState(false);
   const [timer, setTimer] = useState({ minutes: 0, seconds: 0 });
   const [isTimerFinished, setIsTimerFinished] = useState(false);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
@@ -61,33 +62,45 @@ function Counter() {
   }
 
   const onInputChange = (e) => {
-    setValue(Number(e.target.value));
+    const inputValue = parseInt(e.target.value, 10);
+
+    if (!isNaN(inputValue) && inputValue > 0) {
+      setError(false);
+      setValue(inputValue);
+    } else {
+      setError(true);
+      setValue(0);
+    }
   };
 
   const onStartTimer = () => {
-    setTimer({ minutes: value - 1, seconds: 5 });
-    setIsTimerFinished(false);
-    setIsTimerRunning(true);
+    if (Number.isInteger(value) && value > 0) {
+      setTimer({ minutes: value - 1, seconds: 59 });
+      setIsTimerFinished(false);
+      setIsTimerRunning(true);
 
-    timerRef.current = setInterval(() => {
-      setTimer((prevValue) => {
-        const { minutes, seconds } = prevValue;
+      timerRef.current = setInterval(() => {
+        setTimer((prevValue) => {
+          const { minutes, seconds } = prevValue;
 
-        if (minutes === 0 && seconds === 0) {
-          clearInterval(timerRef.current);
-          setIsTimerFinished(true);
-          setIsTimerRunning(false);
-          playFinishSound();
-          return { minutes: 0, seconds: 0 };
-        } else if (seconds === 0) {
-          return { minutes: minutes - 1, seconds: 59 };
-        } else {
-          return { minutes: minutes, seconds: seconds - 1 };
-        }
-      });
+          if (minutes === 0 && seconds === 0) {
+            clearInterval(timerRef.current);
+            setIsTimerFinished(true);
+            setIsTimerRunning(false);
+            playFinishSound();
+            return { minutes: 0, seconds: 0 };
+          } else if (seconds === 0) {
+            return { minutes: minutes - 1, seconds: 59 };
+          } else {
+            return { minutes: minutes, seconds: seconds - 1 };
+          }
+        });
 
-      playSound();
-    }, 1000);
+        playSound();
+      }, 1000);
+    } else {
+      setError(true);
+    }
   };
 
   const onPauseClick = () => {
@@ -174,21 +187,25 @@ function Counter() {
           )}
         </div>
       ) : (
-        <div className="flex justify-evenly">
-          <input
-            type="text"
-            value={value}
-            onChange={onInputChange}
-            className="w-16 p-1 rounded-md bg-slate-300 hover:shadow-lg focus:outline-none"
-            placeholder="Insert time in minutes"
-          />
-          <button
-            type="button"
-            onClick={onStartTimer}
-            className="p-1 rounded-md text-white bg-black hover:shadow-lg"
-          >
-            Start
-          </button>
+        <div className="flex flex-col gap-2">
+          <div className="flex justify-evenly">
+            <input
+              type="number"
+              value={value}
+              onChange={onInputChange}
+              className="w-16 p-1 rounded-md bg-slate-300 hover:shadow-lg focus:outline-none"
+            />
+            <button
+              type="button"
+              onClick={onStartTimer}
+              className="p-1 rounded-md text-white bg-black hover:shadow-lg"
+            >
+              Start
+            </button>
+          </div>
+          <p className="text-red-500">
+            {error && "Value must be greater than 0"}
+          </p>
         </div>
       )}
 
@@ -221,7 +238,9 @@ export default Counter;
  # [x] show a 'pause' and 'stop" buttons when the timer starts
  # [x] hide the input and the 'start' button when timer starts
  # [x] add a clock sound while timer is counting
- # [ ] add mute button to mute that sound
+ # [x] add mute button to mute that sound
+ # [x] add a sound when time finishes
  # [ ] handle input validation when insert 0
+ # [ ] hide timer and speaker icon when the counter is not running
  # [ ] enlarge the minutes and seconds and add proper styling
  */
