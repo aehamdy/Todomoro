@@ -100,6 +100,7 @@ function Counter() {
       }, 1000);
     } else {
       setError(true);
+      return; // Prevent the timer from starting if the value is not valid.
     }
   };
 
