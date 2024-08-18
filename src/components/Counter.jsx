@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import tickSound from "../sounds/tick-sound.wav";
+import finishSound from "../sounds/killpop-sound.mp3";
 import { useEffect, useRef, useState } from "react";
 
 const iconSize = 20;
@@ -45,6 +46,7 @@ function Counter() {
   const [isSpeakerOn, setIsSpeakerOn] = useState(true);
   const timerRef = useRef(null);
   const audioRef = useRef(new Audio(tickSound));
+  const finishRef = useRef(new Audio(finishSound));
 
   const speaker = isSpeakerOn ? speakerOn : speakerOff;
 
@@ -54,12 +56,16 @@ function Counter() {
     }
   }
 
+  function playFinishSound() {
+    finishRef.current.play();
+  }
+
   const onInputChange = (e) => {
     setValue(Number(e.target.value));
   };
 
   const onStartTimer = () => {
-    setTimer({ minutes: value - 1, seconds: 59 });
+    setTimer({ minutes: value - 1, seconds: 5 });
     setIsTimerFinished(false);
     setIsTimerRunning(true);
 
@@ -71,6 +77,7 @@ function Counter() {
           clearInterval(timerRef.current);
           setIsTimerFinished(true);
           setIsTimerRunning(false);
+          playFinishSound();
           return { minutes: 0, seconds: 0 };
         } else if (seconds === 0) {
           return { minutes: minutes - 1, seconds: 59 };
