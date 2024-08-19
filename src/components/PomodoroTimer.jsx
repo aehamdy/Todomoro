@@ -2,6 +2,7 @@ import { useState } from "react";
 import PomodoroCycleSelector from "./PomodoroCycleSelector";
 import PomodoroCyclesFlag from "./PomodoroCyclesFlag";
 import PomodoroStartButton from "./PomodoroStartButton";
+import PomodoroCounter from "./PomodoroCounter";
 
 function PomodoroTimer() {
   const [cycles, setCycles] = useState(0);
@@ -23,6 +24,9 @@ function PomodoroTimer() {
       </div>
       <div>
         <PomodoroCyclesFlag cycles={cycles} />
+      </div>
+      <div className="flex justify-center">
+        <PomodoroCounter />
       </div>
     </section>
   );
