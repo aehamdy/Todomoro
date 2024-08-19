@@ -4,6 +4,7 @@ import finishSound from "../sounds/killpop-sound.mp3";
 import { useEffect, useRef, useState } from "react";
 import TimerInput from "./TimerInput";
 import TimerButton from "./TimerButton";
+import TimerError from "./TimerError";
 
 const iconSize = 20;
 
@@ -185,18 +186,11 @@ function Timer() {
         <div className="flex flex-col gap-2">
           <div className="flex justify-evenly">
             <TimerInput setError={setError} onValueChange={onValueChange} />
-            {/* <button
-              type="button"
-              onClick={onStartTimer}
-              className="p-1 rounded-md text-white bg-black hover:shadow-lg"
-            >
-              Start
-            </button> */}
             <TimerButton onStartTimer={onStartTimer} />
           </div>
-          <p className="text-red-500">
-            {/* {error && "Value must be greater than 0"} */}
-          </p>
+          <div className="text-red-500">
+            <TimerError error={error} />
+          </div>
         </div>
       )}
 
