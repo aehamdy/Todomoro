@@ -6,6 +6,7 @@ import TimerInput from "./TimerInput";
 import TimerButton from "./TimerButton";
 import TimerError from "./TimerError";
 import OtherButtons from "./OtherButtons";
+import TimerCounter from "./TimerCounter";
 
 const iconSize = 20;
 
@@ -175,20 +176,10 @@ function Timer() {
         </div>
       )}
 
-      {isTimerFinished ? (
-        <div className="p-1 text-red-500">TIME'S UP!</div>
-      ) : (
+      {isTimerFinished && <div className="p-1 text-red-500">TIME'S UP!</div>}
+      {isTimerRunning && (
         <div className="flex justify-evenly items-center">
-          <div className="flex justify-center text-2xl text-black">
-            <div>
-              {timer.minutes < 10 ? `0${timer.minutes}` : timer.minutes}{" "}
-            </div>
-            <div> {" : "} </div>
-            <div>
-              {" "}
-              {timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}
-            </div>
-          </div>
+          <TimerCounter timer={timer} onSpeakerClick={onSpeakerClick} />
           <div onClick={onSpeakerClick} className="speaker-icon cursor-pointer">
             {speaker}
           </div>
