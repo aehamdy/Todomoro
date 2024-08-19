@@ -5,16 +5,21 @@ import PomodoroStartButton from "./PomodoroStartButton";
 
 function PomodoroTimer() {
   const [cycles, setCycles] = useState(0);
+  const [inputValue, setInputValue] = useState(0);
 
   const onValueChange = (val) => {
     setCycles(val);
+  };
+
+  const onSetInput = (val) => {
+    setInputValue(val);
   };
 
   return (
     <section>
       <div className="flex justify-evenly items-center">
         <PomodoroCycleSelector onValueChange={onValueChange} />
-        <PomodoroStartButton />
+        <PomodoroStartButton cycles={cycles} onSetInput={onSetInput} />
       </div>
       <div>
         <PomodoroCyclesFlag cycles={cycles} />

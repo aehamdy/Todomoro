@@ -1,11 +1,15 @@
-import { useState } from "react";
+/* eslint-disable react/prop-types */
 
-function PomodoroStartButton() {
-  const [sessionValue, setSessionValue] = useState(0);
+function PomodoroStartButton(props) {
+  const { cycles, onSetInput } = props;
 
   const onClickHandler = () => {
-    const session = 25; // 25 minutes for each session
-    const breakTime = 5; // 5 minutes for each session break
+    const sesstionDuration = 25; // 25 minutes for each session
+    const breakDuration = 5; // 5 minutes for each session break
+    onSetInput({
+      session: cycles * sesstionDuration,
+      break: cycles * breakDuration,
+    });
   };
 
   return (
