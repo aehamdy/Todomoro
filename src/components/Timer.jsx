@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import TimerInput from "./TimerInput";
 import TimerButton from "./TimerButton";
 import TimerError from "./TimerError";
+import OtherButtons from "./OtherButtons";
 
 const iconSize = 20;
 
@@ -156,32 +157,12 @@ function Timer() {
   return (
     <section className="w-1/2 mx-auto">
       {isTimerRunning ? (
-        <div className="flex justify-evenly">
-          <button
-            type="button"
-            onClick={onStopClick}
-            className="p-1 rounded-md text-white bg-red-600 hover:shadow-lg"
-          >
-            Stop
-          </button>
-          {!isPaused ? (
-            <button
-              type="button"
-              onClick={onPauseClick}
-              className="p-1 rounded-md text-white bg-red-600 hover:shadow-lg"
-            >
-              Pause
-            </button>
-          ) : (
-            <button
-              type="button"
-              onClick={onPlayClick}
-              className="p-1 rounded-md text-white bg-red-600 hover:shadow-lg"
-            >
-              Play
-            </button>
-          )}
-        </div>
+        <OtherButtons
+          onStopClick={onStopClick}
+          isPaused={isPaused}
+          onPauseClick={onPauseClick}
+          onPlayClick={onPlayClick}
+        />
       ) : (
         <div className="flex flex-col gap-2">
           <div className="flex justify-evenly">
