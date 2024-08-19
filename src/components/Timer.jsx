@@ -2,6 +2,7 @@
 import tickSound from "../sounds/tick-sound.wav";
 import finishSound from "../sounds/killpop-sound.mp3";
 import { useEffect, useRef, useState } from "react";
+import TimerInput from "./TimerInput";
 
 const iconSize = 20;
 
@@ -37,8 +38,8 @@ const speakerOff = (
   </svg>
 );
 
-function Counter() {
-  const [value, setValue] = useState(0);
+function Timer() {
+  const [inputValue, setInputValue] = useState(0);
   const [error, setError] = useState(false);
   const [timer, setTimer] = useState({ minutes: 0, seconds: 0 });
   const [isTimerFinished, setIsTimerFinished] = useState(false);
@@ -51,6 +52,10 @@ function Counter() {
 
   const speaker = isSpeakerOn ? speakerOn : speakerOff;
 
+  const onValueChange = (val) => {
+    setInputValue(val);
+  };
+
   function playSound() {
     if (isSpeakerOn) {
       audioRef.current.play();
@@ -61,21 +66,9 @@ function Counter() {
     finishRef.current.play();
   }
 
-  const onInputChange = (e) => {
-    const inputValue = parseInt(e.target.value, 10);
-
-    if (!isNaN(inputValue) && inputValue > 0) {
-      setError(false);
-      setValue(inputValue);
-    } else {
-      setError(true);
-      setValue(0);
-    }
-  };
-
   const onStartTimer = () => {
-    if (Number.isInteger(value) && value > 0) {
-      setTimer({ minutes: value - 1, seconds: 59 });
+    if (Number.isInteger(inputValue) && inputValue > 0) {
+      setTimer({ minutes: inputValue - 1, seconds: 59 });
       setIsTimerFinished(false);
       setIsTimerRunning(true);
 
@@ -100,7 +93,7 @@ function Counter() {
       }, 1000);
     } else {
       setError(true);
-      return; // Prevent the timer from starting if the value is not valid.
+      return;
     }
   };
 
@@ -190,12 +183,7 @@ function Counter() {
       ) : (
         <div className="flex flex-col gap-2">
           <div className="flex justify-evenly">
-            <input
-              type="number"
-              value={value}
-              onChange={onInputChange}
-              className="w-16 p-1 rounded-md bg-slate-300 hover:shadow-lg focus:outline-none"
-            />
+            <TimerInput setError={setError} onValueChange={onValueChange} />
             <button
               type="button"
               onClick={onStartTimer}
@@ -205,7 +193,7 @@ function Counter() {
             </button>
           </div>
           <p className="text-red-500">
-            {error && "Value must be greater than 0"}
+            {/* {error && "Value must be greater than 0"} */}
           </p>
         </div>
       )}
@@ -233,7 +221,7 @@ function Counter() {
   );
 }
 
-export default Counter;
+export default Timer;
 
 /*
  # [x] show a 'pause' and 'stop" buttons when the timer starts
@@ -241,7 +229,7 @@ export default Counter;
  # [x] add a clock sound while timer is counting
  # [x] add mute button to mute that sound
  # [x] add a sound when time finishes
- # [ ] handle input validation when insert 0
+ # [x] handle input validation when insert 0
  # [ ] hide timer and speaker icon when the counter is not running
  # [ ] enlarge the minutes and seconds and add proper styling
  */

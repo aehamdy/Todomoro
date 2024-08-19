@@ -1,11 +1,11 @@
 import "./App.css";
-import Counter from "./components/Counter";
+import Timer from "./components/Timer";
 import TodoApp from "./components/TodoApp";
 
 function App() {
   return (
     <main className="bg-app-bg py-20 px-8 rounded-3xl">
-      <Counter />
+      <Timer />
       <TodoApp className="bg-app-bg" />
     </main>
   );
