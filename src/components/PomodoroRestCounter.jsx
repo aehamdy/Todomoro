@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 function PomodoroRestCounter(props) {
   const { cycles, isSessionFinished } = props;
+
   const [rest, setRest] = useState({
     minutes: 0,
     seconds: 0,
@@ -42,11 +43,21 @@ function PomodoroRestCounter(props) {
     return () => clearInterval(timerRef.current);
   }, [isSessionFinished]);
 
+  useEffect(() => {
+    const restTime = 5;
+    setRest((prevValue) => ({
+      ...prevValue,
+      minutes: cycles * restTime,
+      seconds: 0,
+    }));
+  }, [cycles]);
+
   return (
     <div className="flex items-center gap-1">
       <span>{rest.minutes < 10 ? `0${rest.minutes}` : rest.minutes}</span>
       <span>:</span>
       <span>{rest.seconds < 10 ? `0${rest.seconds}` : rest.seconds}</span>
+      <span>minutes break</span>
     </div>
   );
 }
