@@ -3,6 +3,7 @@ import PomodoroCycleSelector from "./PomodoroCycleSelector";
 import PomodoroCyclesFlag from "./PomodoroCyclesFlag";
 import PomodoroStartButton from "./PomodoroStartButton";
 import PomodoroCounter from "./PomodoroCounter";
+import PomodoroRestCounter from "./PomodoroRestCounter";
 
 function PomodoroTimer() {
   const [cycles, setCycles] = useState(0);
@@ -18,7 +19,6 @@ function PomodoroTimer() {
 
   const onStartSession = () => {
     const sessionDuration = 1; // 25 minutes session
-    // const restDuration = 5; // 5 minutes rest
 
     setInputValue((prevValue) => ({
       ...prevValue,
@@ -55,8 +55,9 @@ function PomodoroTimer() {
       <div>
         <PomodoroCyclesFlag cycles={cycles} />
       </div>
-      <div className="flex justify-center">
+      <div className="flex flex-col items-center text-black">
         <PomodoroCounter inputValue={inputValue} />
+        <PomodoroRestCounter />
       </div>
     </section>
   );

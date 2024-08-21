@@ -4,7 +4,7 @@ function PomodoroCounter(props) {
   const { inputValue } = props;
 
   return (
-    <div className="flex gap-1 text-black">
+    <div className="flex gap-1">
       <span>
         {inputValue.minutes < 10
           ? `0${inputValue.minutes}`
