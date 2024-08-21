@@ -53,12 +53,14 @@ function PomodoroRestCounter(props) {
   }, [cycles]);
 
   return (
-    <div className="flex items-center gap-1">
-      <span>{rest.minutes < 10 ? `0${rest.minutes}` : rest.minutes}</span>
-      <span>:</span>
-      <span>{rest.seconds < 10 ? `0${rest.seconds}` : rest.seconds}</span>
-      {cycles > 0 && <span>minutes break</span>}
-    </div>
+    cycles > 0 && (
+      <div className="flex items-center gap-1">
+        <span>{rest.minutes < 10 ? `0${rest.minutes}` : rest.minutes}</span>
+        <span>:</span>
+        <span>{rest.seconds < 10 ? `0${rest.seconds}` : rest.seconds}</span>
+        <span>minutes break</span>
+      </div>
+    )
   );
 }
 
