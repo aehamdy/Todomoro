@@ -11,6 +11,7 @@ function PomodoroTimer() {
     minutes: 0,
     seconds: 0,
   });
+  const [isSessionFinished, setIsSessionFinished] = useState(false);
   const timerRef = useRef(null);
 
   const onValueChange = (val) => {
@@ -18,7 +19,7 @@ function PomodoroTimer() {
   };
 
   const onStartSession = () => {
-    const sessionDuration = 1; // 25 minutes session
+    const sessionDuration = 25; // 25 minutes session
 
     setInputValue((prevValue) => ({
       ...prevValue,
@@ -26,12 +27,15 @@ function PomodoroTimer() {
       seconds: 0,
     }));
 
+    setIsSessionFinished(false);
+
     timerRef.current = setInterval(() => {
       setInputValue((prevValue) => {
         const { minutes, seconds } = prevValue;
 
         if (minutes === 0 && seconds === 0) {
           clearInterval(timerRef.current);
+          setIsSessionFinished(true);
           return { minutes: 0, seconds: 0 };
         } else if (seconds === 0) {
           return { minutes: minutes - 1, seconds: 59 };
@@ -57,7 +61,10 @@ function PomodoroTimer() {
       </div>
       <div className="flex flex-col items-center text-black">
         <PomodoroCounter inputValue={inputValue} />
-        <PomodoroRestCounter />
+        <PomodoroRestCounter
+          cycles={cycles}
+          isSessionFinished={isSessionFinished}
+        />
       </div>
     </section>
   );
