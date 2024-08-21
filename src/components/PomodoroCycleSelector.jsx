@@ -1,12 +1,7 @@
 /* eslint-disable react/prop-types */
 
 function PomodoroCycleSelector(props) {
-  // const { onValueChange, setCycles } = props;
   const { setCycles } = props;
-
-  // const onValueChange = (val) => {
-  //   setInputValue(val);
-  // };
 
   const onSelectChange = (e) => {
     const selectedCycles = e.target.value;

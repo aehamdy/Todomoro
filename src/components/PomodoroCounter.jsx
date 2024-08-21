@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
+const sessionDuration = 25; // 25 minutes per session
+
 function PomodoroCounter(props) {
   const { cycles, onStartSessionRef } = props;
 
@@ -18,11 +20,11 @@ function PomodoroCounter(props) {
   }, [cycles]);
 
   const onStartSession = () => {
-    const sessionDuration = 25; // 25 minutes session
+    const duration = sessionDuration;
 
     setInputValue((prevValue) => ({
       ...prevValue,
-      minutes: cycles * sessionDuration,
+      minutes: cycles * duration,
       seconds: 0,
     }));
 
@@ -44,6 +46,15 @@ function PomodoroCounter(props) {
       });
     }, 1000);
   };
+
+  useEffect(() => {
+    const duration = sessionDuration;
+    setInputValue((prevValue) => ({
+      ...prevValue,
+      minutes: cycles * duration,
+      seconds: 0,
+    }));
+  }, [cycles]);
 
   return (
     <div className="flex gap-1">
