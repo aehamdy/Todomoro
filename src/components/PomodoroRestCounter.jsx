@@ -57,7 +57,7 @@ function PomodoroRestCounter(props) {
       <span>{rest.minutes < 10 ? `0${rest.minutes}` : rest.minutes}</span>
       <span>:</span>
       <span>{rest.seconds < 10 ? `0${rest.seconds}` : rest.seconds}</span>
-      <span>minutes break</span>
+      {cycles > 0 && <span>minutes break</span>}
     </div>
   );
 }
