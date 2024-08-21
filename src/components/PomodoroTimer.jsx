@@ -49,8 +49,7 @@ function PomodoroTimer() {
           setCycles={setCycles}
           onValueChange={onValueChange}
         />
-        {/* {console.log(inputValue.session)}
-        {console.log(inputValue.rest)} */}
+
         <PomodoroStartButton onStartSession={onStartSession} />
       </div>
       <div>
