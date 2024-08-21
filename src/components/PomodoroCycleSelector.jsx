@@ -1,19 +1,24 @@
 /* eslint-disable react/prop-types */
 
 function PomodoroCycleSelector(props) {
-  const { onValueChange, setCycles } = props;
+  // const { onValueChange, setCycles } = props;
+  const { setCycles } = props;
+
+  // const onValueChange = (val) => {
+  //   setInputValue(val);
+  // };
 
   const onSelectChange = (e) => {
     const selectedCycles = e.target.value;
-    const sessionDuration = 25; // 25 minutes for each session
-    const breakDuration = 5; // 5 minutes for each session break
-
-    onValueChange({
-      minutes: selectedCycles * sessionDuration,
-      seconds: 0,
-    });
-
     setCycles(selectedCycles);
+
+    // const sessionDuration = 25; // 25 minutes for each session
+    // const breakDuration = 5; // 5 minutes for each session break
+
+    // onValueChange({
+    //   minutes: selectedCycles * sessionDuration,
+    //   seconds: 0,
+    // });
   };
 
   return (
