@@ -5,30 +5,35 @@ import { useEffect, useRef, useState } from "react";
 const sessionDuration = 25; // 25 minutes per session
 
 function PomodoroCounter(props) {
-  const { cycles, onStartSessionRef } = props;
+  const { cycles, setIsSessionFinished, onStartSessionRef } = props;
 
   const [inputValue, setInputValue] = useState({
     minutes: 0,
     seconds: 0,
   });
 
-  const [isSessionFinished, setIsSessionFinished] = useState(false);
   const timerRef = useRef(null);
 
   useEffect(() => {
-    onStartSessionRef.current = onStartSession;
-  }, [cycles]);
+    // Avoid setting the ref during render
+    if (onStartSessionRef) {
+      onStartSessionRef.current = onStartSession;
+    }
+  }, [onStartSessionRef]);
 
   const onStartSession = () => {
     const duration = sessionDuration;
 
-    setInputValue((prevValue) => ({
-      ...prevValue,
-      minutes: cycles * duration,
-      seconds: 0,
-    }));
-
     setIsSessionFinished(false);
+
+    setInputValue({
+      // minutes: cycles * duration,
+      minutes: 0,
+      seconds: 3,
+    });
+
+    // Clear previous interval if any
+    clearInterval(timerRef.current);
 
     timerRef.current = setInterval(() => {
       setInputValue((prevValue) => {
@@ -36,7 +41,9 @@ function PomodoroCounter(props) {
 
         if (minutes === 0 && seconds === 0) {
           clearInterval(timerRef.current);
-          setIsSessionFinished(true);
+          setTimeout(() => {
+            setIsSessionFinished(true);
+          }, 0);
           return { minutes: 0, seconds: 0 };
         } else if (seconds === 0) {
           return { minutes: minutes - 1, seconds: 59 };
@@ -49,12 +56,16 @@ function PomodoroCounter(props) {
 
   useEffect(() => {
     const duration = sessionDuration;
-    setInputValue((prevValue) => ({
-      ...prevValue,
+    setInputValue({
       minutes: cycles * duration,
       seconds: 0,
-    }));
+    });
   }, [cycles]);
+
+  // Cleanup the interval when the component unmounts
+  useEffect(() => {
+    return () => clearInterval(timerRef.current);
+  }, []);
 
   return (
     <div className="flex gap-1">
