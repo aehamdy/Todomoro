@@ -6,11 +6,13 @@ import PomodoroCounter from "./PomodoroCounter";
 import PomodoroRestCounter from "./PomodoroRestCounter";
 
 function PomodoroTimer() {
-  const [cycles, setCycles] = useState(0);
+  const [cycles, setCycles] = useState(null);
   const [isSessionFinished, setIsSessionFinished] = useState(false);
+  // const [isSessionRunning, setIsSessionRunning] = useState(false);
   const onStartSessionRef = useRef(null);
 
   const handleStartButtonClick = () => {
+    // setIsSessionRunning(true);
     if (onStartSessionRef.current) {
       onStartSessionRef.current();
     }
@@ -37,7 +39,7 @@ function PomodoroTimer() {
       </div>
       <div>{/* <PomodoroCyclesFlag cycles={cycles} /> */}</div>
       <div className="flex flex-col items-center text-black">
-        {!isSessionFinished && (
+        {cycles && !isSessionFinished && (
           <PomodoroCounter
             cycles={cycles}
             onStartSessionRef={onStartSessionRef}
@@ -48,6 +50,7 @@ function PomodoroTimer() {
           <PomodoroRestCounter
             cycles={cycles}
             isSessionFinished={isSessionFinished}
+            setIsSessionFinished={setIsSessionFinished}
           />
         )}
       </div>
