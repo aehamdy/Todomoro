@@ -37,6 +37,10 @@ export default App;
  # [x] FIX: number of toods change when click on any category button!
  # [x] clear all completed todos button
  # [x] a flag that displays a number of left todos
+ # [ ] display timer and start button when cycle is selected 
+ # [ ] hide cycle selector and start button while timer is running
+ # [ ] make timer's bg transparent while it is not running
+ # [ ] make timer's bg red when session cycle is running and green when rest cycle is running
  # [ ] button to hide all checked todos
  # [ ] show/hide Clear Completed button depending on checked todos
  # [ ] add keyboard accessebility to input field

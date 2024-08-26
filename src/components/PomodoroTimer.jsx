@@ -16,10 +16,24 @@ function PomodoroTimer() {
     }
   };
 
+  const sectionBg = () => {
+    return isSessionFinished ? "bg-[#F2FFF5]" : "bg-[#FFF2F2]";
+    // if (isSessionFinished) {
+    //   return "bg-[#F2FFF5]";
+    // } else if (!isSessionFinished) {
+    //   return "bg-[#FFF2F2]";
+    // } else if (isSessionFinished === null) {
+    //   return "";
+    // }
+  };
+
   return (
-    <section>
+    <section className={`${sectionBg()} rounded-lg py-2`}>
       <div className="flex justify-evenly items-center">
         <PomodoroCycleSelector setCycles={setCycles} />
+        {cycles && (
+          <PomodoroStartButton onStartSession={handleStartButtonClick} />
+        )}
       </div>
       <div>{/* <PomodoroCyclesFlag cycles={cycles} /> */}</div>
       <div className="flex flex-col items-center text-black">
@@ -37,9 +51,7 @@ function PomodoroTimer() {
           />
         )}
       </div>
-      <div>
-        <PomodoroStartButton onStartSession={handleStartButtonClick} />
-      </div>
+      <div></div>
     </section>
   );
 }

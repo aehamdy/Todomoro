@@ -69,13 +69,13 @@ function PomodoroCounter(props) {
   }, []);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex items-center gap-1 select-none">
       <span className="text-8xl font-semibold text-[#471515]">
         {inputValue.minutes < 10
           ? `0${inputValue.minutes}`
           : inputValue.minutes}
       </span>
-      {/* <span className="text-8xl font-semibold">:</span> */}
+      <span className="text-8xl font-thin text-[#471515]">:</span>
       <span className="text-8xl font-normal text-[#471515]">
         {inputValue.seconds < 10
           ? `0${inputValue.seconds}`

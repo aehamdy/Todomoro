@@ -16,7 +16,8 @@ function PomodoroCycleSelector(props) {
             id="cycles"
             onChange={onSelectChange}
             defaultValue=""
-            className=" w-fit block p-1 rounded text-white bg-blue-500 focus:outline-none"
+            className=" w-fit block p-1 rounded text-white bg-[#4CACFF] focus:outline-none"
+            // className=" w-fit block p-1 rounded text-white bg-blue-500 focus:outline-none"
           >
             <option value="" defaultValue disabled>
               Select Cycles
