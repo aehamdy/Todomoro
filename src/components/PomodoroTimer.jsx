@@ -20,12 +20,8 @@ function PomodoroTimer() {
     <section>
       <div className="flex justify-evenly items-center">
         <PomodoroCycleSelector setCycles={setCycles} />
-
-        <PomodoroStartButton onStartSession={handleStartButtonClick} />
       </div>
-      <div>
-        <PomodoroCyclesFlag cycles={cycles} />
-      </div>
+      <div>{/* <PomodoroCyclesFlag cycles={cycles} /> */}</div>
       <div className="flex flex-col items-center text-black">
         {!isSessionFinished && (
           <PomodoroCounter
@@ -40,6 +36,9 @@ function PomodoroTimer() {
             isSessionFinished={isSessionFinished}
           />
         )}
+      </div>
+      <div>
+        <PomodoroStartButton onStartSession={handleStartButtonClick} />
       </div>
     </section>
   );

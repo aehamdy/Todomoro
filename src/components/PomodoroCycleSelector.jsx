@@ -11,7 +11,7 @@ function PomodoroCycleSelector(props) {
   return (
     <div>
       <div className="flex justify-evenly items-center">
-        <label htmlFor="cycles" className="text-black w-52">
+        <label htmlFor="cycles" className="text-black">
           <select
             id="cycles"
             onChange={onSelectChange}
