@@ -15,8 +15,10 @@ function PomodoroRestCounter(props) {
 
     setRest((prevValue) => ({
       ...prevValue,
-      minutes: cycles * restTime,
-      seconds: 0,
+      // minutes: cycles * restTime,
+      // seconds: 0,
+      minutes: 0,
+      seconds: 3,
     }));
 
     timerRef.current = setInterval(() => {

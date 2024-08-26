@@ -28,6 +28,7 @@ function PomodoroCounter(props) {
 
     setInputValue({
       // minutes: cycles * duration,
+      // seconds: 0,
       minutes: 0,
       seconds: 3,
     });

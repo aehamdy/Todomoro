@@ -27,15 +27,19 @@ function PomodoroTimer() {
         <PomodoroCyclesFlag cycles={cycles} />
       </div>
       <div className="flex flex-col items-center text-black">
-        <PomodoroCounter
-          cycles={cycles}
-          onStartSessionRef={onStartSessionRef}
-          setIsSessionFinished={setIsSessionFinished}
-        />
-        <PomodoroRestCounter
-          cycles={cycles}
-          isSessionFinished={isSessionFinished}
-        />
+        {!isSessionFinished && (
+          <PomodoroCounter
+            cycles={cycles}
+            onStartSessionRef={onStartSessionRef}
+            setIsSessionFinished={setIsSessionFinished}
+          />
+        )}
+        {isSessionFinished && (
+          <PomodoroRestCounter
+            cycles={cycles}
+            isSessionFinished={isSessionFinished}
+          />
+        )}
       </div>
     </section>
   );
