@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import restSound from "../sounds/rest-tick-sound.mp3";
 import { useEffect, useRef, useState } from "react";
 
 function PomodoroRestCounter(props) {
@@ -8,6 +9,7 @@ function PomodoroRestCounter(props) {
     seconds: 0,
   });
   const timerRef = useRef(null);
+  const restSoundRef = useRef(new Audio(restSound));
 
   const onStartRest = () => {
     const restTime = 5; // 5 minutes rest session
@@ -20,6 +22,10 @@ function PomodoroRestCounter(props) {
       seconds: 20,
     }));
 
+    const playSound = () => {
+      restSoundRef.current.play();
+    };
+
     timerRef.current = setInterval(() => {
       setRest((prevValue) => {
         const { minutes, seconds } = prevValue;
@@ -31,6 +37,7 @@ function PomodoroRestCounter(props) {
         } else if (seconds === 0) {
           return { minutes: minutes - 1, seconds: 59 };
         } else {
+          playSound();
           return { minutes: minutes, seconds: seconds - 1 };
         }
       });
