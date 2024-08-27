@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const iconSize = 20;
 
 const speakerOn = (
@@ -32,8 +34,22 @@ const speakerOff = (
   </svg>
 );
 
-function Speaker() {
-  return <span>{speakerOn}</span>;
+function Speaker(props) {
+  const { toggleSound } = props;
+  const [isSpeakerOn, setIsSpeakerOn] = useState(true);
+
+  const speaker = isSpeakerOn ? speakerOn : speakerOff;
+
+  const toggleSpeaker = () => {
+    setIsSpeakerOn((prevValue) => !prevValue);
+    toggleSound();
+  };
+
+  return (
+    <span onClick={toggleSpeaker} className="cursor-pointer">
+      {speaker}
+    </span>
+  );
 }
 
 export default Speaker;

@@ -3,6 +3,7 @@
 import tickSound from "../sounds/pomodoro-tick-sound.mp3";
 
 import { useEffect, useRef, useState } from "react";
+import Speaker from "./Speaker";
 
 const sessionDuration = 25; // 25 minutes per session
 
@@ -36,7 +37,7 @@ function PomodoroCounter(props) {
       // minutes: cycles * duration,
       // seconds: 0,
       minutes: 0,
-      seconds: 3,
+      seconds: 15,
     });
 
     // Clear previous interval if any
@@ -76,19 +77,30 @@ function PomodoroCounter(props) {
     return () => clearInterval(timerRef.current);
   }, []);
 
+  const toggleSound = () => {
+    if (tickSoundRef.current.muted) {
+      tickSoundRef.current.muted = false;
+    } else {
+      tickSoundRef.current.muted = true;
+    }
+  };
+
   return (
-    <div className="flex items-center gap-1 select-none">
-      <span className="text-8xl font-semibold text-[#471515]">
-        {inputValue.minutes < 10
-          ? `0${inputValue.minutes}`
-          : inputValue.minutes}
-      </span>
-      <span className="text-8xl font-thin text-[#471515]">:</span>
-      <span className="text-8xl font-normal text-[#471515]">
-        {inputValue.seconds < 10
-          ? `0${inputValue.seconds}`
-          : inputValue.seconds}
-      </span>
+    <div className="flex items-center">
+      <div className="flex items-center gap-1 select-none">
+        <span className="text-8xl font-semibold text-[#471515]">
+          {inputValue.minutes < 10
+            ? `0${inputValue.minutes}`
+            : inputValue.minutes}
+        </span>
+        <span className="text-8xl font-thin text-[#471515]">:</span>
+        <span className="text-8xl font-normal text-[#471515]">
+          {inputValue.seconds < 10
+            ? `0${inputValue.seconds}`
+            : inputValue.seconds}
+        </span>
+      </div>
+      <Speaker toggleSound={toggleSound} />
     </div>
   );
 }
