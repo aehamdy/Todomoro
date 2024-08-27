@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 
 function PomodoroRestCounter(props) {
   const { cycles, isSessionFinished, setIsSessionFinished } = props;
-
   const [rest, setRest] = useState({
     minutes: 0,
     seconds: 0,
@@ -18,7 +17,7 @@ function PomodoroRestCounter(props) {
       // minutes: cycles * restTime,
       // seconds: 0,
       minutes: 0,
-      seconds: 3,
+      seconds: 20,
     }));
 
     timerRef.current = setInterval(() => {
@@ -51,8 +50,8 @@ function PomodoroRestCounter(props) {
     setRest((prevValue) => ({
       ...prevValue,
       // minutes: cycles * restTime,
-      minutes: 0,
-      seconds: 3,
+      minutes: 1,
+      seconds: 5,
     }));
   }, [cycles]);
 

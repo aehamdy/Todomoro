@@ -36,7 +36,7 @@ function PomodoroCounter(props) {
       // minutes: cycles * duration,
       // seconds: 0,
       minutes: 0,
-      seconds: 10,
+      seconds: 3,
     });
 
     // Clear previous interval if any
@@ -53,6 +53,7 @@ function PomodoroCounter(props) {
           }, 0);
           return { minutes: 0, seconds: 0 };
         } else if (seconds === 0) {
+          playSound();
           return { minutes: minutes - 1, seconds: 59 };
         } else {
           playSound();
