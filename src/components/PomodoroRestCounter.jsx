@@ -59,8 +59,8 @@ function PomodoroRestCounter(props) {
     setRest((prevValue) => ({
       ...prevValue,
       // minutes: cycles * restTime,
-      minutes: 1,
-      seconds: 5,
+      minutes: 0,
+      seconds: 3,
     }));
   }, [cycles]);
 
@@ -75,16 +75,16 @@ function PomodoroRestCounter(props) {
   return (
     cycles > 0 && (
       <div className="flex items-center">
-        <div className="flex flex-col">
-          <span className="text-8xl font-semibold text-[#14401d]">
+        <div className="flex items-center gap-1 text-8xl select-none">
+          <span className="font-semibold text-[#14401d]">
             {rest.minutes < 10 ? `0${rest.minutes}` : rest.minutes}
           </span>
-          {/* <span>:</span> */}
-          <span className="text-8xl font-normal text-[#14401d]">
+          <span className="font-thin text-[#14401d]">:</span>
+          <span className="font-normal text-[#14401d]">
             {rest.seconds < 10 ? `0${rest.seconds}` : rest.seconds}
           </span>
         </div>
-        <Speaker toggleSound={toggleSound} />
+        <Speaker toggleSound={toggleSound} color="pomodoro-rest-theme" />
       </div>
     )
   );
