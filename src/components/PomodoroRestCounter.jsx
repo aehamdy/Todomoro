@@ -64,6 +64,14 @@ function PomodoroRestCounter(props) {
     }));
   }, [cycles]);
 
+  const toggleSound = () => {
+    if (restSoundRef.current.muted) {
+      restSoundRef.current.muted = false;
+    } else {
+      restSoundRef.current.muted = true;
+    }
+  };
+
   return (
     cycles > 0 && (
       <div className="flex items-center">
@@ -76,7 +84,7 @@ function PomodoroRestCounter(props) {
             {rest.seconds < 10 ? `0${rest.seconds}` : rest.seconds}
           </span>
         </div>
-        <Speaker />
+        <Speaker toggleSound={toggleSound} />
       </div>
     )
   );
