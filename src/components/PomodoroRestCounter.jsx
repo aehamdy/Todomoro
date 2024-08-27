@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import restSound from "../sounds/rest-tick-sound.mp3";
+import restSound from "../sounds/pomodoro-rest-tick-sound.mp3";
 import { useEffect, useRef, useState } from "react";
 
 function PomodoroRestCounter(props) {

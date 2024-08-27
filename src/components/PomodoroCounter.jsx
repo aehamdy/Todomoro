@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import tickSound from "../sounds/tick-sound.wav";
+import tickSound from "../sounds/pomodoro-tick-sound.mp3";
 
 import { useEffect, useRef, useState } from "react";
 

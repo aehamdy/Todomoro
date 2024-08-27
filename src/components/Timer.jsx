@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
-import tickSound from "../sounds/tick-sound.wav";
-import finishSound from "../sounds/killpop-sound.mp3";
+import tickSound from "../sounds/timer-tick-sound.mp3";
+import finishSound from "../sounds/finish-sound.mp3";
 import { useEffect, useRef, useState } from "react";
 import TimerInput from "./TimerInput";
 import TimerButton from "./TimerButton";
