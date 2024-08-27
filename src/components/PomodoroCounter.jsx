@@ -37,7 +37,7 @@ function PomodoroCounter(props) {
       // minutes: cycles * duration,
       // seconds: 0,
       minutes: 0,
-      seconds: 15,
+      seconds: 3,
     });
 
     // Clear previous interval if any
@@ -78,6 +78,8 @@ function PomodoroCounter(props) {
   }, []);
 
   const toggleSound = () => {
+    console.log(tickSoundRef);
+
     if (tickSoundRef.current.muted) {
       tickSoundRef.current.muted = false;
     } else {

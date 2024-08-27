@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import restSound from "../sounds/pomodoro-rest-tick-sound.mp3";
 import { useEffect, useRef, useState } from "react";
+import Speaker from "./Speaker";
 
 function PomodoroRestCounter(props) {
   const { cycles, isSessionFinished, setIsSessionFinished } = props;
@@ -65,14 +66,17 @@ function PomodoroRestCounter(props) {
 
   return (
     cycles > 0 && (
-      <div className="flex flex-col">
-        <span className="text-8xl font-semibold text-[#14401d]">
-          {rest.minutes < 10 ? `0${rest.minutes}` : rest.minutes}
-        </span>
-        {/* <span>:</span> */}
-        <span className="text-8xl font-normal text-[#14401d]">
-          {rest.seconds < 10 ? `0${rest.seconds}` : rest.seconds}
-        </span>
+      <div className="flex items-center">
+        <div className="flex flex-col">
+          <span className="text-8xl font-semibold text-[#14401d]">
+            {rest.minutes < 10 ? `0${rest.minutes}` : rest.minutes}
+          </span>
+          {/* <span>:</span> */}
+          <span className="text-8xl font-normal text-[#14401d]">
+            {rest.seconds < 10 ? `0${rest.seconds}` : rest.seconds}
+          </span>
+        </div>
+        <Speaker />
       </div>
     )
   );
