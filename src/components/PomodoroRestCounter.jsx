@@ -35,6 +35,7 @@ function PomodoroRestCounter(props) {
           setIsSessionFinished(false);
           return { minutes: 0, seconds: 0 };
         } else if (seconds === 0) {
+          playSound();
           return { minutes: minutes - 1, seconds: 59 };
         } else {
           playSound();
