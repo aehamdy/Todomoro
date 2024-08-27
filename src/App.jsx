@@ -7,6 +7,7 @@ function App() {
   return (
     <main className="bg-app-bg py-20 px-8 rounded-3xl">
       <PomodoroTimer />
+      {/* <Timer /> */}
       <TodoApp className="bg-app-bg" />
     </main>
   );
@@ -37,8 +38,9 @@ export default App;
  # [x] FIX: number of toods change when click on any category button!
  # [x] clear all completed todos button
  # [x] a flag that displays a number of left todos
- # [ ] display timer and start button when cycle is selected 
+ # [x] display timer and start button when cycle is selected 
  # [ ] hide cycle selector and start button while timer is running
+ # [ ] Create two buttons to select whether PomodoroApp or NormalCounter
  # [ ] make timer's bg transparent while it is not running
  # [ ] make timer's bg red when session cycle is running and green when rest cycle is running
  # [ ] button to hide all checked todos

@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 
+import tickSound from "../sounds/tick-sound.wav";
+
 import { useEffect, useRef, useState } from "react";
 
 const sessionDuration = 25; // 25 minutes per session
@@ -11,8 +13,12 @@ function PomodoroCounter(props) {
     minutes: 0,
     seconds: 0,
   });
-
   const timerRef = useRef(null);
+  const tickSoundRef = useRef(new Audio(tickSound));
+
+  const playSound = () => {
+    tickSoundRef.current.play();
+  };
 
   useEffect(() => {
     // Avoid setting the ref during render
@@ -30,7 +36,7 @@ function PomodoroCounter(props) {
       // minutes: cycles * duration,
       // seconds: 0,
       minutes: 0,
-      seconds: 3,
+      seconds: 10,
     });
 
     // Clear previous interval if any
@@ -49,6 +55,7 @@ function PomodoroCounter(props) {
         } else if (seconds === 0) {
           return { minutes: minutes - 1, seconds: 59 };
         } else {
+          playSound();
           return { minutes: minutes, seconds: seconds - 1 };
         }
       });

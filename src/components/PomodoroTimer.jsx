@@ -34,7 +34,10 @@ function PomodoroTimer() {
       <div className="flex justify-evenly items-center">
         <PomodoroCycleSelector setCycles={setCycles} />
         {cycles && (
-          <PomodoroStartButton onStartSession={handleStartButtonClick} />
+          <PomodoroStartButton
+            onStartSession={handleStartButtonClick}
+            cycles={cycles}
+          />
         )}
       </div>
       <div>{/* <PomodoroCyclesFlag cycles={cycles} /> */}</div>
