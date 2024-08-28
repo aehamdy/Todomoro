@@ -15,41 +15,43 @@ function Counters() {
 
   return (
     <section>
-      <div className="w-fit flex items-center gap-1 py-0 px-0 mx-auto text-black bg-[#fffafa] rounded-lg">
-        <label
-          htmlFor="pomodoro"
-          className={`rounded-s-lg py-1 px-2 ${
-            selectedTimer === "pomodoro" && "bg-[#F87C4D] text-white"
-          } cursor-pointer`}
-        >
-          <input
-            type="radio"
-            id="pomodoro"
-            name="selected_timer"
-            value="pomodoro"
-            checked={selectedTimer === "pomodoro"}
-            onChange={handleTimerChange}
-            className="appearance-none"
-          />
-          Pomodoro
-        </label>
-        <label
-          htmlFor="timer"
-          className={`rounded-e-lg py-1 px-2 ${
-            selectedTimer === "timer" && "bg-[#ff5945] text-white"
-          } cursor-pointer`}
-        >
-          <input
-            type="radio"
-            id="timer"
-            name="selected_timer"
-            value="timer"
-            checked={selectedTimer === "timer"}
-            onChange={handleTimerChange}
-            className="appearance-none"
-          />
-          Timer
-        </label>
+      <div className="flex md:flex-col items-center py-2 md:py-2 md:px-4 border-2 border-solid rounded-lg">
+        <div className="w-fit flex items-center gap-1 p-0 mx-auto text-black bg-[#fffafa] rounded-lg">
+          <label
+            htmlFor="pomodoro"
+            className={`rounded-s-lg py-2 px-2 ${
+              selectedTimer === "pomodoro" && "bg-[#F87C4D] text-white"
+            } cursor-pointer`}
+          >
+            <input
+              type="radio"
+              id="pomodoro"
+              name="selected_timer"
+              value="pomodoro"
+              checked={selectedTimer === "pomodoro"}
+              onChange={handleTimerChange}
+              className="appearance-none"
+            />
+            Pomodoro
+          </label>
+          <label
+            htmlFor="timer"
+            className={`rounded-e-lg py-2 px-2 ${
+              selectedTimer === "timer" && "bg-[#ff5945] text-white"
+            } cursor-pointer`}
+          >
+            <input
+              type="radio"
+              id="timer"
+              name="selected_timer"
+              value="timer"
+              checked={selectedTimer === "timer"}
+              onChange={handleTimerChange}
+              className="appearance-none"
+            />
+            Timer
+          </label>
+        </div>
       </div>
       <div className="my-3">
         {selectedTimer === "pomodoro" ? (

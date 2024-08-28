@@ -11,7 +11,7 @@ function TodoCategories(props) {
     <div>
       <select
         onChange={handleCategorySelection}
-        className="w-32 p-1 rounded-md text-black bg-orange-50 hover:shadow-lg transition duration-medium cursor-pointer"
+        className="w-28 p-1 rounded-md text-black bg-[#fffafa] hover:shadow-lg transition duration-medium cursor-pointer"
       >
         <option value="personal">Personal</option>
         <option value="work">Work</option>

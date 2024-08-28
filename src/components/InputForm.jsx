@@ -61,7 +61,7 @@ function InputForm(props) {
               <input
                 type="text"
                 id="taskInput"
-                className="p-1 px-2 text-black bg-orange-50 border-0 rounded-md focus:outline-none hover:shadow-lg focus:shadow-lg transition duration-medium caret-black"
+                className="p-1 px-2 text-black bg-[#fffafa] border-0 rounded-md focus:outline-none hover:shadow-lg focus:shadow-lg transition duration-medium caret-black"
                 value={userInput}
                 onChange={handleInputChange}
                 ref={inputRef}
@@ -79,7 +79,7 @@ function InputForm(props) {
             <button
               type="button"
               onClick={handleClick}
-              className="flex items-center justify-center w-12 h-10 py-2 px-4 rounded-md bg-orange-50 text-black hover:shadow-lg transition duration-medium"
+              className="flex items-center justify-center w-12 h-10 py-2 px-4 rounded-md bg-[#fffafa] text-black hover:shadow-lg transition duration-medium"
             >
               +
             </button>
