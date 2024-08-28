@@ -1,13 +1,11 @@
 import "./App.css";
-import PomodoroTimer from "./components/PomodoroTimer";
-import Timer from "./components/Timer";
+import Counters from "./components/Counters";
 import TodoApp from "./components/TodoApp";
 
 function App() {
   return (
     <main className="bg-app-bg py-20 px-8 rounded-3xl">
-      <PomodoroTimer />
-      {/* <Timer /> */}
+      <Counters />
       <TodoApp className="bg-app-bg" />
     </main>
   );
