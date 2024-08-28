@@ -12,8 +12,13 @@ function Counters() {
 
   return (
     <section>
-      <div>
-        <label htmlFor="pomodoro">
+      <div className="w-fit flex items-center gap-1 py-0 px-0 mx-auto text-black bg-blue-300 rounded-lg">
+        <label
+          htmlFor="pomodoro"
+          className={`rounded-s-lg py-1 px-2 ${
+            selectedTimer === "pomodoro" && "bg-red-500 text-white"
+          } cursor-pointer`}
+        >
           <input
             type="radio"
             id="pomodoro"
@@ -21,10 +26,18 @@ function Counters() {
             value="pomodoro"
             checked={selectedTimer === "pomodoro"}
             onChange={handleTimerChange}
+            className={`appearance-none ${
+              selectedTimer === "pomodoro" && "bg-red-400 text-white"
+            }`}
           />
           Pomodoro
         </label>
-        <label htmlFor="timer">
+        <label
+          htmlFor="timer"
+          className={`rounded-e-lg py-1 px-2 ${
+            selectedTimer === "timer" && "bg-red-500 text-white"
+          } cursor-pointer`}
+        >
           <input
             type="radio"
             id="timer"
@@ -32,11 +45,20 @@ function Counters() {
             value="timer"
             checked={selectedTimer === "timer"}
             onChange={handleTimerChange}
+            className="appearance-none"
           />
           Timer
         </label>
       </div>
-      <div>{selectedTimer === "pomodoro" ? <PomodoroTimer /> : <Timer />}</div>
+      <div>
+        {selectedTimer === "pomodoro" ? (
+          <PomodoroTimer />
+        ) : selectedTimer === "timer" ? (
+          <Timer />
+        ) : (
+          ""
+        )}
+      </div>
     </section>
   );
 }
