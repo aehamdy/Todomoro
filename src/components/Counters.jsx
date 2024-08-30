@@ -20,7 +20,8 @@ function Counters() {
           <label
             htmlFor="pomodoro"
             className={`rounded-s-lg py-2 px-2 ${
-              selectedTimer === "pomodoro" && "bg-[#F87C4D] text-white"
+              // selectedTimer === "pomodoro" && "bg-[#F87C4D] text-white"
+              selectedTimer === "pomodoro" && "bg-[#CAD9EB] text-[#304261]"
             } cursor-pointer`}
           >
             <input
