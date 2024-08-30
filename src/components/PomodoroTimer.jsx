@@ -18,7 +18,9 @@ function PomodoroTimer() {
   };
 
   const sectionBg = () => {
-    return isSessionFinished ? "bg-[#F2FFF5]" : "bg-[#FFF2F2]";
+    // return isSessionFinished ? "bg-[#F2FFF5]" : "bg-[#FFF2F2]";
+    // return isSessionFinished ? "bg-[#F2FFF5]" : "bg-[#95B3D7]";
+    return isSessionFinished ? "bg-[#F2FFF5]" : "bg-counter-bg";
     // if (isSessionFinished) {
     //   return "bg-[#F2FFF5]";
     // } else if (!isSessionFinished) {

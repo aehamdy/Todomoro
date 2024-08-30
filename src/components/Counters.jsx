@@ -53,7 +53,7 @@ function Counters() {
           </label>
         </div>
       </div>
-      <div className="absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] my-3">
+      <div className="md:absolute md:w-full my-3 md:left-1/2 md:top-1/2 md:translate-x-[-50%] md:translate-y-[-50%]">
         {selectedTimer === "pomodoro" ? (
           <PomodoroTimer />
         ) : selectedTimer === "timer" ? (
