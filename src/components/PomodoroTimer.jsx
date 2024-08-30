@@ -1,10 +1,8 @@
 import { useRef, useState } from "react";
 import PomodoroCycleSelector from "./PomodoroCycleSelector";
-import PomodoroCyclesFlag from "./PomodoroCyclesFlag";
 import PomodoroStartButton from "./PomodoroStartButton";
 import PomodoroCounter from "./PomodoroCounter";
 import PomodoroRestCounter from "./PomodoroRestCounter";
-import Speaker from "./Speaker";
 
 function PomodoroTimer() {
   const [cycles, setCycles] = useState(null);
@@ -58,7 +56,6 @@ function PomodoroTimer() {
           />
         )}
       </div>
-      <div></div>
     </section>
   );
 }
