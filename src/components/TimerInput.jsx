@@ -25,7 +25,7 @@ function TimerInput(props) {
       type="number"
       value={value}
       onChange={onInputChange}
-      className="w-16 p-1 rounded-md bg-slate-300 hover:shadow-lg focus:outline-none"
+      className="w-16 py-1 p-2 text-[#222] bg-white rounded-md hover:shadow-lg focus:outline-none"
     />
   );
 }
