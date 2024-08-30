@@ -78,8 +78,6 @@ function PomodoroCounter(props) {
   }, []);
 
   const toggleSound = () => {
-    console.log(tickSoundRef);
-
     if (tickSoundRef.current.muted) {
       tickSoundRef.current.muted = false;
     } else {
