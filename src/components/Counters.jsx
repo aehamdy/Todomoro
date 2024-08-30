@@ -14,7 +14,7 @@ function Counters() {
   // Colors: #C4F0C5 #F1FFF1 #9EBFCB
 
   return (
-    <section>
+    <section className="relative">
       <div className="flex md:flex-col items-center py-2 md:py-2 md:px-4 border-2 border-solid rounded-lg">
         <div className="w-fit flex items-center gap-1 p-0 mx-auto text-black bg-[#fffafa] rounded-lg">
           <label
@@ -53,7 +53,7 @@ function Counters() {
           </label>
         </div>
       </div>
-      <div className="my-3">
+      <div className="absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] my-3">
         {selectedTimer === "pomodoro" ? (
           <PomodoroTimer />
         ) : selectedTimer === "timer" ? (
