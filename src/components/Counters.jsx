@@ -9,6 +9,10 @@ function Counters() {
     setSelectedTimer(e.target.value);
   };
 
+  const customInnerShadow = {
+    boxShadow: "inset 0 2px 6px rgba(0, 0, 0, 0.2)",
+  };
+
   // Colors: #91915B #FFCB94 #FFEBB5 #F87C4D #A4404C
   // Colors: #FCC201 #DA9101 #940D21 #CF2121 #ED5742
   // Colors: #C4F0C5 #F1FFF1 #9EBFCB
@@ -20,9 +24,9 @@ function Counters() {
           <label
             htmlFor="pomodoro"
             className={`rounded-s-lg py-2 px-2 ${
-              // selectedTimer === "pomodoro" && "bg-[#F87C4D] text-white"
-              selectedTimer === "pomodoro" && "bg-[#CAD9EB] text-[#304261]"
-            } cursor-pointer`}
+              selectedTimer === "pomodoro" && "bg-gray-100"
+            } select-none cursor-pointer`}
+            style={selectedTimer === "pomodoro" ? customInnerShadow : {}}
           >
             <input
               type="radio"
@@ -38,8 +42,9 @@ function Counters() {
           <label
             htmlFor="timer"
             className={`rounded-e-lg py-2 px-2 ${
-              selectedTimer === "timer" && "bg-[#ff5945] text-white"
-            } cursor-pointer`}
+              selectedTimer === "timer" && "bg-gray-100"
+            } select-none cursor-pointer`}
+            style={selectedTimer === "timer" ? customInnerShadow : {}}
           >
             <input
               type="radio"
