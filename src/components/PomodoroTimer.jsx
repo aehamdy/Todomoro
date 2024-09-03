@@ -7,11 +7,11 @@ import PomodoroRestCounter from "./PomodoroRestCounter";
 function PomodoroTimer() {
   const [cycles, setCycles] = useState(null);
   const [isSessionFinished, setIsSessionFinished] = useState(false);
-  // const [isSessionRunning, setIsSessionRunning] = useState(false);
+  const [isSessionRunning, setIsSessionRunning] = useState(false);
   const onStartSessionRef = useRef(null);
 
   const handleStartButtonClick = () => {
-    // setIsSessionRunning(true);
+    setIsSessionRunning(true);
     if (onStartSessionRef.current) {
       onStartSessionRef.current();
     }
@@ -34,8 +34,8 @@ function PomodoroTimer() {
   return (
     <section className={`${sectionBg()} rounded-lg py-2`}>
       <div className="flex justify-evenly items-center">
-        <PomodoroCycleSelector setCycles={setCycles} />
-        {cycles && (
+        {!isSessionRunning && <PomodoroCycleSelector setCycles={setCycles} />}
+        {cycles && !isSessionRunning && (
           <PomodoroStartButton
             onStartSession={handleStartButtonClick}
             cycles={cycles}

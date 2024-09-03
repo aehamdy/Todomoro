@@ -38,10 +38,11 @@ export default App;
  # [x] clear all completed todos button
  # [x] a flag that displays a number of left todos
  # [x] display timer and start button when cycle is selected 
+ # [x] Create two buttons to select whether PomodoroApp or NormalCounter
  # [ ] hide cycle selector and start button while timer is running
- # [ ] Create two buttons to select whether PomodoroApp or NormalCounter
  # [ ] make timer's bg transparent while it is not running
  # [ ] make timer's bg red when session cycle is running and green when rest cycle is running
+ # [ ] add pomodoro session/rest session finish sound
  # [ ] button to hide all checked todos
  # [ ] show/hide Clear Completed button depending on checked todos
  # [ ] add keyboard accessebility to input field

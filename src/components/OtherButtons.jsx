@@ -116,7 +116,7 @@ function OtherButtons(props) {
       <button
         type="button"
         onClick={onStopClick}
-        className="p-1 rounded-md bg-white hover:shadow-lg"
+        className="p-1 rounded-md bg-white hover:shadow-lg cursor-pointer"
       >
         {stopIcon}
       </button>
@@ -124,7 +124,7 @@ function OtherButtons(props) {
         <button
           type="button"
           onClick={onPauseClick}
-          className="p-1 rounded-md bg-white hover:shadow-lg"
+          className="p-1 rounded-md bg-white hover:shadow-lg cursor-pointer"
         >
           {pauseIcon}
         </button>
@@ -132,7 +132,7 @@ function OtherButtons(props) {
         <button
           type="button"
           onClick={onPlayClick}
-          className="p-1 rounded-md bg-white hover:shadow-lg"
+          className="p-1 rounded-md bg-white hover:shadow-lg cursor-pointer"
         >
           {playIcon}
         </button>
