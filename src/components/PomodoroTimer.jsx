@@ -34,8 +34,8 @@ function PomodoroTimer() {
   return (
     <section className={`${sectionBg()} rounded-lg py-2`}>
       <div className="flex justify-evenly items-center">
-        {!isSessionRunning && <PomodoroCycleSelector setCycles={setCycles} />}
-        {cycles && !isSessionRunning && (
+        <PomodoroCycleSelector setCycles={setCycles} />
+        {cycles && (
           <PomodoroStartButton
             onStartSession={handleStartButtonClick}
             cycles={cycles}

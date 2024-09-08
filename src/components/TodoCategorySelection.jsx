@@ -87,9 +87,8 @@ const otherIcon = (
     />
   </svg>
 );
-// TODO: refresh left todos number upon click on any todo
 
-function CategorySelection(props) {
+function TodoCategorySelection(props) {
   const { setSelectedCategory, handleLeftTodos } = props;
 
   const [selectedButton, setSelectedButton] = useState("all");
@@ -248,7 +247,7 @@ function CategorySelection(props) {
                 selectedButton === button.id ? "text-white" : ""
               } ${
                 selectedButton === button.id ? button.bg : "bg-tabs-bg"
-              } rounded-lg cursor-pointer`}
+              } rounded-lg cursor-pointer select-none`}
             >
               <span>{button.icon}</span>
               <input
@@ -270,4 +269,4 @@ function CategorySelection(props) {
   );
 }
 
-export default CategorySelection;
+export default TodoCategorySelection;

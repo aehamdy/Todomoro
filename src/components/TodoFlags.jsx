@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import ClearButton from "./ClearButton";
-import LeftTodos from "./LeftTodos";
+import LeftTodos from "./TodoLeftTodos";
 
 function TodoFlags(props) {
   const { leftTodos, save, setTodos, todos, handleLeftTodos } = props;

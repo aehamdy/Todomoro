@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import restSound from "../sounds/pomodoro-rest-tick-sound.mp3";
 import { useEffect, useRef, useState } from "react";
@@ -33,8 +34,7 @@ function PomodoroRestCounter(props) {
 
         if (minutes === 0 && seconds === 0) {
           clearInterval(timerRef.current);
-          setIsSessionFinished(false);
-          return { minutes: 0, seconds: 0 };
+          return prevValue;
         } else if (seconds === 0) {
           playSound();
           return { minutes: minutes - 1, seconds: 59 };
@@ -44,6 +44,14 @@ function PomodoroRestCounter(props) {
         }
       });
     }, 1000);
+  };
+
+  const toggleSound = () => {
+    if (restSoundRef.current.muted) {
+      restSoundRef.current.muted = false;
+    } else {
+      restSoundRef.current.muted = true;
+    }
   };
 
   useEffect(() => {
@@ -64,20 +72,14 @@ function PomodoroRestCounter(props) {
     }));
   }, [cycles]);
 
-  const toggleSound = () => {
-    if (restSoundRef.current.muted) {
-      restSoundRef.current.muted = false;
-    } else {
-      restSoundRef.current.muted = true;
-    }
-  };
-
   const textColor = "#02A17A";
   const bgColor = "#7be382";
 
   return (
-    cycles > 0 && (
+    cycles > 0 &&
+    isSessionFinished && (
       <div className="flex md:gap-2 items-center">
+        {console.log(`sessions status is: ${isSessionFinished}`)}
         <div className="flex md:flex-col items-center gap-1 text-8xl select-none">
           <span className={`font-semibold text-rest-counter-text`}>
             {rest.minutes < 10 ? `0${rest.minutes}` : rest.minutes}

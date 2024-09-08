@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import TodoCategories from "./TodoCategories";
 import { LOCAL_STORAGE_KEY } from "./TodoApp";
 
-function InputForm(props) {
+function TodoInputForm(props) {
   const { todos, setTodos, save, setLeftTodos } = props;
   const [userInput, setUserInput] = useState("");
   const [inputError, setInputError] = useState(false);
@@ -93,4 +93,4 @@ function InputForm(props) {
   );
 }
 
-export default InputForm;
+export default TodoInputForm;

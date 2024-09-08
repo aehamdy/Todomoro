@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-function LeftTodos(props) {
+function TodoLeftTodos(props) {
   const { leftTodos } = props;
   return (
     <section className="flex justify-between">
@@ -18,4 +18,4 @@ function LeftTodos(props) {
   );
 }
 
-export default LeftTodos;
+export default TodoLeftTodos;

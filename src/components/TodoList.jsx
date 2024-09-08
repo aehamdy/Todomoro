@@ -90,7 +90,7 @@ const otherIcon = (
   </svg>
 );
 
-function List(props) {
+function TodoList(props) {
   const { todos, setTodos, save, setLeftTodos, selectedCategory } = props;
   const [editTaskId, setEditTaskId] = useState(null);
   const [newValue, setNewValue] = useState("");
@@ -282,4 +282,4 @@ function List(props) {
   );
 }
 
-export default List;
+export default TodoList;
