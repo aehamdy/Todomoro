@@ -148,28 +148,29 @@ function TodoCategorySelection(props) {
     }
   };
 
-  const clickHandler = (category) => {
-    switch (category) {
-      case ALL:
-        setSelectedButton(ALL);
-        break;
-      case PERSONAL:
-        setSelectedButton(PERSONAL);
-        break;
-      case WORK:
-        setSelectedButton(WORK);
-        break;
-      case STUDY:
-        setSelectedButton(STUDY);
-        break;
-      case OTHER:
-        setSelectedButton(OTHER);
-        break;
-      default:
-        setSelectedButton(ALL);
-    }
-    handleLeftTodos(calcLeftTodos(category));
-  };
+  // const clickHandler = (category) => {
+  //   switch (category) {
+  //     case ALL:
+  //       setSelectedButton(ALL);
+  //       break;
+  //     case PERSONAL:
+  //       setSelectedButton(PERSONAL);
+  //       break;
+  //     case WORK:
+  //       setSelectedButton(WORK);
+  //       break;
+  //     case STUDY:
+  //       setSelectedButton(STUDY);
+  //       break;
+  //     case OTHER:
+  //       setSelectedButton(OTHER);
+  //       break;
+  //     default:
+  //       setSelectedButton(ALL);
+  //   }
+
+  //   handleLeftTodos(calcLeftTodos(category));
+  // };
 
   const handleRadioChange = (category) => {
     switch (category) {
@@ -191,6 +192,27 @@ function TodoCategorySelection(props) {
       default:
         setSelectedCategory(ALL);
     }
+
+    switch (category) {
+      case ALL:
+        setSelectedButton(ALL);
+        break;
+      case PERSONAL:
+        setSelectedButton(PERSONAL);
+        break;
+      case WORK:
+        setSelectedButton(WORK);
+        break;
+      case STUDY:
+        setSelectedButton(STUDY);
+        break;
+      case OTHER:
+        setSelectedButton(OTHER);
+        break;
+      default:
+        setSelectedButton(ALL);
+    }
+
     handleLeftTodos(calcLeftTodos(category));
   };
 
@@ -257,7 +279,7 @@ function TodoCategorySelection(props) {
                 value={button.value}
                 className="appearance-none"
                 onChange={() => handleRadioChange(button.id)}
-                onClick={() => clickHandler(button.id)}
+                // onClick={() => clickHandler(button.id)}
               />
               {button.value}
               <span>{handleRemainTodos(button.id)}</span>
