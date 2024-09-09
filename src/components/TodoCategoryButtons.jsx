@@ -88,7 +88,7 @@ const otherIcon = (
   </svg>
 );
 
-function TodoCategorySelection(props) {
+function TodoCategoryButtons(props) {
   const { setSelectedCategory, handleLeftTodos } = props;
 
   const [selectedButton, setSelectedButton] = useState("all");
@@ -291,4 +291,4 @@ function TodoCategorySelection(props) {
   );
 }
 
-export default TodoCategorySelection;
+export default TodoCategoryButtons;

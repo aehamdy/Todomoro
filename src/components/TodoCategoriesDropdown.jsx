@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-function TodoCategories(props) {
+function TodoCategoriesDropdown(props) {
   const { setCategory } = props;
 
   const handleCategorySelection = (e) => {
@@ -22,4 +22,4 @@ function TodoCategories(props) {
   );
 }
 
-export default TodoCategories;
+export default TodoCategoriesDropdown;

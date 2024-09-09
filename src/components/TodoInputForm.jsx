@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from "react";
-import TodoCategories from "./TodoCategories";
+import TodoCategoriesDropdown from "./TodoCategoriesDropdown";
 import { LOCAL_STORAGE_KEY } from "./TodoApp";
 
 function TodoInputForm(props) {
@@ -74,7 +74,7 @@ function TodoInputForm(props) {
               </span>
             </label>
           </div>
-          <TodoCategories setCategory={setCategory} />
+          <TodoCategoriesDropdown setCategory={setCategory} />
           <div>
             <button
               type="button"

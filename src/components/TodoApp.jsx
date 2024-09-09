@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TodoInputForm from "./TodoInputForm";
 import TodoList from "./TodoList";
-import TodoCategorySelection from "./TodoCategorySelection";
+import TodoCategoryButtons from "./TodoCategoryButtons";
 import TodoFlags from "./TodoFlags";
 
 export const LOCAL_STORAGE_KEY = "TodomoroTasks";
@@ -29,7 +29,7 @@ function TodoApp() {
         setLeftTodos={setLeftTodos}
         leftTodos={leftTodos}
       />
-      <TodoCategorySelection
+      <TodoCategoryButtons
         setSelectedCategory={setSelectedCategory}
         handleLeftTodos={handleLeftTodos}
       />
