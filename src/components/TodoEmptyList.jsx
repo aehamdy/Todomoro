@@ -1,4 +1,4 @@
-const emptyList = (
+const emptyListIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlSpace="preserve"
@@ -22,7 +22,7 @@ const emptyList = (
 function TodoEmptyList() {
   return (
     <div className="flex flex-col items-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] gap-2">
-      <span>{emptyList}</span>
+      <span>{emptyListIcon}</span>
       <p className="text-slate-500">
         The list is empty,
         <br /> lets add tasks

@@ -109,7 +109,8 @@ function TodoList(props) {
   };
 
   const handleTaskCheck = (id) => {
-    const items = todos.map((todo) =>
+    const list = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    const items = list.map((todo) =>
       todo.id === id ? { ...todo, isChecked: !todo.isChecked } : todo
     );
     setTodos(items);
@@ -184,7 +185,7 @@ function TodoList(props) {
           todos.map((todo) => (
             <li
               key={todo.id}
-              onClick={handleTaskCheck(todo.id)}
+              onClick={() => handleTaskCheck(todo.id)}
               className="flex justify-between items-center hover:shadow-md hover:bg-todo-bg-hover duration-short rounded-lg text-xl text-black bg-todo-bg py-2 px-3 mb-2 last:mb-0 cursor-pointer"
               style={{
                 textDecoration: todo.isChecked ? "line-through" : "none",
@@ -214,7 +215,7 @@ function TodoList(props) {
                     className="bg-slate-200 rounded-md ps-2"
                     value={newValue}
                     onChange={handleEditChange}
-                    onClick={handleTaskCheck(todo.id)}
+                    onClick={() => handleTaskCheck(todo.id)}
                     onBlur={(e) => handleEditSave(e, todo.id)}
                   />
                 ) : (
