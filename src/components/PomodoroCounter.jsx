@@ -93,24 +93,29 @@ function PomodoroCounter(props) {
   // const textColor = "#471515";
 
   return (
-    <div className="flex md:gap-2 items-center">
-      <div className="flex md:flex-col items-center gap-1 text-8xl select-none">
-        {/* <span className={`font-semibold text-[${textColor}]`}> */}
-        <span className={`font-semibold text-counter-text`}>
-          {inputValue.minutes < 10
-            ? `0${inputValue.minutes}`
-            : inputValue.minutes}
-        </span>
-        {/* <span className={`md:hidden font-thin text-[${textColor}]`}>:</span> */}
-        <span className={`md:hidden font-thin text-counter-text`}>:</span>
-        {/* <span className={`font-normal text-[${textColor}]`}> */}
-        <span className={`font-normal text-counter-text`}>
-          {inputValue.seconds < 10
-            ? `0${inputValue.seconds}`
-            : inputValue.seconds}
-        </span>
+    <div>
+      <p className="text-normal text-xl text-red-500 animate-pulse">
+        Get Things Done
+      </p>
+      <div className="flex md:gap-2 items-center">
+        <div className="flex md:flex-col items-center gap-1 text-8xl select-none">
+          {/* <span className={`font-semibold text-[${textColor}]`}> */}
+          <span className={`font-semibold text-counter-text`}>
+            {inputValue.minutes < 10
+              ? `0${inputValue.minutes}`
+              : inputValue.minutes}
+          </span>
+          {/* <span className={`md:hidden font-thin text-[${textColor}]`}>:</span> */}
+          <span className={`md:hidden font-thin text-counter-text`}>:</span>
+          {/* <span className={`font-normal text-[${textColor}]`}> */}
+          <span className={`font-normal text-counter-text`}>
+            {inputValue.seconds < 10
+              ? `0${inputValue.seconds}`
+              : inputValue.seconds}
+          </span>
+        </div>
+        <Speaker toggleSound={toggleSound} />
       </div>
-      <Speaker toggleSound={toggleSound} />
     </div>
   );
 }
