@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import restSound from "../sounds/pomodoro-rest-tick-sound.mp3";
+import finishSound from "../sounds/finish-sound.mp3";
 import { useEffect, useRef, useState } from "react";
 import Speaker from "./Speaker";
 
@@ -12,6 +13,7 @@ function PomodoroRestCounter(props) {
   });
   const timerRef = useRef(null);
   const restSoundRef = useRef(new Audio(restSound));
+  const finishSoundRef = useRef(new Audio(finishSound));
 
   const onStartRest = () => {
     const restTime = 5; // 5 minutes rest session
@@ -28,12 +30,18 @@ function PomodoroRestCounter(props) {
       restSoundRef.current.play();
     };
 
+    const playFinishSound = () => {
+      finishSoundRef.current.play();
+    };
+
     timerRef.current = setInterval(() => {
       setRest((prevValue) => {
         const { minutes, seconds } = prevValue;
 
         if (minutes === 0 && seconds === 0) {
           clearInterval(timerRef.current);
+          setIsRestFinished(true);
+          playFinishSound();
           return prevValue;
         } else if (seconds === 0) {
           playSound();
@@ -76,24 +84,27 @@ function PomodoroRestCounter(props) {
   const bgColor = "#7be382";
 
   return (
-    cycles > 0 &&
-    isSessionFinished && (
-      <div className="flex md:gap-2 items-center">
-        {console.log(`sessions status is: ${isSessionFinished}`)}
-        <div className="flex md:flex-col items-center gap-1 text-8xl select-none">
-          <span className={`font-semibold text-rest-counter-text`}>
-            {rest.minutes < 10 ? `0${rest.minutes}` : rest.minutes}
-          </span>
-          <span className={`md:hidden font-thin text-rest-counter-text`}>
-            :
-          </span>
-          <span className={`font-normal text-rest-counter-text`}>
-            {rest.seconds < 10 ? `0${rest.seconds}` : rest.seconds}
-          </span>
-        </div>
-        <Speaker toggleSound={toggleSound} color="pomodoro-rest-theme" />
+    <div>
+      <div>
+        {cycles > 0 && isSessionFinished && (
+          <div className="flex md:gap-2 items-center">
+            <div className="flex md:flex-col items-center gap-1 text-8xl select-none">
+              <span className={`font-semibold text-rest-counter-text`}>
+                {rest.minutes < 10 ? `0${rest.minutes}` : rest.minutes}
+              </span>
+              <span className={`md:hidden font-thin text-rest-counter-text`}>
+                :
+              </span>
+              <span className={`font-normal text-rest-counter-text`}>
+                {rest.seconds < 10 ? `0${rest.seconds}` : rest.seconds}
+              </span>
+            </div>
+            <Speaker toggleSound={toggleSound} color="pomodoro-rest-theme" />
+          </div>
+        )}
       </div>
-    )
+      <p className="font-semibold text-red-500"></p>
+    </div>
   );
 }
 
