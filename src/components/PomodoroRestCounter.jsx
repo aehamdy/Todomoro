@@ -11,6 +11,7 @@ function PomodoroRestCounter(props) {
     minutes: 0,
     seconds: 0,
   });
+  const [isRestFinished, setIsRestFinished] = useState(false);
   const timerRef = useRef(null);
   const restSoundRef = useRef(new Audio(restSound));
   const finishSoundRef = useRef(new Audio(finishSound));
@@ -85,6 +86,22 @@ function PomodoroRestCounter(props) {
 
   return (
     <div>
+      {!isRestFinished && (
+        <div>
+          <p className="text-bold text-lg text-teal-600">
+            Relax, It's Break Time
+          </p>
+          <p
+            className={`${
+              !isRestFinished
+                ? "font-normal text-xl text-teal-600 animate-pulse"
+                : ""
+            }`}
+          >
+            Pause and Recharge
+          </p>
+        </div>
+      )}
       <div>
         {cycles > 0 && isSessionFinished && (
           <div className="flex md:gap-2 items-center">
@@ -103,7 +120,9 @@ function PomodoroRestCounter(props) {
           </div>
         )}
       </div>
-      <p className="font-semibold text-red-500"></p>
+      <p className="font-semibold text-lg text-amber-600 animate-bounce">
+        {isRestFinished && "Break Time Ended"}
+      </p>
     </div>
   );
 }
