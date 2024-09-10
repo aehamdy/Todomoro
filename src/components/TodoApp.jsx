@@ -7,6 +7,7 @@ import TodoFlags from "./TodoFlags";
 export const LOCAL_STORAGE_KEY = "TodomoroTasks";
 
 function TodoApp() {
+  const [allTodos, setAllTodos] = useState([]);
   const [todos, setTodos] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [leftTodos, setLeftTodos] = useState();
@@ -18,6 +19,7 @@ function TodoApp() {
   const save = (items) => {
     const list = JSON.stringify(items);
     localStorage.setItem(LOCAL_STORAGE_KEY, list);
+    setAllTodos(items);
   };
 
   return (
@@ -43,6 +45,8 @@ function TodoApp() {
       <TodoList
         todos={todos}
         setTodos={setTodos}
+        allTodos={allTodos}
+        setAllTodos={setAllTodos}
         save={save}
         setLeftTodos={setLeftTodos}
         setSelectedCategory={setSelectedCategory}

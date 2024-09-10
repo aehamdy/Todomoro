@@ -72,10 +72,11 @@ function TodoList(props) {
   const {
     todos,
     setTodos,
+    allTodos,
+    setAllTodos,
     save,
     setLeftTodos,
     selectedCategory,
-    setSelectedCategory,
   } = props;
   const [editTaskId, setEditTaskId] = useState(null);
   const [newValue, setNewValue] = useState("");
@@ -116,24 +117,16 @@ function TodoList(props) {
   };
 
   const handleTaskCheck = (id) => {
-    // const items = todos.map((todo) =>
-    //   todo.id === id ? { ...todo, isChecked: !todo.isChecked } : todo
-    // );
-
-    const list = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    const items = list.map((todo) =>
+    const updatedAllTodos = allTodos.map((todo) =>
       todo.id === id ? { ...todo, isChecked: !todo.isChecked } : todo
     );
-    setTodos(items);
-    save(items);
-    // console.log(list);
 
-    // setTodos(items);
-    // save(items);
+    setAllTodos(updatedAllTodos);
+    save(updatedAllTodos);
 
-    //calculate left todos upon check/uncheck a todo
-    const allTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    const notCheckedTodos = allTodos.filter((todo) => !todo.isChecked);
+    filterTodos(selectedCategory);
+
+    const notCheckedTodos = updatedAllTodos.filter((todo) => !todo.isChecked);
     setLeftTodos(notCheckedTodos.length);
   };
 
@@ -148,14 +141,12 @@ function TodoList(props) {
   };
 
   const filterTodos = (category) => {
-    const listItems = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
-
     let filteredTodos;
 
     if (category === "all") {
-      filteredTodos = listItems;
+      filteredTodos = allTodos;
     } else {
-      filteredTodos = listItems.filter((item) => item.category === category);
+      filteredTodos = allTodos.filter((item) => item.category === category);
     }
 
     setTodos(filteredTodos);
@@ -164,20 +155,6 @@ function TodoList(props) {
   useEffect(() => {
     load();
   }, []);
-
-  useEffect(() => {
-    if (selectedCategory === "all") {
-      filterTodos("all");
-    } else if (selectedCategory === "personal") {
-      filterTodos("personal");
-    } else if (selectedCategory === "work") {
-      filterTodos("work");
-    } else if (selectedCategory === "study") {
-      filterTodos("study");
-    } else {
-      filterTodos("other");
-    }
-  }, [selectedCategory]);
 
   const handleIcon = (category) => {
     if (category === "personal") {
@@ -190,6 +167,19 @@ function TodoList(props) {
       return otherIcon;
     }
   };
+
+  useEffect(() => {
+    const listItems = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (listItems) {
+      const parsedTodos = JSON.parse(listItems);
+      setAllTodos(parsedTodos);
+      filterTodos(selectedCategory);
+    }
+  }, []);
+
+  useEffect(() => {
+    filterTodos(selectedCategory);
+  }, [selectedCategory, allTodos]);
 
   return (
     <>

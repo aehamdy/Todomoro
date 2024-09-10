@@ -169,49 +169,55 @@ function TodoCategoryButtons(props) {
   //       setSelectedButton(ALL);
   //   }
 
-  //   handleLeftTodos(calcLeftTodos(category));
+  //   //   handleLeftTodos(calcLeftTodos(category));
   // };
 
   const handleRadioChange = (category) => {
     switch (category) {
       case ALL:
         setSelectedCategory(ALL);
+        setSelectedButton(ALL);
         break;
       case PERSONAL:
         setSelectedCategory(PERSONAL);
-        break;
-      case WORK:
-        setSelectedCategory(WORK);
-        break;
-      case STUDY:
-        setSelectedCategory(STUDY);
-        break;
-      case OTHER:
-        setSelectedCategory(OTHER);
-        break;
-      default:
-        setSelectedCategory(ALL);
-    }
-
-    switch (category) {
-      case ALL:
-        setSelectedButton(ALL);
-        break;
-      case PERSONAL:
         setSelectedButton(PERSONAL);
         break;
       case WORK:
+        setSelectedCategory(WORK);
         setSelectedButton(WORK);
         break;
       case STUDY:
+        setSelectedCategory(STUDY);
         setSelectedButton(STUDY);
         break;
       case OTHER:
+        setSelectedCategory(OTHER);
         setSelectedButton(OTHER);
         break;
       default:
+        setSelectedCategory(ALL);
         setSelectedButton(ALL);
     }
+
+    // switch (category) {
+    //   case ALL:
+    //     setSelectedButton(ALL);
+    //     break;
+    //   case PERSONAL:
+    //     setSelectedButton(PERSONAL);
+    //     break;
+    //   case WORK:
+    //     setSelectedButton(WORK);
+    //     break;
+    //   case STUDY:
+    //     setSelectedButton(STUDY);
+    //     break;
+    //   case OTHER:
+    //     setSelectedButton(OTHER);
+    //     break;
+    //   default:
+    //     setSelectedButton(ALL);
+    // }
 
     handleLeftTodos(calcLeftTodos(category));
   };
