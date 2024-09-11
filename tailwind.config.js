@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily:{
+        nunitosans:['Nunito Sans', 'sans-serif'],
+      },
       colors: {
         'warning-color': '#e20807',
         'app-bg' : 'rgb(245, 236, 227)',
