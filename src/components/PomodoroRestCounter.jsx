@@ -112,7 +112,7 @@ function PomodoroRestCounter(props) {
               <span className={`md:hidden font-thin text-rest-counter-text`}>
                 :
               </span>
-              <span className={`font-normal text-rest-counter-text`}>
+              <span className={`font-thin text-rest-counter-text`}>
                 {rest.seconds < 10 ? `0${rest.seconds}` : rest.seconds}
               </span>
             </div>

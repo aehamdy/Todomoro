@@ -112,7 +112,7 @@ function OtherButtons(props) {
   );
 
   return (
-    <div className="flex justify-evenly">
+    <div className="flex justify-evenly my-6">
       <button
         type="button"
         onClick={onStopClick}

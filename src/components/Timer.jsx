@@ -180,7 +180,11 @@ function Timer() {
         </div>
       )}
 
-      {isTimerFinished && <div className="p-1 text-red-500">TIME'S UP!</div>}
+      {isTimerFinished && (
+        <div className="p-1 font-semibold text-xl text-red-500 animate-bounce">
+          TIME'S UP!
+        </div>
+      )}
       {isTimerRunning && (
         <div className="flex justify-evenly items-center">
           <TimerCounter timer={timer} onSpeakerClick={onSpeakerClick} />
