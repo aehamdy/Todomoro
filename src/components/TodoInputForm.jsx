@@ -55,7 +55,7 @@ function TodoInputForm(props) {
   return (
     <>
       <section className="flex flex-col">
-        <div className="flex justify-between items-center border-2 border-solid rounded-lg py-2 px-4 mb-2">
+        <div className="flex flex-col items-center md:flex-row md:justify-between md:items-center md:gap-0 border-2 border-solid rounded-lg py-2 px-4 mb-2">
           <div>
             <label htmlFor="taskInput" className="flex items-center relative">
               <input
@@ -74,8 +74,8 @@ function TodoInputForm(props) {
               </span>
             </label>
           </div>
-          <TodoCategoriesDropdown setCategory={setCategory} />
-          <div>
+          <div className="flex justify-between items-center md:justify-center gap-5 mt-5 md:mt-0">
+            <TodoCategoriesDropdown setCategory={setCategory} />
             <button
               type="button"
               onClick={handleClick}
