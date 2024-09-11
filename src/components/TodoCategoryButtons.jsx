@@ -266,7 +266,7 @@ function TodoCategoryButtons(props) {
 
   return (
     <>
-      <section className="flex justify-between gap-2 p-1 mb-2">
+      <section className="categories-scrollbar flex justify-between gap-2 p-1 mb-2 overflow-x-auto">
         {categoryButtons.map((button, i) => (
           <React.Fragment key={i}>
             <label

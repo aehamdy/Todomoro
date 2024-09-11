@@ -3,27 +3,44 @@
 @tailwind utilities;
 
 @layer utilities {
-  .scrollbar::-webkit-scrollbar {
+  .list-scrollbar::-webkit-scrollbar {
     width: 10px;
-    height: 20px;
+    /* height: 6px; */
+  }
+  .categories-scrollbar::-webkit-scrollbar {
+    height: 8px;
   }
 
-  .scrollbar::-webkit-scrollbar-track {
+  .list-scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #f7f4ed;
+    padding: 20px;
+  }
+  .categories-scrollbar::-webkit-scrollbar-track {
     border-radius: 100vh;
     background: #f7f4ed;
     padding: 20px;
   }
 
-  .scrollbar::-webkit-scrollbar-thumb {
+  .list-scrollbar::-webkit-scrollbar-thumb {
     /* background: #e0cbcb; */
     background: whitesmoke;
     border-radius: 100vh;
     border: 2px solid rgb(190, 209, 226, 0.5);
     cursor: pointer;
   }
+  .categories-scrollbar::-webkit-scrollbar-thumb {
+    background: whitesmoke;
+    border-radius: 100vh;
+    border: 2px solid rgb(190, 209, 226, 0.5);
+    cursor: pointer;
+  }
 
-  .scrollbar::-webkit-scrollbar-thumb:hover {
+  .list-scrollbar::-webkit-scrollbar-thumb:hover {
     /* background: #c0a0b9; */
+    background: rgb(190, 209, 226, 0.5);
+  }
+  .categories-scrollbar::-webkit-scrollbar-thumb:hover {
     background: rgb(190, 209, 226, 0.5);
   }
 }
