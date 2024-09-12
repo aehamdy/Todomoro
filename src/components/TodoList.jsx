@@ -1,18 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import Circle from "../../public/circle.svg";
-import TickedCircle from "../../public/circle-tick.svg";
+
 import TrashBin from "../../public/trash-bin.svg";
 import EditIcon from "../../public/edit.svg";
 import { useEffect, useState } from "react";
 import { LOCAL_STORAGE_KEY } from "./TodoApp";
 import TodoEmptyList from "./TodoEmptyList";
 
-const iconSize = 20;
+const categoryIconSize = 20;
+const tickIconSize = 18;
 // const personalIcon = (
 //   <svg
 //     xmlns="http://www.w3.org/2000/svg"
-//     width={iconSize}
+//     width={categoryIconSize}
 //     fill="none"
 //     viewBox="0 0 24 24"
 //   >
@@ -26,7 +26,7 @@ const iconSize = 20;
 //   </svg>
 // );
 // const workIcon = (
-//   <svg xmlns="http://www.w3.org/2000/svg" width={iconSize} viewBox="0 -1 32 32">
+//   <svg xmlns="http://www.w3.org/2000/svg" width={categoryIconSize} viewBox="0 -1 32 32">
 //     <path
 //       fill="rgb(242, 160, 172)"
 //       fillRule="evenodd"
@@ -38,7 +38,7 @@ const iconSize = 20;
 //   <svg
 //     xmlns="http://www.w3.org/2000/svg"
 //     xmlSpace="preserve"
-//     width={iconSize}
+//     width={categoryIconSize}
 //     viewBox="0 0 335.08 335.079"
 //   >
 //     <path
@@ -52,7 +52,7 @@ const iconSize = 20;
 //     xmlns="http://www.w3.org/2000/svg"
 //     xmlSpace="preserve"
 //     id="_x32_"
-//     width={iconSize}
+//     width={categoryIconSize}
 //     fill="rgb(227, 126, 98)"
 //     version="1.1"
 //     viewBox="0 0 512 512"
@@ -71,7 +71,7 @@ const iconSize = 20;
 const personalIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={iconSize}
+    width={categoryIconSize}
     fill="none"
     viewBox="0 0 24 24"
   >
@@ -88,7 +88,7 @@ const personalIcon = (
 const workIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={iconSize}
+    width={categoryIconSize}
     fill="none"
     viewBox="0 0 24 24"
   >
@@ -115,7 +115,7 @@ const workIcon = (
 const studyIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={iconSize}
+    width={categoryIconSize}
     fill="none"
     viewBox="0 0 24 24"
   >
@@ -140,7 +140,7 @@ const studyIcon = (
 const otherIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={iconSize}
+    width={categoryIconSize}
     fill="none"
     viewBox="0 0 24 24"
   >
@@ -160,6 +160,47 @@ const otherIcon = (
       strokeLinejoin="round"
       strokeWidth="1.5"
       d="M10.55 9.23h3.33M9.72 6.23h5"
+    />
+  </svg>
+);
+
+const dashIcon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={tickIconSize}
+    fill="none"
+    viewBox="0 0 24 24"
+  >
+    <path
+      stroke="#292D32"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.5"
+      d="M6 12h12"
+    />
+  </svg>
+);
+
+const tickedCircle = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={tickIconSize}
+    fill="none"
+    viewBox="0 0 24 24"
+  >
+    <path
+      stroke="#292D32"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.5"
+      d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10Z"
+    />
+    <path
+      stroke="#292D32"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.5"
+      d="m7.75 12 2.83 2.83 5.67-5.66"
     />
   </svg>
 );
@@ -303,13 +344,9 @@ function TodoList(props) {
               }}
             >
               <div className="flex justify-between items-center gap 4">
-                <img
-                  className="me-2 fill-blue-500"
-                  src={!todo.isChecked ? Circle : TickedCircle}
-                  alt="taskCircle"
-                  width="17"
-                  height="17"
-                />
+                <span className="me-2">
+                  {!todo.isChecked ? dashIcon : tickedCircle}
+                </span>
                 {editTaskId === todo.id ? (
                   <input
                     type="text"
