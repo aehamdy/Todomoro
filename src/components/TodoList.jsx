@@ -283,7 +283,11 @@ function TodoList(props) {
                   className="cursor-pointer"
                   onClick={(e) => handleDeletion(e, todo.id)}
                 >
-                  <TodoIcon icon="trashbinIcon" />
+                  {!todo.isChecked ? (
+                    <TodoIcon icon="trashbinIcon" />
+                  ) : (
+                    <TodoIcon icon="grayTrashBinIcon" />
+                  )}
                 </span>
               </div>
             </li>
