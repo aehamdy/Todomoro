@@ -204,7 +204,7 @@ const tickedCircleIcon = (
 );
 
 const trashBinIcon = (
-  <div className="hover:stroke-red-500 cursor-pointer">
+  <div className="cursor-pointer">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={tickIconSize}
@@ -413,12 +413,14 @@ function TodoList(props) {
               </div>
 
               <div className="flex gap-3">
-                <span
-                  className="cursor-pointer"
-                  onClick={(e) => handleEdit(e, todo.id)}
-                >
-                  {editIcon}
-                </span>
+                {!todo.isChecked && (
+                  <span
+                    className="cursor-pointer"
+                    onClick={(e) => handleEdit(e, todo.id)}
+                  >
+                    {editIcon}
+                  </span>
+                )}
                 <span
                   className="cursor-pointer"
                   onClick={(e) => handleDeletion(e, todo.id)}
