@@ -48,6 +48,7 @@ function PomodoroTimer() {
           <PomodoroCounter
             cycles={cycles}
             onStartSessionRef={onStartSessionRef}
+            isSessionRunning={isSessionRunning}
             setIsSessionFinished={setIsSessionFinished}
           />
         )}

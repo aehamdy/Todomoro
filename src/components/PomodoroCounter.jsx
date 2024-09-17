@@ -9,7 +9,8 @@ import CountersMessage from "./CountersMessage";
 const sessionDuration = 25; // 25 minutes per session
 
 function PomodoroCounter(props) {
-  const { cycles, setIsSessionFinished, onStartSessionRef } = props;
+  const { cycles, setIsSessionFinished, onStartSessionRef, isSessionRunning } =
+    props;
 
   const [inputValue, setInputValue] = useState({
     minutes: 0,
@@ -95,10 +96,12 @@ function PomodoroCounter(props) {
 
   return (
     <div>
-      <CountersMessage
-        message="Get Things Done"
-        styleClass="text-normal text-xl text-red-500 animate-pulse"
-      />
+      {isSessionRunning && (
+        <CountersMessage
+          message="Get Things Done"
+          styleClass="text-normal text-xl text-red-500 animate-pulse"
+        />
+      )}
       <div className="flex md:gap-2 items-center">
         <div className="flex md:flex-col items-center gap-1 text-8xl select-none">
           <span className={`font-semibold text-counter-text`}>
