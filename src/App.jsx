@@ -15,7 +15,7 @@ function App() {
 export default App;
 
 /**
- # TODOS: Todod-List-lets acheive targets
+ # TODOS: Todo-List-lets achieve targets
  # [x] form input
  # [x] adding button
  # [x] validate inserted input 
@@ -40,11 +40,9 @@ export default App;
  # [x] display timer and start button when cycle is selected 
  # [x] Create two buttons to select whether PomodoroApp or NormalCounter
  # [x] hide cycle selector and start button while timer is running
+ # [x] show/hide Clear Completed button depending on checked todos
  # [ ] add pomodoro session/rest session finish sound
  # [ ] button to hide all checked todos
- # [ ] show/hide Clear Completed button depending on checked todos
- # [ ] add keyboard accessebility to input field
- # [ ] clear all checked todos of the selected category button
 
 
 

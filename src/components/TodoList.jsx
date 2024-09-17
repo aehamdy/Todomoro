@@ -1,8 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 
-import TrashBin from "../../public/trash-bin.svg";
-import EditIcon from "../../public/edit.svg";
 import { useEffect, useState } from "react";
 import { LOCAL_STORAGE_KEY } from "./TodoApp";
 import TodoEmptyList from "./TodoEmptyList";
@@ -378,6 +376,7 @@ function TodoList(props) {
               className="flex justify-between items-center hover:shadow-md hover:bg-todo-bg-hover duration-short rounded-lg text-xl text-black bg-todo-bg py-2 px-3 mb-2 last:mb-0 cursor-pointer"
               style={{
                 textDecoration: todo.isChecked ? "line-through" : "none",
+                color: todo.isChecked && "#928e85",
                 backgroundColor:
                   todo.isChecked && todo.category === "personal"
                     ? "rgb(203, 161, 201, .3)"
