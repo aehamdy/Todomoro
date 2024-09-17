@@ -280,6 +280,7 @@ function TodoCategoryButtons(props) {
     }
 
     handleLeftTodos(calcLeftTodos(category));
+    handleRemainTodos(category);
   };
 
   const categoryButtons = [

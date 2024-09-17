@@ -4,6 +4,7 @@ import tickSound from "../sounds/pomodoro-tick-sound.mp3";
 
 import { useEffect, useRef, useState } from "react";
 import Speaker from "./Speaker";
+import CountersMessage from "./CountersMessage";
 
 const sessionDuration = 25; // 25 minutes per session
 

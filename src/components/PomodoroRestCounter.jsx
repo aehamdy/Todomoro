@@ -4,6 +4,7 @@ import restSound from "../sounds/pomodoro-rest-tick-sound.mp3";
 import finishSound from "../sounds/finish-sound.mp3";
 import { useEffect, useRef, useState } from "react";
 import Speaker from "./Speaker";
+import CountersMessage from "./CountersMessage";
 
 function PomodoroRestCounter(props) {
   const { cycles, isSessionFinished, setIsSessionFinished } = props;
