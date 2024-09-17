@@ -99,9 +99,6 @@ function PomodoroCounter(props) {
         message="Get Things Done"
         styleClass="text-normal text-xl text-red-500 animate-pulse"
       />
-      {/* <p className="text-normal text-xl text-red-500 animate-pulse">
-        Get Things Done
-      </p> */}
       <div className="flex md:gap-2 items-center">
         <div className="flex md:flex-col items-center gap-1 text-8xl select-none">
           <span className={`font-semibold text-counter-text`}>

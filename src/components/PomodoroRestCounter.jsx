@@ -89,18 +89,18 @@ function PomodoroRestCounter(props) {
     <div>
       {!isRestFinished && (
         <div>
-          <p className="text-bold text-lg text-teal-600">
-            Relax, It's Break Time
-          </p>
-          <p
-            className={`${
+          <CountersMessage
+            message="Relax, It's Break Time"
+            styleClass="text-bold text-lg text-teal-600"
+          />
+          <CountersMessage
+            message="Pause and Recharge"
+            styleClass={`${
               !isRestFinished
                 ? "font-normal text-xl text-teal-600 animate-pulse"
                 : ""
             }`}
-          >
-            Pause and Recharge
-          </p>
+          />
         </div>
       )}
       <div>
