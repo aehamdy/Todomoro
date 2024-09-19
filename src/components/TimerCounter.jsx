@@ -3,16 +3,9 @@
 function TimerCounter(props) {
   const { timer } = props;
 
-  // const textColor = "#F98315";
-  // const textColor = "#F27108";
-  // const textColor = "#F1BD78";
-  // const textColor = "#C8C0F0";
-  // const textColor = "#71b1ee";
   const textColor = "#739ab9";
-  // const textColor = "#FFC0A5";
 
   return (
-    // <div className="flex justify-evenly items-center">
     <div className="flex md:flex-col items-center gap-1 text-8xl select-none">
       <div className="font-semibold" style={{ color: textColor }}>
         {timer.minutes < 10 ? `0${timer.minutes}` : timer.minutes}{" "}
@@ -26,7 +19,6 @@ function TimerCounter(props) {
         {timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}
       </div>
     </div>
-    // </div>
   );
 }
 

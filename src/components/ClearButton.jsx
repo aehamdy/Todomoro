@@ -25,7 +25,7 @@ function ClearButton(props) {
       <button
         type="button"
         onClick={handleClear}
-        className="appearance-none text-warning-color hover:underline"
+        className="appearance-none text-warning-color hover:underline select-none"
       >
         Clear completed
       </button>

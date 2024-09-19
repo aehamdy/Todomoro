@@ -2,13 +2,11 @@
 import { useState } from "react";
 
 function Speaker(props) {
-  const { toggleSound, color } = props;
+  const { toggleSound } = props;
   const [isSpeakerOn, setIsSpeakerOn] = useState(true);
 
   const iconSize = 30;
-  // const iconColor = "#304261";
 
-  // const speakerOn = (
   //   <svg
   //     xmlns="http://www.w3.org/2000/svg"
   //     width={iconSize}

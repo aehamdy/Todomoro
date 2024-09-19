@@ -4,7 +4,6 @@ import TodoApp from "./components/TodoApp";
 
 function App() {
   return (
-    // <main className="flex flex-col md:flex-row md:justify-between md:gap-10 bg-app-bg py-9 px-8 rounded-3xl">
     <main className="font-nunitosans grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-6 bg-app-bg py-9 px-8 rounded-3xl">
       <Counters />
       <TodoApp className="bg-app-bg" />
