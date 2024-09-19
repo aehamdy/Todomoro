@@ -17,7 +17,7 @@ const arrowIcon = (
 
 function Home() {
   return (
-    <section className="text-black">
+    <section className="flex flex-col items-center gap-3 text-black bg-app-bg py-9 px-8 rounded-3xl">
       <h3>Welcome to</h3>
       <h2>Todomoro App</h2>
       {/* <p>

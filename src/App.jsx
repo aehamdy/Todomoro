@@ -1,15 +1,29 @@
 import "./App.css";
 import Counters from "./components/Counters";
-import Home from "./components/Home";
+import Home from "./pages/Home";
 import TodoApp from "./components/TodoApp";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Todomoro from "./pages/Todomoro";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/app",
+    element: <Todomoro />,
+  },
+]);
 
 function App() {
   return (
-    <main className="font-nunitosans grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-6 bg-app-bg py-9 px-8 rounded-3xl">
-      {/* <Counters />
-      <TodoApp className="bg-app-bg" /> */}
-      <Home />
-    </main>
+    // <main className="font-nunitosans grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-6 bg-app-bg py-9 px-8 rounded-3xl">
+    //   {/* <Counters />
+    //   <TodoApp className="bg-app-bg" /> */}
+    //   {/* <Home /> */}
+    // </main>
+    <RouterProvider router={router} />
   );
 }
 
