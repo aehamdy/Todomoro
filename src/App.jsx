@@ -1,12 +1,14 @@
 import "./App.css";
 import Counters from "./components/Counters";
+import Home from "./components/Home";
 import TodoApp from "./components/TodoApp";
 
 function App() {
   return (
     <main className="font-nunitosans grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-6 bg-app-bg py-9 px-8 rounded-3xl">
-      <Counters />
-      <TodoApp className="bg-app-bg" />
+      {/* <Counters />
+      <TodoApp className="bg-app-bg" /> */}
+      <Home />
     </main>
   );
 }
@@ -42,13 +44,4 @@ export default App;
  # [x] show/hide Clear Completed button depending on checked todos
  # [ ] add pomodoro session/rest session finish sound
  # [ ] button to hide all checked todos
-
-
-
- Colors:
-   Headings Color => rgb(32, 27, 23)
-   Normal Fonts Color => rgb(110, 105, 101)
-   Categories Colors => rgb(255, 161, 11)   rgb(254, 206, 72)   rgb(255, 107, 1)   rgb(255, 169, 74)   rgb(255, 107, 79)   rgb(255, 158, 142)
-   Theme icon color => rgb(116, 107, 98)   rgb(179, 175, 166)   rgb(231, 231, 229)   
-   
- */
+**/
