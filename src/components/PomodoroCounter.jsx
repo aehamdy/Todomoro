@@ -2,6 +2,7 @@
 
 import tickSound from "../sounds/timer-tick-sound.mp3";
 import warningSound from "../sounds/pomodoro-tick-sound.mp3";
+import finishSound from "../sounds/finish-sound.mp3";
 
 import { useEffect, useRef, useState } from "react";
 import Speaker from "./Speaker";
@@ -20,6 +21,7 @@ function PomodoroCounter(props) {
   const timerRef = useRef(null);
   const tickSoundRef = useRef(new Audio(tickSound));
   const warningSoundRef = useRef(new Audio(warningSound));
+  const finishSoundRef = useRef(new Audio(finishSound));
 
   const playSound = () => {
     tickSoundRef.current.play();
@@ -27,6 +29,10 @@ function PomodoroCounter(props) {
 
   const playWarningSound = () => {
     warningSoundRef.current.play();
+  };
+
+  const playFinishSound = () => {
+    finishSoundRef.current.play();
   };
 
   useEffect(() => {
@@ -37,15 +43,15 @@ function PomodoroCounter(props) {
   }, [onStartSessionRef]);
 
   const onStartSession = () => {
-    // const duration = sessionDuration;
+    const duration = sessionDuration;
 
     setIsSessionFinished(false);
 
     setInputValue({
-      // minutes: cycles * duration,
-      // seconds: 0,
-      minutes: 0,
-      seconds: 10,
+      minutes: cycles * duration,
+      seconds: 0,
+      // minutes: 0,
+      // seconds: 10,
     });
 
     // Clear previous interval if any
@@ -61,12 +67,15 @@ function PomodoroCounter(props) {
             setIsSessionFinished(true);
           }, 0);
           return { minutes: 0, seconds: 0 };
-        } else if (seconds <= 6 && seconds > 0) {
+        } else if (minutes === 0 && seconds <= 1) {
+          playFinishSound();
+          return { minutes: 0, seconds: 0 };
+        } else if (minutes === 0 && seconds <= 6 && seconds > 0) {
           playWarningSound();
           console.log("Hello there");
           return { minutes: minutes, seconds: seconds - 1 };
-        } else if (seconds === 0) {
-          // playSound();
+        } else if (minutes > 0 && seconds === 0) {
+          playSound();
           return { minutes: minutes - 1, seconds: 59 };
         } else {
           playSound();
@@ -81,6 +90,8 @@ function PomodoroCounter(props) {
     setInputValue({
       minutes: cycles * duration,
       seconds: 0,
+      // minutes: 0,
+      // seconds: 10,
     });
   }, [cycles]);
 

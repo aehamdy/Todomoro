@@ -7,7 +7,7 @@ import Speaker from "./Speaker";
 import CountersMessage from "./CountersMessage";
 
 function PomodoroRestCounter(props) {
-  const { cycles, isSessionFinished, setIsSessionFinished } = props;
+  const { cycles, isSessionFinished } = props;
   const [rest, setRest] = useState({
     minutes: 0,
     seconds: 0,
@@ -22,10 +22,10 @@ function PomodoroRestCounter(props) {
 
     setRest((prevValue) => ({
       ...prevValue,
-      // minutes: cycles * restTime,
-      // seconds: 0,
-      minutes: 0,
-      seconds: 20,
+      minutes: cycles * restTime,
+      seconds: 0,
+      // minutes: 0,
+      // seconds: 20,
     }));
 
     const playSound = () => {
@@ -76,14 +76,14 @@ function PomodoroRestCounter(props) {
     const restTime = 5;
     setRest((prevValue) => ({
       ...prevValue,
-      // minutes: cycles * restTime,
-      minutes: 0,
-      seconds: 3,
+      minutes: cycles * restTime,
+      // minutes: 0,
+      // seconds: 3,
     }));
   }, [cycles]);
 
-  const textColor = "#02A17A";
-  const bgColor = "#7be382";
+  // const textColor = "#02A17A";
+  // const bgColor = "#7be382";
 
   return (
     <div>
