@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 
-import tickSound from "../sounds/pomodoro-tick-sound.mp3";
+import tickSound from "../sounds/timer-tick-sound.mp3";
+import warningSound from "../sounds/pomodoro-tick-sound.mp3";
 
 import { useEffect, useRef, useState } from "react";
 import Speaker from "./Speaker";
@@ -18,9 +19,14 @@ function PomodoroCounter(props) {
   });
   const timerRef = useRef(null);
   const tickSoundRef = useRef(new Audio(tickSound));
+  const warningSoundRef = useRef(new Audio(warningSound));
 
   const playSound = () => {
     tickSoundRef.current.play();
+  };
+
+  const playWarningSound = () => {
+    warningSoundRef.current.play();
   };
 
   useEffect(() => {
@@ -31,7 +37,7 @@ function PomodoroCounter(props) {
   }, [onStartSessionRef]);
 
   const onStartSession = () => {
-    const duration = sessionDuration;
+    // const duration = sessionDuration;
 
     setIsSessionFinished(false);
 
@@ -39,7 +45,7 @@ function PomodoroCounter(props) {
       // minutes: cycles * duration,
       // seconds: 0,
       minutes: 0,
-      seconds: 3,
+      seconds: 10,
     });
 
     // Clear previous interval if any
@@ -55,8 +61,12 @@ function PomodoroCounter(props) {
             setIsSessionFinished(true);
           }, 0);
           return { minutes: 0, seconds: 0 };
+        } else if (seconds <= 6 && seconds > 0) {
+          playWarningSound();
+          console.log("Hello there");
+          return { minutes: minutes, seconds: seconds - 1 };
         } else if (seconds === 0) {
-          playSound();
+          // playSound();
           return { minutes: minutes - 1, seconds: 59 };
         } else {
           playSound();
