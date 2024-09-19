@@ -54,7 +54,7 @@ function TodoInputForm(props) {
 
   return (
     <>
-      <section className="flex flex-col">
+      <section className="flex flex-col select-none">
         <div className="flex flex-col items-center lg:flex-row lg:justify-between lg:items-center md:gap-4 lg:gap-0 border-2 border-solid rounded-lg py-2 px-4 mb-2">
           <div>
             <label htmlFor="taskInput" className="flex items-center relative">

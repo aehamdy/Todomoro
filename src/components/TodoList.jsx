@@ -258,7 +258,7 @@ function TodoList(props) {
                     className="bg-slate-200 rounded-md ps-2"
                     value={newValue}
                     onChange={handleEditChange}
-                    onClick={(e) => handleTaskCheck(e, todo.id)}
+                    // onClick={(e) => handleTaskCheck(e, todo.id)}
                     onBlur={(e) => handleEditSave(e, todo.id)}
                   />
                 ) : (
