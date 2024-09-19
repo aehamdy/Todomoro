@@ -255,10 +255,10 @@ function TodoList(props) {
                 {editTaskId === todo.id ? (
                   <input
                     type="text"
-                    className="bg-slate-200 rounded-md ps-2"
+                    className="bg-slate-200 rounded-md ps-2 focus:outline-none"
                     value={newValue}
                     onChange={handleEditChange}
-                    // onClick={(e) => handleTaskCheck(e, todo.id)}
+                    onClick={(e) => e.stopPropagation()}
                     onBlur={(e) => handleEditSave(e, todo.id)}
                   />
                 ) : (
