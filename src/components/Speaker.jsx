@@ -6,7 +6,7 @@ function Speaker(props) {
   const [isSpeakerOn, setIsSpeakerOn] = useState(true);
 
   const iconSize = 30;
-  const iconColor = "#304261";
+  // const iconColor = "#304261";
 
   // const speakerOn = (
   //   <svg
@@ -43,7 +43,7 @@ function Speaker(props) {
   //   </svg>
   // );
 
-  const speakerOn = (
+  const speakerOnIcon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={iconSize}
@@ -64,7 +64,7 @@ function Speaker(props) {
       />
     </svg>
   );
-  const speakerOff = (
+  const speakerOffIcon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={iconSize}
@@ -81,7 +81,7 @@ function Speaker(props) {
     </svg>
   );
 
-  const speaker = isSpeakerOn ? speakerOn : speakerOff;
+  const speaker = isSpeakerOn ? speakerOnIcon : speakerOffIcon;
 
   const toggleSpeaker = () => {
     setIsSpeakerOn((prevValue) => !prevValue);

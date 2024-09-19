@@ -7,6 +7,7 @@ import TimerButton from "./TimerButton";
 import TimerError from "./TimerError";
 import OtherButtons from "./OtherButtons";
 import TimerCounter from "./TimerCounter";
+import Speaker from "./Speaker";
 
 const iconSize = 30;
 const iconColor = "#FFC0A5";
@@ -184,7 +185,7 @@ function Timer() {
     }, 200);
   };
 
-  const onSpeakerClick = () => {
+  const toggleSound = () => {
     setIsSpeakerOn((prev) => !prev);
     if (isSpeakerOn) {
       audioRef.current.muted = true;
@@ -225,10 +226,8 @@ function Timer() {
       )}
       {isTimerRunning && (
         <div className="flex justify-evenly items-center">
-          <TimerCounter timer={timer} onSpeakerClick={onSpeakerClick} />
-          <div onClick={onSpeakerClick} className="speaker-icon cursor-pointer">
-            {speaker}
-          </div>
+          <TimerCounter timer={timer} />
+          <Speaker toggleSound={toggleSound} />
         </div>
       )}
     </section>
