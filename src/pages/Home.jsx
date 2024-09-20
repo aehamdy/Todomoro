@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const arrowIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +29,9 @@ function Home() {
       <p>The perfect app for your work, study, personal life and more...</p>
       <div className="flex">
         <input type="text" className="" placeholder="Please insert your name" />
-        <span className="cursor-pointer">{arrowIcon}</span>
+        <Link to="/app" className="flex gap-1 px-2">
+          Get Started <span>{arrowIcon}</span>
+        </Link>
       </div>
     </section>
   );
