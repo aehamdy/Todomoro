@@ -18,13 +18,13 @@ const arrowIcon = (
   </svg>
 );
 
-const TodomoroUsername = "TodomoroUsername";
+export const TODOMORO_USERNAME = "TodomoroUsername";
 
 function Home() {
   const [username, setUsername] = useState("");
 
   const save = (name) => {
-    localStorage.setItem(TodomoroUsername, name);
+    localStorage.setItem(TODOMORO_USERNAME, name);
   };
 
   const handleInputChange = (e) => {
