@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+export const TODOMORO_USERNAME = "TodomoroUsername";
+
 const arrowIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -18,8 +20,6 @@ const arrowIcon = (
   </svg>
 );
 
-export const TODOMORO_USERNAME = "TodomoroUsername";
-
 function Home() {
   const [username, setUsername] = useState("");
 
@@ -27,12 +27,24 @@ function Home() {
     localStorage.setItem(TODOMORO_USERNAME, name);
   };
 
+  const formatUsername = (value) => {
+    const name = value.toLowerCase();
+    const splittedName = name.split(" ");
+    const endValue = splittedName.map(
+      (name) => name.charAt(0).toUpperCase() + name.slice(1)
+    );
+    const fullName = endValue.join(" ");
+    return fullName;
+  };
+
   const handleInputChange = (e) => {
     setUsername(e.target.value);
   };
 
   const handleInputBlur = () => {
-    save(username);
+    const name = formatUsername(username);
+
+    save(name);
   };
 
   return (
