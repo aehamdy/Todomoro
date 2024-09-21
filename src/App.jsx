@@ -58,4 +58,10 @@ export default App;
  # [x] show/hide Clear Completed button depending on checked todos
  # [ ] add pomodoro session/rest session finish sound
  # [ ] button to hide all checked todos
+ 
+ # [ ] user insert his name
+ # [ ] save the user's name at local storage
+ # [ ] display the name at the header component
+ # [ ] validate the inserted name on blurring input field
+ # [ ] display a proper error message 
 **/
