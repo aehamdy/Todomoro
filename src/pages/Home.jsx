@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const arrowIcon = (
@@ -18,6 +19,12 @@ const arrowIcon = (
 );
 
 function Home() {
+  const [username, setUsername] = useState("");
+
+  const handleInputChange = (e) => {
+    setUsername(e.target.value);
+  };
+
   return (
     <section className="flex flex-col items-center gap-3 text-black bg-app-bg py-9 px-8 rounded-3xl">
       <h3>Welcome to</h3>
@@ -28,7 +35,13 @@ function Home() {
       </p> */}
       <p>The perfect app for your work, study, personal life and more...</p>
       <div className="flex">
-        <input type="text" className="" placeholder="Please insert your name" />
+        <input
+          type="text"
+          value={username}
+          onChange={handleInputChange}
+          className="text-white"
+          placeholder="Please insert your name"
+        />
         <Link to="/app" className="flex gap-1 px-2">
           Get Started <span>{arrowIcon}</span>
         </Link>
