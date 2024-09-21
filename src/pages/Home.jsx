@@ -18,11 +18,21 @@ const arrowIcon = (
   </svg>
 );
 
+const TodomoroUsername = "TodomoroUsername";
+
 function Home() {
   const [username, setUsername] = useState("");
 
+  const save = (name) => {
+    localStorage.setItem(TodomoroUsername, name);
+  };
+
   const handleInputChange = (e) => {
     setUsername(e.target.value);
+  };
+
+  const handleInputBlur = () => {
+    save(username);
   };
 
   return (
@@ -39,6 +49,7 @@ function Home() {
           type="text"
           value={username}
           onChange={handleInputChange}
+          onBlur={handleInputBlur}
           className="text-white"
           placeholder="Please insert your name"
         />
