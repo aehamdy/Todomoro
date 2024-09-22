@@ -90,7 +90,10 @@ function Home() {
         </div>
 
         {isUsernameValid && (
-          <Link to="/app" className="flex gap-1 px-2 rounded-lg">
+          <Link
+            to="/app"
+            className="flex gap-1 p-2 rounded-lg focus:outline outline-blue-500 outline-2"
+          >
             Get Started <span>{arrowIcon}</span>
           </Link>
         )}
