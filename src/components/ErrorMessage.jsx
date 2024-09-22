@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 function ErrorMessage({ message }) {
-  return <p>{message}</p>;
+  return <p className="text-red-500">{message}</p>;
 }
 
 export default ErrorMessage;

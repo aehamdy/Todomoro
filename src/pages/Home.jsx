@@ -51,7 +51,7 @@ function Home() {
     const value = e.target.value;
     const trimmedValue = value.trim();
     const result = validateInputField(trimmedValue);
-    !result && setError("Your name cannot contain any digit...");
+    !result && setError("Your name cannot contain digits...");
     trimmedValue.length < 3 || !result
       ? setIsUsernameValid(false)
       : setIsUsernameValid(true);
@@ -61,7 +61,8 @@ function Home() {
   const handleInputBlur = () => {
     const name = formatUsername(username);
     const value = name.trim().split("");
-    value.length < 3 && setError("Oopps, short names are not allowed");
+    value.length < 3 &&
+      setError("Oops! Enter a name with at least 3 characters");
     // if (value.some((val) => /-?\d/.test(val))) {
     //   setError("Name must be doesn't include numbers!");
     // }
