@@ -59,7 +59,7 @@ function Home() {
     setUsername(value);
   };
 
-  const handleButtonClick = () => {
+  const submitUsername = () => {
     const name = formatUsername(username);
     const value = name.trim().split("");
     value.length < 3 &&
@@ -69,7 +69,7 @@ function Home() {
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && isUsernameValid) {
-      handleButtonClick();
+      submitUsername();
       navigate("/app");
     }
   };
@@ -89,7 +89,7 @@ function Home() {
   }, [navigate]);
 
   return (
-    <section className="font-patrickhand flex flex-col items-center gap-3 text-black bg-app-bg py-9 px-8 rounded-3xl">
+    <section className="font-patrickhand flex flex-col items-center gap-3 text-xl text-black bg-app-bg py-9 px-8 rounded-3xl">
       <h3>Welcome to</h3>
       <h2 className="font-leckerlione text-4xl">Todomoro App</h2>
       {/* <h2 className="font-patrickhand text-4xl">Todomoro App</h2> */}
@@ -113,7 +113,7 @@ function Home() {
         {isUsernameValid && (
           <Link
             to="/app"
-            onClick={handleButtonClick}
+            onClick={submitUsername}
             className="flex gap-1 p-2 rounded-lg border border-blue-500 focus:outline outline-blue-500 outline-2"
           >
             Get Started <span>{arrowIcon}</span>
