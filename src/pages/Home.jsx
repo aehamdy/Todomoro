@@ -67,6 +67,13 @@ function Home() {
     save(name);
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter" && isUsernameValid) {
+      handleButtonClick();
+      navigate("/app");
+    }
+  };
+
   const checkLocalStorageUsername = () => {
     const value = localStorage.getItem(TODOMORO_USERNAME);
     return value;
@@ -97,6 +104,7 @@ function Home() {
             type="text"
             value={username}
             onChange={handleInputChange}
+            onKeyDown={handleKeyPress}
             className=" block w-full p-2.5 text-lg text-gray-900 bg-transparent border border-gray-300 rounded-lg outline-none focus:ring-blue-500 focus:border-blue-500"
             placeholder="Enter at least three characters name"
           />
