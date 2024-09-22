@@ -48,10 +48,11 @@ function Home() {
 
   const handleInputChange = (e) => {
     setError("");
-    const value = e.target.value.trim();
-    const result = validateInputField(value);
+    const value = e.target.value;
+    const trimmedValue = value.trim();
+    const result = validateInputField(trimmedValue);
     !result && setError("Your name cannot contain any digit...");
-    value.length < 3 || !result
+    trimmedValue.length < 3 || !result
       ? setIsUsernameValid(false)
       : setIsUsernameValid(true);
     setUsername(value);
@@ -76,7 +77,7 @@ function Home() {
         and more...
       </p> */}
       <p>The perfect app for your work, study, personal life and more...</p>
-      <div className="flex justify-center flex-wrap items-center gap-4">
+      <div className="w-full flex justify-center flex-wrap items-center gap-4">
         <div className="relative">
           <input
             type="text"
@@ -84,7 +85,7 @@ function Home() {
             onChange={handleInputChange}
             onBlur={handleInputBlur}
             className=" block w-full p-2.5 text-gray-900 bg-transparent border border-gray-300 text-sm rounded-lg outline-none focus:ring-blue-500 focus:border-blue-500"
-            placeholder="Three chars. without digits"
+            placeholder="Enter at least three characters name"
           />
         </div>
 
