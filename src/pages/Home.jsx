@@ -59,7 +59,7 @@ function Home() {
     setUsername(value);
   };
 
-  const handleInputBlur = () => {
+  const handleButtonClick = () => {
     const name = formatUsername(username);
     const value = name.trim().split("");
     value.length < 3 &&
@@ -97,7 +97,6 @@ function Home() {
             type="text"
             value={username}
             onChange={handleInputChange}
-            onBlur={handleInputBlur}
             className=" block w-full p-2.5 text-gray-900 bg-transparent border border-gray-300 text-sm rounded-lg outline-none focus:ring-blue-500 focus:border-blue-500"
             placeholder="Enter at least three characters name"
           />
@@ -106,6 +105,7 @@ function Home() {
         {isUsernameValid && (
           <Link
             to="/app"
+            onClick={handleButtonClick}
             className="flex gap-1 p-2 rounded-lg border border-blue-500 focus:outline outline-blue-500 outline-2"
           >
             Get Started <span>{arrowIcon}</span>
