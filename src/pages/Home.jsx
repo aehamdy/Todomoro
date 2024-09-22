@@ -23,6 +23,7 @@ const arrowIcon = (
 
 function Home() {
   const [username, setUsername] = useState("");
+  const [isUsernameValid, setIsUsernameValid] = useState(false);
   const [error, setError] = useState("");
 
   const save = (name) => {
@@ -40,17 +41,19 @@ function Home() {
   };
 
   const validateInputField = (text) => {
-    const value = text.trim().split("");
+    const value = text.split("");
     const result = !value.some((val) => /-?\d/.test(val));
-    console.log(result);
     return result;
   };
 
   const handleInputChange = (e) => {
     setError("");
-    const value = e.target.value;
+    const value = e.target.value.trim();
     const result = validateInputField(value);
     !result && setError("Your name cannot contain any digit...");
+    value.length < 3 || !result
+      ? setIsUsernameValid(false)
+      : setIsUsernameValid(true);
     setUsername(value);
   };
 
@@ -58,9 +61,9 @@ function Home() {
     const name = formatUsername(username);
     const value = name.trim().split("");
     value.length < 3 && setError("Oopps, short names are not allowed");
-    if (value.some((val) => /-?\d/.test(val))) {
-      setError("Name must be doesn't include numbers!");
-    }
+    // if (value.some((val) => /-?\d/.test(val))) {
+    //   setError("Name must be doesn't include numbers!");
+    // }
     save(name);
   };
 
@@ -73,18 +76,23 @@ function Home() {
         and more...
       </p> */}
       <p>The perfect app for your work, study, personal life and more...</p>
-      <div className="flex">
-        <input
-          type="text"
-          value={username}
-          onChange={handleInputChange}
-          onBlur={handleInputBlur}
-          className="text-white"
-          placeholder="Please insert your name"
-        />
-        <Link to="/app" className="flex gap-1 px-2">
-          Get Started <span>{arrowIcon}</span>
-        </Link>
+      <div className="flex justify-center flex-wrap items-center gap-4">
+        <div className="relative">
+          <input
+            type="text"
+            value={username}
+            onChange={handleInputChange}
+            onBlur={handleInputBlur}
+            className=" block w-full p-2.5 text-gray-900 bg-transparent border border-gray-300 text-sm rounded-lg outline-none focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Three chars. without digits"
+          />
+        </div>
+
+        {isUsernameValid && (
+          <Link to="/app" className="flex gap-1 px-2 rounded-lg">
+            Get Started <span>{arrowIcon}</span>
+          </Link>
+        )}
       </div>
       <ErrorMessage message={error} />
     </section>
