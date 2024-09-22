@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import ErrorMessage from "../components/ErrorMessage";
 
 export const TODOMORO_USERNAME = "TodomoroUsername";
@@ -25,6 +25,7 @@ function Home() {
   const [username, setUsername] = useState("");
   const [isUsernameValid, setIsUsernameValid] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const save = (name) => {
     localStorage.setItem(TODOMORO_USERNAME, name);
@@ -63,11 +64,22 @@ function Home() {
     const value = name.trim().split("");
     value.length < 3 &&
       setError("Oops! Enter a name with at least 3 characters");
-    // if (value.some((val) => /-?\d/.test(val))) {
-    //   setError("Name must be doesn't include numbers!");
-    // }
     save(name);
   };
+
+  const checkLocalStorageUsername = () => {
+    const value = localStorage.getItem(TODOMORO_USERNAME);
+    return value;
+  };
+
+  useEffect(() => {
+    const username = checkLocalStorageUsername();
+    console.log(username);
+
+    if (username) {
+      navigate("/app");
+    }
+  }, [navigate]);
 
   return (
     <section className="flex flex-col items-center gap-3 text-black bg-app-bg py-9 px-8 rounded-3xl">
