@@ -8,6 +8,8 @@ export default {
     extend: {
       fontFamily:{
         nunitosans:['Nunito Sans', 'sans-serif'],
+        leckerlione:['Leckerli One', 'sans-serif'],
+        patrickhand:['Patrick Hand', 'sans-serif'],
       },
       colors: {
         'warning-color': '#e20807',

@@ -82,9 +82,10 @@ function Home() {
   }, [navigate]);
 
   return (
-    <section className="flex flex-col items-center gap-3 text-black bg-app-bg py-9 px-8 rounded-3xl">
+    <section className="font-patrickhand flex flex-col items-center gap-3 text-black bg-app-bg py-9 px-8 rounded-3xl">
       <h3>Welcome to</h3>
-      <h2>Todomoro App</h2>
+      <h2 className="font-leckerlione text-4xl">Todomoro App</h2>
+      {/* <h2 className="font-patrickhand text-4xl">Todomoro App</h2> */}
       {/* <p>
         The app that helps you concentrate on your work, study, personal life
         and more...
@@ -105,7 +106,7 @@ function Home() {
         {isUsernameValid && (
           <Link
             to="/app"
-            className="flex gap-1 p-2 rounded-lg focus:outline outline-blue-500 outline-2"
+            className="flex gap-1 p-2 rounded-lg border border-blue-500 focus:outline outline-blue-500 outline-2"
           >
             Get Started <span>{arrowIcon}</span>
           </Link>
