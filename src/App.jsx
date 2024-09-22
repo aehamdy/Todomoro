@@ -55,15 +55,14 @@ export default App;
  # [x] display timer and start button when cycle is selected 
  # [x] Create two buttons to select whether PomodoroApp or NormalCounter
  # [x] hide cycle selector and start button while timer is running
- # [x] show/hide Clear Completed button depending on checked todos
- # [ ] add pomodoro session/rest session finish sound
- # [ ] button to hide all checked todos
-
+ # [x] show/hide Clear Completed button depending on checked todo
+ # [x] add pomodoro session/rest session finish sound
  # [x] user insert his name
  # [x] save the user's name at local storage
  # [x] display the name at the header component
- # [ ] validate the inserted name on blurring input field
- # [ ] activate 'Get Started' button when inserted name is valid
- # [ ] show error underneath input field
- # [ ] display a proper error message 
+ # [x] validate the inserted name on blurring input field
+ # [x] activate 'Get Started' button when inserted name is valid
+ # [x] show error underneath input field
+ # [x] display a proper error message 
+ # [ ] button to hide all checked todos
 **/

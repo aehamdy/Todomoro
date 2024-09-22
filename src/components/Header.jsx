@@ -2,7 +2,8 @@ import { TODOMORO_USERNAME } from "../pages/Home";
 
 function Header() {
   const getUsername = () => {
-    const name = localStorage.getItem(TODOMORO_USERNAME);
+    const value = localStorage.getItem(TODOMORO_USERNAME);
+    const name = value.split(" ")[0];
     return name;
   };
 

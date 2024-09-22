@@ -97,7 +97,7 @@ function Home() {
             type="text"
             value={username}
             onChange={handleInputChange}
-            className=" block w-full p-2.5 text-gray-900 bg-transparent border border-gray-300 text-sm rounded-lg outline-none focus:ring-blue-500 focus:border-blue-500"
+            className=" block w-full p-2.5 text-lg text-gray-900 bg-transparent border border-gray-300 rounded-lg outline-none focus:ring-blue-500 focus:border-blue-500"
             placeholder="Enter at least three characters name"
           />
         </div>
