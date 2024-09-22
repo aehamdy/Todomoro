@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import ErrorMessage from "../components/ErrorMessage";
 
 export const TODOMORO_USERNAME = "TodomoroUsername";
 
@@ -85,7 +86,7 @@ function Home() {
           Get Started <span>{arrowIcon}</span>
         </Link>
       </div>
-      <p>{error}</p>
+      <ErrorMessage message={error} />
     </section>
   );
 }
