@@ -22,6 +22,7 @@ const arrowIcon = (
 
 function Home() {
   const [username, setUsername] = useState("");
+  const [error, setError] = useState("");
 
   const save = (name) => {
     localStorage.setItem(TODOMORO_USERNAME, name);
@@ -37,13 +38,28 @@ function Home() {
     return fullName;
   };
 
+  const validateInputField = (text) => {
+    const value = text.trim().split("");
+    const result = !value.some((val) => /-?\d/.test(val));
+    console.log(result);
+    return result;
+  };
+
   const handleInputChange = (e) => {
-    setUsername(e.target.value);
+    setError("");
+    const value = e.target.value;
+    const result = validateInputField(value);
+    !result && setError("Your name cannot contain any digit...");
+    setUsername(value);
   };
 
   const handleInputBlur = () => {
     const name = formatUsername(username);
-
+    const value = name.trim().split("");
+    value.length < 3 && setError("Oopps, short names are not allowed");
+    if (value.some((val) => /-?\d/.test(val))) {
+      setError("Name must be doesn't include numbers!");
+    }
     save(name);
   };
 
@@ -69,6 +85,7 @@ function Home() {
           Get Started <span>{arrowIcon}</span>
         </Link>
       </div>
+      <p>{error}</p>
     </section>
   );
 }

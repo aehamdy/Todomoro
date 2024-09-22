@@ -63,5 +63,7 @@ export default App;
  # [x] save the user's name at local storage
  # [x] display the name at the header component
  # [ ] validate the inserted name on blurring input field
+ # [ ] activate 'Get Started' button when inserted name is valid
+ # [ ] show error underneath input field
  # [ ] display a proper error message 
 **/
