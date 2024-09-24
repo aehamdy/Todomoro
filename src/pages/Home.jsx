@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import ErrorMessage from "../components/ErrorMessage";
 import GenderSelection from "../components/GenderSelection";
 
-export const TODOMORO_USERNAME = "TodomoroUsername";
+export const TODOMORO_USER = "TodomoroUser";
 
 const arrowIcon = (
   <svg
@@ -23,13 +23,13 @@ const arrowIcon = (
 );
 
 function Home() {
-  const [username, setUsername] = useState("");
+  const [user, setUser] = useState({ name: "", gender: "" });
   const [isUsernameValid, setIsUsernameValid] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const save = (name) => {
-    localStorage.setItem(TODOMORO_USERNAME, name);
+    localStorage.setItem(TODOMORO_USER, JSON.stringify({ name: name }));
   };
 
   const formatUsername = (value) => {
@@ -51,24 +51,29 @@ function Home() {
   const handleInputChange = (e) => {
     setError("");
     const value = e.target.value;
+
     const trimmedValue = value.trim();
+
     const result = validateInputField(trimmedValue);
+
     !result && setError("Your name cannot contain digits...");
+
     trimmedValue.length < 3 || !result
       ? setIsUsernameValid(false)
       : setIsUsernameValid(true);
-    setUsername(value);
+
+    setUser((prevValue) => ({ ...prevValue, name: value }));
   };
 
   const handleInputBlur = (e) => {
     const value = e.target.value;
-    console.log(value);
+
     value.length < 3 &&
       setError("Enter a name with at least three characters.");
   };
 
   const submitUsername = () => {
-    const name = formatUsername(username);
+    const name = formatUsername(user.name);
     const value = name.trim().split("");
     value.length < 3 &&
       setError("Oops! Enter a name with at least 3 characters");
@@ -83,13 +88,12 @@ function Home() {
   };
 
   const checkLocalStorageUsername = () => {
-    const value = localStorage.getItem(TODOMORO_USERNAME);
-    return value;
+    const storedValue = localStorage.getItem(TODOMORO_USER);
+    return storedValue ? JSON.parse(storedValue) : null;
   };
 
   useEffect(() => {
     const username = checkLocalStorageUsername();
-    console.log(username);
 
     if (username) {
       navigate("/app");
@@ -110,7 +114,7 @@ function Home() {
         <div className="relative">
           <input
             type="text"
-            value={username}
+            value={user.name}
             onChange={handleInputChange}
             onBlur={handleInputBlur}
             onKeyDown={handleKeyPress}

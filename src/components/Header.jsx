@@ -1,4 +1,4 @@
-import { TODOMORO_USERNAME } from "../pages/Home";
+import { TODOMORO_USER } from "../pages/Home";
 
 const wavingHandIcon = (
   <svg
@@ -52,8 +52,9 @@ const wavingHandIcon = (
 
 function Header() {
   const getUsername = () => {
-    const value = localStorage.getItem(TODOMORO_USERNAME);
-    const name = value.split(" ")[0];
+    const storedValue = JSON.parse(localStorage.getItem(TODOMORO_USER));
+
+    const name = storedValue ? storedValue.name.split(" ")[0] : null;
     return name;
   };
 
