@@ -55,7 +55,7 @@ function TodoInputForm(props) {
   return (
     <>
       <section className="flex flex-col select-none">
-        <div className="flex flex-col items-center lg:justify-between lg:items-center md:gap-4 lg:gap-0 border-2 border-solid rounded-lg py-2 px-4 mb-2">
+        <div className="flex flex-col items-center lg:justify-between lg:items-center gap-2 md:gap-4 border-2 border-solid rounded-lg py-2 px-4 mb-2">
           <TodoCategoryOptions setCategory={setCategory} />
           <div className="w-full flex justify-around items-center">
             <div>
@@ -76,7 +76,7 @@ function TodoInputForm(props) {
                 </span>
               </label>
             </div>
-            <div className="flex justify-between items-center md:justify-center gap-5 mt-5 md:mt-0">
+            <div className="flex justify-between items-center md:justify-center gap-5 md:mt-0">
               <button
                 type="button"
                 onClick={handleClick}
