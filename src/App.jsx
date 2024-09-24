@@ -64,5 +64,16 @@ export default App;
  # [x] activate 'Get Started' button when inserted name is valid
  # [x] show error underneath input field
  # [x] display a proper error message 
+ # [x] hide play button of Pomdoro app while session is running
+ # [ ] change the todo dropdown list into radio buttons
+ # [ ] merge the todo add button inside the input field
+ # [ ] add gender select at the home page
+ # [ ] display different icons depending on user's gender
+ # [ ] add light/dark theme functionality
+ # [ ] save the selected theme to the local storage
+ # [ ] add time and date underneath todo text
+ # [ ] add line through animation when check/uncheck a todo task
+ # [ ] re-order the order of todo app on mobile screen
  # [ ] button to hide all checked todos
+ # [ ] 
 **/

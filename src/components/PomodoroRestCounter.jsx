@@ -25,7 +25,7 @@ function PomodoroRestCounter(props) {
       minutes: cycles * restTime,
       seconds: 0,
       // minutes: 0,
-      // seconds: 20,
+      // seconds: 10,
     }));
 
     const playSound = () => {
@@ -78,7 +78,7 @@ function PomodoroRestCounter(props) {
       ...prevValue,
       minutes: cycles * restTime,
       // minutes: 0,
-      // seconds: 3,
+      // seconds: 10,
     }));
   }, [cycles]);
 
