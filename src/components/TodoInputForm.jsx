@@ -18,6 +18,12 @@ function TodoInputForm(props) {
     setUserInput("");
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleClick();
+    }
+  };
+
   const handleClick = () => {
     if (userInput.trim()) {
       setInputError(false);
@@ -70,6 +76,7 @@ function TodoInputForm(props) {
                   className="py-1 ps-3 pe-12 h-10 w-80 text-black bg-[#fffafa] border-0 rounded-s-2xl focus:outline-none transition duration-medium caret-black"
                   value={userInput}
                   onChange={handleInputChange}
+                  onKeyDown={handleKeyPress}
                   ref={inputRef}
                 />
                 {/* <span
