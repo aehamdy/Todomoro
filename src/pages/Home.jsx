@@ -59,6 +59,13 @@ function Home() {
     setUsername(value);
   };
 
+  const handleInputBlur = (e) => {
+    const value = e.target.value;
+    console.log(value);
+    value.length < 3 &&
+      setError("Enter a name with at least three characters.");
+  };
+
   const submitUsername = () => {
     const name = formatUsername(username);
     const value = name.trim().split("");
@@ -104,9 +111,10 @@ function Home() {
             type="text"
             value={username}
             onChange={handleInputChange}
+            onBlur={handleInputBlur}
             onKeyDown={handleKeyPress}
             className=" block w-full p-2.5 text-lg text-gray-900 bg-transparent border border-gray-300 rounded-lg outline-none focus:ring-blue-500 focus:border-blue-500"
-            placeholder="Enter at least three characters name"
+            placeholder="Type your name..."
           />
         </div>
 
@@ -119,8 +127,8 @@ function Home() {
             Get Started <span>{arrowIcon}</span>
           </Link>
         )}
+        <ErrorMessage message={error} />
       </div>
-      <ErrorMessage message={error} />
     </section>
   );
 }
