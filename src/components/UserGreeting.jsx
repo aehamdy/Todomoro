@@ -50,7 +50,7 @@ const wavingHandIcon = (
   </svg>
 );
 
-function Header() {
+function UserGreeting() {
   const getUsername = () => {
     const storedValue = JSON.parse(localStorage.getItem(TODOMORO_USER));
 
@@ -67,4 +67,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default UserGreeting;
