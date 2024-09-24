@@ -25,6 +25,7 @@ const arrowIcon = (
 function Home() {
   const [user, setUser] = useState({ name: "", gender: "" });
   const [isUsernameValid, setIsUsernameValid] = useState(false);
+  const [isGenderSelected, setIsGenderSelected] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -126,8 +127,12 @@ function Home() {
           />
           <ErrorMessage message={error} />
         </div>
-        <GenderSelection setUser={setUser} user={user} />
-        {isUsernameValid && (
+        <GenderSelection
+          setUser={setUser}
+          user={user}
+          setIsGenderSelected={setIsGenderSelected}
+        />
+        {isUsernameValid && isGenderSelected && (
           <Link
             to="/app"
             onClick={submitUsername}

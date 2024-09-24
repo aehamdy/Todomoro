@@ -2,10 +2,11 @@
 const genderOptions = ["male", "female"];
 
 function GenderSelection(props) {
-  const { setUser, user } = props;
+  const { setUser, user, setIsGenderSelected } = props;
 
   const handleSelectChange = (e) => {
     setUser((prevValue) => ({ ...prevValue, gender: e.target.value }));
+    setIsGenderSelected(true);
   };
 
   return (
