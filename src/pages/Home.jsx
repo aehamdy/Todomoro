@@ -28,8 +28,11 @@ function Home() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const save = (name) => {
-    localStorage.setItem(TODOMORO_USER, JSON.stringify({ name: name }));
+  const save = (name, gender) => {
+    localStorage.setItem(
+      TODOMORO_USER,
+      JSON.stringify({ name: name, gender: gender })
+    );
   };
 
   const formatUsername = (value) => {
@@ -77,7 +80,7 @@ function Home() {
     const value = name.trim().split("");
     value.length < 3 &&
       setError("Oops! Enter a name with at least 3 characters");
-    save(name);
+    save(name, user.gender);
   };
 
   const handleKeyPress = (e) => {
@@ -123,7 +126,7 @@ function Home() {
           />
           <ErrorMessage message={error} />
         </div>
-        <GenderSelection />
+        <GenderSelection setUser={setUser} user={user} />
         {isUsernameValid && (
           <Link
             to="/app"

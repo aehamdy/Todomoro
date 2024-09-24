@@ -67,7 +67,7 @@ export default App;
  # [x] hide play button of Pomdoro app while session is running
  # [x] change the todo dropdown list into radio buttons
  # [x] merge the todo add button inside the input field
- # [ ] add gender select at the home page
+ # [x] add gender select at the home page
  # [ ] display different icons depending on user's gender
  # [ ] add light/dark theme functionality
  # [ ] save the selected theme to the local storage
