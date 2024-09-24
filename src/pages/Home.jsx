@@ -113,9 +113,10 @@ function Home() {
             onChange={handleInputChange}
             onBlur={handleInputBlur}
             onKeyDown={handleKeyPress}
-            className=" block w-full p-2.5 text-lg text-gray-900 bg-transparent border border-gray-300 rounded-lg outline-none focus:ring-blue-500 focus:border-blue-500"
+            className=" block w-72 p-2.5 text-lg text-gray-900 bg-transparent border border-gray-300 rounded-lg outline-none focus:ring-blue-500 focus:border-blue-500"
             placeholder="Type your name..."
           />
+          <ErrorMessage message={error} />
         </div>
 
         {isUsernameValid && (
@@ -127,7 +128,6 @@ function Home() {
             Get Started <span>{arrowIcon}</span>
           </Link>
         )}
-        <ErrorMessage message={error} />
       </div>
     </section>
   );
