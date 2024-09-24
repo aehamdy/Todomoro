@@ -14,10 +14,6 @@ function TodoInputForm(props) {
     setUserInput(e.target.value);
   };
 
-  const handleClear = () => {
-    setUserInput("");
-  };
-
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleClick();
@@ -61,9 +57,9 @@ function TodoInputForm(props) {
   return (
     <>
       <section className="flex flex-col select-none">
-        <div className="flex flex-col items-center lg:justify-between lg:items-center gap-2 md:gap-4 border-2 border-solid rounded-lg py-2 px-4 mb-2">
+        <div className="flex flex-col items-center lg:justify-between lg:items-center gap-2 md:gap-4 py-2 mb-2 border-2 border-solid rounded-lg">
           <TodoCategoryOptions setCategory={setCategory} />
-          <div className="w-full flex justify-around items-center">
+          <div className="flex justify-center items-center">
             <div className="relative">
               <label
                 htmlFor="taskInput"
@@ -72,23 +68,16 @@ function TodoInputForm(props) {
                 <input
                   type="text"
                   id="taskInput"
-                  // className="py-1 px-2 text-black bg-[#fffafa] border-0 rounded-md focus:outline-none hover:shadow-lg focus:shadow-lg transition duration-medium caret-black"
-                  className="py-1 ps-3 pe-12 h-10 w-80 text-black bg-[#fffafa] border-0 rounded-s-2xl focus:outline-none transition duration-medium caret-black"
+                  className="py-1 ps-3 pe-20 h-10 w-80 text-black bg-[#fffafa] border-0 rounded-2xl focus:outline-none transition duration-medium caret-black"
                   value={userInput}
                   onChange={handleInputChange}
                   onKeyDown={handleKeyPress}
                   ref={inputRef}
                 />
-                {/* <span
-                  className="absolute end-3 text-black hover:text-warning-color transition duration-medium cursor-pointer"
-                  onClick={handleClear}
-                >
-                  X
-                </span> */}
                 <button
                   type="button"
                   onClick={handleClick}
-                  className="absolute -end-9 flex justify-center h-10 py-2 px-6 rounded-2xl bg-blue-400 hover:bg-blue-500 text-white transition duration-medium"
+                  className="ms-2 absolute end-0 flex justify-center h-10 py-2 px-6 rounded-2xl bg-blue-400 hover:bg-blue-500 text-white transition duration-medium"
                 >
                   Add
                 </button>
