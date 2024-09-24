@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ErrorMessage from "../components/ErrorMessage";
+import GenderSelection from "../components/GenderSelection";
 
 export const TODOMORO_USERNAME = "TodomoroUsername";
 
@@ -118,7 +119,7 @@ function Home() {
           />
           <ErrorMessage message={error} />
         </div>
-
+        <GenderSelection />
         {isUsernameValid && (
           <Link
             to="/app"
