@@ -65,7 +65,7 @@ export default App;
  # [x] show error underneath input field
  # [x] display a proper error message 
  # [x] hide play button of Pomdoro app while session is running
- # [ ] change the todo dropdown list into radio buttons
+ # [x] change the todo dropdown list into radio buttons
  # [ ] merge the todo add button inside the input field
  # [ ] add gender select at the home page
  # [ ] display different icons depending on user's gender

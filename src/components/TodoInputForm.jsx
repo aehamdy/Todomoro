@@ -58,32 +58,34 @@ function TodoInputForm(props) {
         <div className="flex flex-col items-center lg:justify-between lg:items-center gap-2 md:gap-4 border-2 border-solid rounded-lg py-2 px-4 mb-2">
           <TodoCategoryOptions setCategory={setCategory} />
           <div className="w-full flex justify-around items-center">
-            <div>
-              <label htmlFor="taskInput" className="flex items-center relative">
+            <div className="relative">
+              <label
+                htmlFor="taskInput"
+                className="flex items-center relative w-72"
+              >
                 <input
                   type="text"
                   id="taskInput"
-                  className="py-1 px-2 text-black bg-[#fffafa] border-0 rounded-md focus:outline-none hover:shadow-lg focus:shadow-lg transition duration-medium caret-black"
+                  // className="py-1 px-2 text-black bg-[#fffafa] border-0 rounded-md focus:outline-none hover:shadow-lg focus:shadow-lg transition duration-medium caret-black"
+                  className="py-1 ps-3 pe-12 h-10 w-80 text-black bg-[#fffafa] border-0 rounded-s-2xl focus:outline-none transition duration-medium caret-black"
                   value={userInput}
                   onChange={handleInputChange}
                   ref={inputRef}
                 />
-                <span
+                {/* <span
                   className="absolute end-3 text-black hover:text-warning-color transition duration-medium cursor-pointer"
                   onClick={handleClear}
                 >
                   X
-                </span>
+                </span> */}
+                <button
+                  type="button"
+                  onClick={handleClick}
+                  className="absolute -end-9 flex justify-center h-10 py-2 px-6 rounded-2xl bg-blue-400 hover:bg-blue-500 text-white transition duration-medium"
+                >
+                  Add
+                </button>
               </label>
-            </div>
-            <div className="flex justify-between items-center md:justify-center gap-5 md:mt-0">
-              <button
-                type="button"
-                onClick={handleClick}
-                className="flex items-center justify-center w-12 h-10 py-2 px-4 rounded-md bg-[#fffafa] text-black hover:shadow-lg transition duration-medium"
-              >
-                +
-              </button>
             </div>
           </div>
         </div>
