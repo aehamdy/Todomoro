@@ -14,7 +14,7 @@ const arrowIcon = (
   >
     <path
       //   fill="#0F1729"
-      fill="blue"
+      fill="white"
       fillRule="evenodd"
       d="M12.293 5.293a1 1 0 0 1 1.414 0l6 6a1 1 0 0 1 0 1.414l-6 6a1 1 0 0 1-1.414-1.414L16.586 13H5a1 1 0 1 1 0-2h11.586l-4.293-4.293a1 1 0 0 1 0-1.414Z"
       clipRule="evenodd"
@@ -136,7 +136,7 @@ function Home() {
           <Link
             to="/app"
             onClick={submitUsername}
-            className="flex gap-1 p-2 rounded-lg border border-blue-500 focus:outline outline-blue-500 outline-2"
+            className="flex items-center gap-1 p-2 rounded-lg text-white hover:text-white bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 duration-200 border-none focus:outline-none"
           >
             Get Started <span>{arrowIcon}</span>
           </Link>

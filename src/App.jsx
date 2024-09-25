@@ -75,5 +75,4 @@ export default App;
  # [ ] add line through animation when check/uncheck a todo task
  # [ ] re-order the order of todo app on mobile screen
  # [ ] button to hide all checked todos
- # [ ] 
 **/
