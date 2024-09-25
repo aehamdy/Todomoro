@@ -23,7 +23,7 @@ function TodoApp() {
   };
 
   return (
-    <section>
+    <section className="flex flex-col-reverse md:flex-col">
       <TodoInputForm
         todos={todos}
         setTodos={setTodos}
