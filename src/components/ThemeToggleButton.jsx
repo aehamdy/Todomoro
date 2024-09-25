@@ -43,9 +43,11 @@ function ThemeToggleButton() {
   };
 
   return (
-    <button type="button" onClick={handleMode}>
-      {darkMode ? moonIcon : sunIcon}
-    </button>
+    <div className="flex items-center">
+      <button type="button" onClick={handleMode}>
+        {darkMode ? moonIcon : sunIcon}
+      </button>
+    </div>
   );
 }
 

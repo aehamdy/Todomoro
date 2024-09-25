@@ -1,4 +1,5 @@
 import { TODOMORO_USER } from "../pages/Home";
+import ThemeToggleButton from "./ThemeToggleButton";
 
 const wavingHandIcon = (
   <svg
@@ -59,10 +60,13 @@ function UserGreeting() {
   };
 
   return (
-    <header className="flex items-center gap-2 text-black">
-      <span>{wavingHandIcon}</span>
-      <p>What&apos;s up </p>
-      <p>{getUsername()}</p>
+    <header className="flex justify-between items-center text-black">
+      <div className="flex items-center gap-2 text-black">
+        <span>{wavingHandIcon}</span>
+        <p>What&apos;s up </p>
+        <p>{getUsername()}</p>
+      </div>
+      <ThemeToggleButton />
     </header>
   );
 }
