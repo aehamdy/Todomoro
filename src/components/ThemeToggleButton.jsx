@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TODOMORO_USER } from "../pages/Home";
 
 const iconSize = "26";
@@ -40,16 +40,25 @@ function ThemeToggleButton() {
   const [darkMode, setDarkMode] = useState(false);
 
   const handleMode = () => {
-    setDarkMode(!darkMode);
+    const newMode = !darkMode;
+    setDarkMode(newMode);
 
     const storedValue = localStorage.getItem(TODOMORO_USER);
     const parsedValue = JSON.parse(storedValue);
 
-    const newValue = { ...parsedValue, isThemeDark: darkMode };
+    const newValue = { ...parsedValue, isThemeDark: newMode };
 
     const stringifiedNewValue = JSON.stringify(newValue);
     localStorage.setItem(TODOMORO_USER, stringifiedNewValue);
   };
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [darkMode]);
 
   return (
     <div className="flex items-center">

@@ -66,9 +66,10 @@ export default App;
  # [x] change the todo dropdown list into radio buttons
  # [x] merge the todo add button inside the input field
  # [x] add gender select at the home page
+ # [x] add light/dark theme functionality
+ # [x] save the selected theme to the local storage
+ # [ ] add transition to body background
  # [ ] display different icons depending on user's gender
- # [ ] add light/dark theme functionality
- # [ ] save the selected theme to the local storage
  # [ ] add time and date underneath todo text
  # [ ] add line through animation when check/uncheck a todo task
  # [ ] re-order the order of todo app on mobile screen
