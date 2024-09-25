@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
 
-const categoryOptions = [
-  { id: "personal", name: "category-option", value: "personal" },
-  { id: "work", name: "category-option", value: "work" },
-  { id: "study", name: "category-option", value: "study" },
-  { id: "other", name: "category-option", value: "other" },
-];
+import { categoryOptions } from "../constants";
+
+// export const categoryOptions = [
+//   { id: "personal", name: "category-option", value: "personal" },
+//   { id: "work", name: "category-option", value: "work" },
+//   { id: "study", name: "category-option", value: "study" },
+//   { id: "other", name: "category-option", value: "other" },
+// ];
 
 function TodoCategoryOptions(props) {
   const { setCategory } = props;
@@ -17,7 +19,7 @@ function TodoCategoryOptions(props) {
   return (
     <ul className="flex items-center gap-2">
       {categoryOptions.map((option, i) => (
-        <li key={i}>
+        <li key={i} className="flex items-center">
           <input
             type="radio"
             name={option.name}
@@ -28,7 +30,7 @@ function TodoCategoryOptions(props) {
           />
           <label
             htmlFor={option.id}
-            className="inline-flex items-center justify-between w-full p-2 text-gray-500 hover:text-black peer-checked:text-blue-500 peer-checked:font-bold bg-white hover:bg-gray-100 border peer-checked:bg-gray-100 border-gray-200 hover:border-gray-300 peer-checked:border-blue-300 rounded-lg cursor-pointer"
+            className="inline-flex items-center justify-between gap-2 w-full p-2 text-gray-500 hover:text-black peer-checked:text-blue-500 peer-checked:font-bold bg-white hover:bg-gray-100 border peer-checked:bg-gray-100 border-gray-200 hover:border-gray-300 peer-checked:border-blue-300 rounded-lg cursor-pointer"
           >
             {option.value.charAt(0).toUpperCase() + option.value.slice(1)}
           </label>
