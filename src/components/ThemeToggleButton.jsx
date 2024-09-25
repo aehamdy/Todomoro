@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { TODOMORO_USER } from "../pages/Home";
 
 const iconSize = "26";
 const sunIcon = (
@@ -40,6 +41,14 @@ function ThemeToggleButton() {
 
   const handleMode = () => {
     setDarkMode(!darkMode);
+
+    const storedValue = localStorage.getItem(TODOMORO_USER);
+    const parsedValue = JSON.parse(storedValue);
+
+    const newValue = { ...parsedValue, isThemeDark: darkMode };
+
+    const stringifiedNewValue = JSON.stringify(newValue);
+    localStorage.setItem(TODOMORO_USER, stringifiedNewValue);
   };
 
   return (

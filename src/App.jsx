@@ -1,7 +1,5 @@
 import "./App.css";
-import Counters from "./components/Counters";
 import Home from "./pages/Home";
-import TodoApp from "./components/TodoApp";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Todomoro from "./pages/Todomoro";
 

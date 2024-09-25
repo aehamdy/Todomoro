@@ -23,16 +23,22 @@ const arrowIcon = (
 );
 
 function Home() {
-  const [user, setUser] = useState({ name: "", gender: "" });
+  const [user, setUser] = useState({
+    name: "",
+    gender: "",
+    isThemeDark: false,
+  });
   const [isUsernameValid, setIsUsernameValid] = useState(false);
   const [isGenderSelected, setIsGenderSelected] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const save = (name, gender) => {
+    const { isThemeDark } = user;
+
     localStorage.setItem(
       TODOMORO_USER,
-      JSON.stringify({ name: name, gender: gender })
+      JSON.stringify({ name: name, gender: gender, isThemeDark: isThemeDark })
     );
   };
 
