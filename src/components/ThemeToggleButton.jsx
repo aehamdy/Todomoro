@@ -36,10 +36,9 @@ const moonIcon = (
   </svg>
 );
 
-let themeIcon;
-
 function ThemeToggleButton() {
   const [darkMode, setDarkMode] = useState(false);
+  const [themeIcon, setThemeIcon] = useState(sunIcon);
 
   const handleMode = () => {
     const newMode = !darkMode;
@@ -57,10 +56,10 @@ function ThemeToggleButton() {
   useEffect(() => {
     const storedValue = JSON.parse(localStorage.getItem(TODOMORO_USER));
     if (storedValue.isThemeDark) {
-      themeIcon = moonIcon;
+      setThemeIcon(moonIcon);
       document.body.classList.add("dark");
     } else {
-      themeIcon = sunIcon;
+      setThemeIcon(sunIcon);
       document.body.classList.remove("dark");
     }
   }, [darkMode]);
