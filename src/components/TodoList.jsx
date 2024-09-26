@@ -228,9 +228,8 @@ function TodoList(props) {
             <li
               key={todo.id}
               onClick={() => handleTaskCheck(todo.id)}
-              className="flex justify-between items-center hover:shadow-md hover:bg-todo-bg-hover duration-short rounded-lg text-xl text-black bg-todo-bg py-2 px-3 mb-2 last:mb-0 cursor-pointer"
+              className="flex justify-between items-center hover:shadow-md hover:bg-todo-bg-hover rounded-lg text-xl text-black bg-todo-bg py-2 px-3 mb-2 last:mb-0 transition duration-300 cursor-pointer"
               style={{
-                textDecoration: todo.isChecked ? "line-through" : "none",
                 color: todo.isChecked && "#928e85",
                 backgroundColor:
                   todo.isChecked && todo.category === "personal"
@@ -266,7 +265,14 @@ function TodoList(props) {
                     <span className="flex items-center me-2">
                       {handleIcon(todo.category)}
                     </span>
-                    <p className="select-none">{todo.value}</p>
+                    <div className="relative">
+                      <span
+                        className={`horizontal-line absolute top-1/2 left-0 -translate-y-1/2 bg-gray-600 rounded-md h-[1px] ${
+                          todo.isChecked ? "w-full" : "w-0"
+                        }  transition-all duration-300`}
+                      ></span>
+                      <p className="select-none">{todo.value}</p>
+                    </div>
                   </div>
                 )}
               </div>
