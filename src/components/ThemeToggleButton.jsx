@@ -37,31 +37,27 @@ const moonIcon = (
 );
 
 function ThemeToggleButton() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [themeIcon, setThemeIcon] = useState(sunIcon);
+  const [darkMode, setDarkMode] = useState(() => {
+    const storedValue = JSON.parse(localStorage.getItem(TODOMORO_USER));
+    return storedValue?.isThemeDark || null;
+  });
+
+  const [themeIcon, setThemeIcon] = useState(darkMode ? moonIcon : sunIcon);
 
   const handleMode = () => {
     const newMode = !darkMode;
     setDarkMode(newMode);
 
-    const storedValue = localStorage.getItem(TODOMORO_USER);
-    const parsedValue = JSON.parse(storedValue);
+    const storedValue = JSON.parse(localStorage.getItem(TODOMORO_USER));
 
-    const newValue = { ...parsedValue, isThemeDark: newMode };
+    const newValue = { ...storedValue, isThemeDark: newMode };
 
-    const stringifiedNewValue = JSON.stringify(newValue);
-    localStorage.setItem(TODOMORO_USER, stringifiedNewValue);
+    localStorage.setItem(TODOMORO_USER, JSON.stringify(newValue));
   };
 
   useEffect(() => {
-    const storedValue = JSON.parse(localStorage.getItem(TODOMORO_USER));
-    if (storedValue.isThemeDark) {
-      setThemeIcon(moonIcon);
-      document.body.classList.add("dark");
-    } else {
-      setThemeIcon(sunIcon);
-      document.body.classList.remove("dark");
-    }
+    setThemeIcon(darkMode ? moonIcon : sunIcon);
+    document.body.classList.toggle("dark", darkMode);
   }, [darkMode]);
 
   return (
