@@ -69,17 +69,17 @@ function TodoCategoryButtons({ setSelectedCategory, handleLeftTodos }) {
     }
   };
 
-  const handleRadioChange = (category) => {
-    setSelectedCategory(category);
-    setSelectedButton(category);
-    handleLeftTodos(getUncheckedTodos(category));
+  const handleRadioChange = (id) => {
+    setSelectedCategory(id);
+    setSelectedButton(id);
+    handleLeftTodos(getUncheckedTodos(id));
   };
 
   return (
     <section className="categories-scrollbar flex justify-between gap-1 p-1 mb-2 overflow-x-auto">
-      {categoryButtons.map((button) => (
+      {categoryButtons.map((button, i) => (
         <label
-          key={button.id}
+          key={i}
           htmlFor={button.id + "-button"}
           className={`flex justify-between items-center gap-1 px-2 py-1 text-tabs-text ${
             selectedButton === button.id ? "text-white" : ""

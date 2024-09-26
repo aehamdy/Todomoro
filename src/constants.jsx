@@ -117,8 +117,13 @@ const otherIcon = (
 
 // Define and export all category options
 export const categoryOptions = [
-  { id: PERSONAL, value: PERSONAL, icon: personalIcon, bg: "bg-personal" },
-  { id: WORK, value: WORK, icon: workIcon, bg: "bg-work" },
-  { id: STUDY, value: STUDY, icon: studyIcon, bg: "bg-study" },
-  { id: OTHER, value: OTHER, icon: otherIcon, bg: "bg-other" },
+  {
+    id: PERSONAL,
+    value: PERSONAL,
+    icon: personalIcon,
+    bg: "bg-personal-color",
+  },
+  { id: WORK, value: WORK, icon: workIcon, bg: "bg-work-color" },
+  { id: STUDY, value: STUDY, icon: studyIcon, bg: "bg-study-color" },
+  { id: OTHER, value: OTHER, icon: otherIcon, bg: "bg-other-color" },
 ];

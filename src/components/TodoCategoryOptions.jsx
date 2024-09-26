@@ -9,13 +9,10 @@ const options = [
   })),
 ];
 
-console.log(options);
-
 function TodoCategoryOptions(props) {
   const { setCategory } = props;
 
   const handleCategorySelection = (e) => {
-    console.log("Category Selected:", e.target.value);
     setCategory(e.target.value);
   };
 
