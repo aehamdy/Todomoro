@@ -70,9 +70,9 @@ export default App;
  # [x] save the selected theme to the local storage
  # [x] fix the issue of selecting category option upon click on category button
  # [x] re-order the order of todo app on mobile screen
+ # [x] add line through animation when check/uncheck a todo task
  # [ ] add transition to body background
  # [ ] display different icons depending on user's gender
  # [ ] add time and date underneath todo text
- # [ ] add line through animation when check/uncheck a todo task
  # [ ] button to hide all checked todos
 **/

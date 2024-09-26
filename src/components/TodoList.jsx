@@ -189,10 +189,6 @@ function TodoList(props) {
     setTodos(filteredTodos);
   };
 
-  useEffect(() => {
-    load();
-  }, []);
-
   const handleIcon = (category) => {
     if (category === "personal") {
       return personalIcon;
@@ -204,6 +200,10 @@ function TodoList(props) {
       return otherIcon;
     }
   };
+
+  useEffect(() => {
+    load();
+  }, []);
 
   useEffect(() => {
     const listItems = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -265,13 +265,15 @@ function TodoList(props) {
                     <span className="flex items-center me-2">
                       {handleIcon(todo.category)}
                     </span>
-                    <div className="relative">
-                      <span
-                        className={`horizontal-line absolute top-1/2 left-0 -translate-y-1/2 bg-gray-600 rounded-md h-[1px] ${
-                          todo.isChecked ? "w-full" : "w-0"
-                        }  transition-all duration-300`}
-                      ></span>
-                      <p className="select-none">{todo.value}</p>
+                    <div className="flex flex-col items-start">
+                      <div className="relative">
+                        <span
+                          className={`absolute top-1/2 left-0 -translate-y-1/2 bg-gray-600 rounded-md h-[1px] ${
+                            todo.isChecked ? "w-full" : "w-0"
+                          }  transition-all duration-300`}
+                        ></span>
+                        <p className="select-none">{todo.value}</p>
+                      </div>
                     </div>
                   </div>
                 )}

@@ -20,9 +20,21 @@ function TodoInputForm(props) {
     }
   };
 
+  const getDate = () => {
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+
+    return `${day}/${month} ${hours}:${minutes}`;
+  };
+
   const handleClick = () => {
     if (userInput.trim()) {
       setInputError(false);
+
+      const time = getDate();
 
       const newTodos = [
         {
@@ -30,6 +42,7 @@ function TodoInputForm(props) {
           value: userInput,
           category: category,
           isChecked: false,
+          time: time,
         },
         ...todos,
       ];
