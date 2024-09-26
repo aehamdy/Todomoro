@@ -68,6 +68,7 @@ export default App;
  # [x] add gender select at the home page
  # [x] add light/dark theme functionality
  # [x] save the selected theme to the local storage
+ # [x] fix the issue of selecting category option upon click on category button
  # [ ] add transition to body background
  # [ ] display different icons depending on user's gender
  # [ ] add time and date underneath todo text

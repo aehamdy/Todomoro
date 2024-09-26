@@ -1,28 +1,31 @@
 /* eslint-disable react/prop-types */
-
 import { categoryOptions } from "../constants";
 
-// export const categoryOptions = [
-//   { id: "personal", name: "category-option", value: "personal" },
-//   { id: "work", name: "category-option", value: "work" },
-//   { id: "study", name: "category-option", value: "study" },
-//   { id: "other", name: "category-option", value: "other" },
-// ];
+const options = [
+  ...categoryOptions.map((option) => ({
+    ...option,
+    name: "category-option",
+    id: option.id + "-option",
+  })),
+];
+
+console.log(options);
 
 function TodoCategoryOptions(props) {
   const { setCategory } = props;
 
   const handleCategorySelection = (e) => {
+    console.log("Category Selected:", e.target.value);
     setCategory(e.target.value);
   };
 
   return (
     <ul className="flex items-center gap-2">
-      {categoryOptions.map((option, i) => (
-        <li key={i} className="flex items-center">
+      {options.map((option) => (
+        <li key={option.id} className="flex items-center">
           <input
             type="radio"
-            name={option.name}
+            name={`${option.name}`}
             id={option.id}
             value={option.value}
             onChange={handleCategorySelection}
