@@ -274,6 +274,7 @@ function TodoList(props) {
                         ></span>
                         <p className="select-none">{todo.value}</p>
                       </div>
+                      <p className="text-xs text-gray-400">{todo.time}</p>
                     </div>
                   </div>
                 )}
