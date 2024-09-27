@@ -72,7 +72,8 @@ export default App;
  # [x] re-order the order of todo app on mobile screen
  # [x] add line through animation when check/uncheck a todo task
  # [x] add time and date underneath todo text
- # [ ] checked/unchecked todos count are not refreshed upon add/check/uncheck any todo
+ # [x] checked/unchecked todos count are not refreshed upon add/check/uncheck any todo
+ # [ ] fix left todos count upon click on a category button
  # [ ] add transition to body background
  # [ ] display different icons depending on user's gender
  # [ ] button to hide all checked todos

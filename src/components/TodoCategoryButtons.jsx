@@ -36,7 +36,6 @@ function TodoCategoryButtons({
   handleLeftTodos,
 }) {
   const [selectedButton, setSelectedButton] = useState(ALL);
-  // const [allTodos, setAllTodos] = useState([]);
 
   useEffect(() => {
     const list = localStorage.getItem(LOCAL_STORAGE_KEY) || "[]";
@@ -74,16 +73,21 @@ function TodoCategoryButtons({
     }
   };
 
-  const handleRadioChange = (id) => {
-    setSelectedCategory(id);
-    setSelectedButton(id);
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+    setSelectedButton(category);
 
-    handleLeftTodos(getUncheckedTodos(id));
-    getTodosCount(id);
+    let filteredTodos;
+    if (category === ALL) {
+      filteredTodos = allTodos;
+    } else {
+      filteredTodos = allTodos.filter((todo) => todo.category === category);
+    }
+    const notCheckedTodos = filteredTodos.filter((todo) => !todo.isChecked);
+    handleLeftTodos(notCheckedTodos.length);
 
-    // setSelectedCategory(id);
-    // setSelectedButton(id);
-    // handleLeftTodos(getUncheckedTodos(id));
+    handleLeftTodos(getUncheckedTodos(category));
+    getTodosCount(category);
   };
 
   return (
@@ -106,7 +110,7 @@ function TodoCategoryButtons({
             value={button.value}
             className="hidden"
             checked={selectedButton === button.id}
-            onChange={() => handleRadioChange(button.id)}
+            onClick={() => handleCategoryClick(button.id)}
           />
           {button.value.charAt(0).toUpperCase() + button.value.slice(1)}
           <span>{getTodosCount(button.id)}</span>

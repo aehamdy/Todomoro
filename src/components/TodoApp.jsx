@@ -42,7 +42,9 @@ function TodoApp() {
         save={save}
         setTodos={setTodos}
         todos={todos}
+        allTodos={allTodos}
         handleLeftTodos={handleLeftTodos}
+        selectedCategory={selectedCategory}
       />
       <TodoList
         todos={todos}
@@ -51,8 +53,8 @@ function TodoApp() {
         setAllTodos={setAllTodos}
         save={save}
         setLeftTodos={setLeftTodos}
-        setSelectedCategory={setSelectedCategory}
         selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
         leftTodos={leftTodos}
         handleLeftTodos={handleLeftTodos}
       />

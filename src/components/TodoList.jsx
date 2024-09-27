@@ -113,6 +113,7 @@ function TodoList(props) {
     save,
     setLeftTodos,
     selectedCategory,
+    handleLeftTodos,
   } = props;
   const [editTaskId, setEditTaskId] = useState(null);
   const [newValue, setNewValue] = useState("");
@@ -187,6 +188,7 @@ function TodoList(props) {
     }
 
     setTodos(filteredTodos);
+    handleLeftTodos(filteredTodos.length);
   };
 
   const handleIcon = (category) => {
