@@ -62,9 +62,12 @@ function UserGreeting() {
   return (
     <header className="flex justify-between items-center text-black">
       <div className="flex items-center gap-2 text-black">
-        <span>{wavingHandIcon}</span>
-        <p>What&apos;s up </p>
-        <p>{getUsername()}</p>
+        <div className="flex gap-2">
+          <span>{wavingHandIcon}</span>
+          {/* <p>What&apos;s up </p> */}
+          <p className="text-lg font-semibold">Hello, </p>
+        </div>
+        <p className="text-2xl font-bold">{getUsername()}</p>
       </div>
       <ThemeToggleButton />
     </header>
