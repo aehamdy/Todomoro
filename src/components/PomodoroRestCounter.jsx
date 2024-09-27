@@ -91,7 +91,7 @@ function PomodoroRestCounter(props) {
         <div>
           <CountersMessage
             message="Relax, It's Break Time"
-            styleClass="text-bold text-lg text-teal-600"
+            styleClass="mt-2 text-bold text-lg text-teal-600"
           />
           <CountersMessage
             message="Pause and Recharge"
@@ -124,7 +124,7 @@ function PomodoroRestCounter(props) {
       {isRestFinished && (
         <CountersMessage
           message="Break Time Ended"
-          styleClass="font-semibold text-lg text-amber-600 animate-bounce"
+          styleClass="font-semibold text-lg mt-2 text-amber-600 animate-bounce"
         />
       )}
     </div>
