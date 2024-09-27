@@ -120,7 +120,7 @@ function PomodoroCounter(props) {
       {isSessionRunning && (
         <CountersMessage
           message="Get Things Done"
-          styleClass="text-normal text-xl text-red-500 animate-pulse"
+          styleClass="mt-2 text-normal text-xl text-red-500 animate-pulse"
         />
       )}
       <div className="flex md:gap-2 items-center">
