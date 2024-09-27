@@ -5,15 +5,31 @@ function ClearButton(props) {
   const { save, setTodos, todos, selectedCategory, handleLeftTodos } = props;
 
   const handleClear = () => {
-    const allTodos =
-      localStorage.getItem(LOCAL_STORAGE_KEY) &&
-      JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (selectedCategory === "all") {
+      const allTodos =
+        localStorage.getItem(LOCAL_STORAGE_KEY) &&
+        JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 
-    const uncheckedTodos = allTodos.filter((todo) => !todo.isChecked);
+      const uncheckedTodos = allTodos.filter((todo) => !todo.isChecked);
 
-    setTodos(uncheckedTodos);
-    handleLeftTodos(uncheckedTodos.length);
-    save(uncheckedTodos);
+      setTodos(uncheckedTodos);
+      handleLeftTodos(uncheckedTodos.length);
+      save(uncheckedTodos);
+    } else {
+      const allTodos =
+        localStorage.getItem(LOCAL_STORAGE_KEY) &&
+        JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+
+      const uncheckedTodos = allTodos.filter(
+        (todo) =>
+          (todo.category === selectedCategory && !todo.isChecked) ||
+          todo.category !== selectedCategory
+      );
+
+      setTodos(uncheckedTodos);
+      handleLeftTodos(uncheckedTodos.length);
+      save(uncheckedTodos);
+    }
   };
 
   const checkedTodos = (todos) => {

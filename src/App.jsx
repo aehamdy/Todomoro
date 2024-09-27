@@ -75,7 +75,7 @@ export default App;
  # [x] checked/unchecked todos count are not refreshed upon add/check/uncheck any todo
  # [x] fix left todos count upon click on a category button
  # [x] fix when add a new todo to a category it removes todos of other categories (when a category button is selected but works normall if 'All' is selected)
- # [ ] clear only checked todos of selected category button when click on ClearCompleted button
+ # [x] clear only checked todos of selected category button when click on ClearCompleted button
  # [ ] add transition to body background
  # [ ] display different icons depending on user's gender
  # [ ] button to hide all checked todos
