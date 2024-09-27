@@ -7,6 +7,7 @@ import finishSound from "../sounds/finish-sound.mp3";
 import { useEffect, useRef, useState } from "react";
 import Speaker from "./Speaker";
 import CountersMessage from "./CountersMessage";
+import { getUsername } from "../constants";
 
 const sessionDuration = 25; // 25 minutes per session
 
@@ -48,10 +49,10 @@ function PomodoroCounter(props) {
     setIsSessionFinished(false);
 
     setInputValue({
-      minutes: cycles * duration,
-      seconds: 0,
-      // minutes: 0,
-      // seconds: 10,
+      // minutes: cycles * duration,
+      // seconds: 0,
+      minutes: 0,
+      seconds: 10,
     });
 
     // Clear previous interval if any
@@ -120,7 +121,9 @@ function PomodoroCounter(props) {
       {isSessionRunning && (
         <CountersMessage
           message="Get Things Done"
-          styleClass="mt-2 text-normal text-xl text-red-500 animate-pulse"
+          messageStyle="flex flex-col mt-2 text-normal text-xl text-black animate-pulse"
+          username={getUsername()}
+          nameStyle="text-orange-500 font-bold"
         />
       )}
       <div className="flex md:gap-2 items-center">
