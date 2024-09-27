@@ -27,6 +27,8 @@ function TodoApp() {
       <TodoInputForm
         todos={todos}
         setTodos={setTodos}
+        allTodos={allTodos}
+        setAllTodos={setAllTodos}
         save={save}
         setLeftTodos={setLeftTodos}
         leftTodos={leftTodos}

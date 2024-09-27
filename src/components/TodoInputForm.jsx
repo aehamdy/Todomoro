@@ -1,10 +1,16 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from "react";
 import TodoCategoryOptions from "./TodoCategoryOptions";
-import { LOCAL_STORAGE_KEY } from "./TodoApp";
 
 function TodoInputForm(props) {
-  const { todos, setTodos, save, setLeftTodos } = props;
+  const {
+    setTodos,
+    allTodos,
+    setAllTodos,
+    save,
+    setLeftTodos,
+    selectedCategory,
+  } = props;
   const [userInput, setUserInput] = useState("");
   const [inputError, setInputError] = useState(false);
   const [category, setCategory] = useState("personal");
@@ -36,6 +42,7 @@ function TodoInputForm(props) {
 
       const time = getDate();
 
+      //create new todo and merge all todos with it
       const newTodos = [
         {
           id: Date.now(),
@@ -44,20 +51,23 @@ function TodoInputForm(props) {
           isChecked: false,
           time: time,
         },
-        ...todos,
+        ...allTodos,
       ];
 
-      setTodos(newTodos);
-      console.log(newTodos);
+      //update todos list
+      setAllTodos(newTodos);
       save(newTodos);
 
-      //calculate left todos upon adding a new todo
-      const allTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-      console.log(allTodos);
+      //filter todos depending on selected category
+      const filteredTodos =
+        selectedCategory === "all"
+          ? newTodos
+          : newTodos.filter((todo) => todo.category === selectedCategory);
+      setTodos(filteredTodos);
 
-      const filteredTodos = allTodos.filter((todo) => !todo.isChecked);
-      console.log(filteredTodos);
-      setLeftTodos(filteredTodos.length);
+      //update remaining todos count
+      const leftCount = filteredTodos.filter((todo) => !todo.isChecked).length;
+      setLeftTodos(leftCount);
 
       setUserInput("");
     } else {
@@ -72,41 +82,39 @@ function TodoInputForm(props) {
   }, []);
 
   return (
-    <>
-      <section className="flex flex-col select-none">
-        <div className="flex flex-col items-center lg:justify-between lg:items-center gap-2 md:gap-4 py-2 mb-2 border-2 border-solid rounded-lg">
-          <TodoCategoryOptions setCategory={setCategory} />
-          <div className="flex justify-center items-center">
-            <div className="relative">
-              <label
-                htmlFor="taskInput"
-                className="flex items-center relative w-72"
+    <section className="flex flex-col select-none">
+      <div className="flex flex-col items-center lg:justify-between lg:items-center gap-2 md:gap-4 py-2 mb-2 border-2 border-solid rounded-lg">
+        <TodoCategoryOptions setCategory={setCategory} />
+        <div className="flex justify-center items-center">
+          <div className="relative">
+            <label
+              htmlFor="taskInput"
+              className="flex items-center relative w-72"
+            >
+              <input
+                type="text"
+                id="taskInput"
+                className="py-1 ps-3 pe-20 h-10 w-80 text-black bg-[#fffafa] border-0 rounded-2xl focus:outline-none transition duration-medium caret-black"
+                value={userInput}
+                onChange={handleInputChange}
+                onKeyDown={handleKeyPress}
+                ref={inputRef}
+              />
+              <button
+                type="button"
+                onClick={handleClick}
+                className="ms-2 absolute end-0 flex justify-center h-10 py-2 px-6 rounded-2xl bg-blue-400 hover:bg-blue-500 text-white transition duration-medium"
               >
-                <input
-                  type="text"
-                  id="taskInput"
-                  className="py-1 ps-3 pe-20 h-10 w-80 text-black bg-[#fffafa] border-0 rounded-2xl focus:outline-none transition duration-medium caret-black"
-                  value={userInput}
-                  onChange={handleInputChange}
-                  onKeyDown={handleKeyPress}
-                  ref={inputRef}
-                />
-                <button
-                  type="button"
-                  onClick={handleClick}
-                  className="ms-2 absolute end-0 flex justify-center h-10 py-2 px-6 rounded-2xl bg-blue-400 hover:bg-blue-500 text-white transition duration-medium"
-                >
-                  Add
-                </button>
-              </label>
-            </div>
+                Add
+              </button>
+            </label>
           </div>
         </div>
-        <p className="text-warning-color">
-          {inputError && "Please insert valid text"}
-        </p>
-      </section>
-    </>
+      </div>
+      <p className="text-warning-color">
+        {inputError && "Please insert valid text"}
+      </p>
+    </section>
   );
 }
 
