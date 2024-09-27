@@ -1,3 +1,5 @@
+import { TODOMORO_USER } from "./pages/Home";
+
 // constants.js
 export const ALL = "all";
 export const PERSONAL = "personal";
@@ -127,3 +129,11 @@ export const categoryOptions = [
   { id: STUDY, value: STUDY, icon: studyIcon, bg: "bg-study-color" },
   { id: OTHER, value: OTHER, icon: otherIcon, bg: "bg-other-color" },
 ];
+
+// Get username from local storage
+export const getUsername = () => {
+  const storedValue = JSON.parse(localStorage.getItem(TODOMORO_USER));
+
+  const name = storedValue ? storedValue.name.split(" ")[0] : null;
+  return name;
+};
