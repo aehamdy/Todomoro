@@ -1,4 +1,5 @@
-import { TODOMORO_USER } from "../pages/Home";
+// import { TODOMORO_USER } from "../pages/Home";
+import { getUsername } from "../constants";
 import ThemeToggleButton from "./ThemeToggleButton";
 
 const wavingHandIcon = (
@@ -52,13 +53,6 @@ const wavingHandIcon = (
 );
 
 function UserGreeting() {
-  const getUsername = () => {
-    const storedValue = JSON.parse(localStorage.getItem(TODOMORO_USER));
-
-    const name = storedValue ? storedValue.name.split(" ")[0] : null;
-    return name;
-  };
-
   return (
     <header className="flex justify-between items-center text-black">
       <div className="flex items-center gap-2 text-black">
