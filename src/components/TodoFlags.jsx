@@ -35,6 +35,7 @@ function TodoFlags(props) {
         save={save}
         todos={todos}
         setTodos={setTodos}
+        selectedCategory={selectedCategory}
         handleLeftTodos={handleLeftTodos}
       />
     </section>

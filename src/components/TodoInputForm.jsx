@@ -48,6 +48,7 @@ function TodoInputForm(props) {
       ];
 
       setTodos(newTodos);
+      console.log(newTodos);
       save(newTodos);
 
       //calculate left todos upon adding a new todo

@@ -2,7 +2,7 @@
 import { LOCAL_STORAGE_KEY } from "./TodoApp";
 
 function ClearButton(props) {
-  const { save, setTodos, todos, handleLeftTodos } = props;
+  const { save, setTodos, todos, selectedCategory, handleLeftTodos } = props;
 
   const handleClear = () => {
     const allTodos =

@@ -73,7 +73,7 @@ function TodoCategoryButtons({
     }
   };
 
-  const handleCategoryClick = (category) => {
+  const handleCategoryChange = (category) => {
     setSelectedCategory(category);
     setSelectedButton(category);
 
@@ -110,7 +110,7 @@ function TodoCategoryButtons({
             value={button.value}
             className="hidden"
             checked={selectedButton === button.id}
-            onClick={() => handleCategoryClick(button.id)}
+            onChange={() => handleCategoryChange(button.id)}
           />
           {button.value.charAt(0).toUpperCase() + button.value.slice(1)}
           <span>{getTodosCount(button.id)}</span>
