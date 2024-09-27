@@ -29,9 +29,14 @@ const categoryButtons = [
   ...categoryOptions,
 ];
 
-function TodoCategoryButtons({ setSelectedCategory, handleLeftTodos }) {
+function TodoCategoryButtons({
+  allTodos,
+  setAllTodos,
+  setSelectedCategory,
+  handleLeftTodos,
+}) {
   const [selectedButton, setSelectedButton] = useState(ALL);
-  const [allTodos, setAllTodos] = useState([]);
+  // const [allTodos, setAllTodos] = useState([]);
 
   useEffect(() => {
     const list = localStorage.getItem(LOCAL_STORAGE_KEY) || "[]";
@@ -72,7 +77,13 @@ function TodoCategoryButtons({ setSelectedCategory, handleLeftTodos }) {
   const handleRadioChange = (id) => {
     setSelectedCategory(id);
     setSelectedButton(id);
+
     handleLeftTodos(getUncheckedTodos(id));
+    getTodosCount(id);
+
+    // setSelectedCategory(id);
+    // setSelectedButton(id);
+    // handleLeftTodos(getUncheckedTodos(id));
   };
 
   return (

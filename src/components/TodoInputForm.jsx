@@ -52,7 +52,10 @@ function TodoInputForm(props) {
 
       //calculate left todos upon adding a new todo
       const allTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+      console.log(allTodos);
+
       const filteredTodos = allTodos.filter((todo) => !todo.isChecked);
+      console.log(filteredTodos);
       setLeftTodos(filteredTodos.length);
 
       setUserInput("");

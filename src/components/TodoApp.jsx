@@ -32,6 +32,8 @@ function TodoApp() {
         leftTodos={leftTodos}
       />
       <TodoCategoryButtons
+        allTodos={allTodos}
+        setAllTodos={setAllTodos}
         setSelectedCategory={setSelectedCategory}
         handleLeftTodos={handleLeftTodos}
       />
