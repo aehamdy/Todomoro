@@ -18,7 +18,7 @@ function TodoCategoryOptions(props) {
 
   return (
     <div className="w-full">
-      <ul className="flex items-center gap-2 py-2 px-4 categories-options-scrollbar overflow-x-auto">
+      <ul className="categories-options-scrollbar overflow-x-auto flex items-center gap-1 py-1 px-2 md:py-2 md:px-4">
         {options.map((option) => (
           <li key={option.id} className="flex items-center">
             <input

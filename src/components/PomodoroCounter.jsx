@@ -126,8 +126,8 @@ function PomodoroCounter(props) {
           nameStyle="text-orange-500 font-bold"
         />
       )}
-      <div className="flex md:gap-2 items-center">
-        <div className="flex md:flex-col items-center gap-1 text-8xl select-none">
+      <div className="flex md:gap-2 items-center mt-4">
+        <div className="flex md:flex-col items-center gap-1 text-6xl md:text-8xl select-none">
           <span className={`font-semibold text-counter-text`}>
             {inputValue.minutes < 10
               ? `0${inputValue.minutes}`
