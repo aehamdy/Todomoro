@@ -17,27 +17,29 @@ function TodoCategoryOptions(props) {
   };
 
   return (
-    <ul className="categories-options-scrollbar flex items-center gap-2">
-      {options.map((option) => (
-        <li key={option.id} className="flex items-center">
-          <input
-            type="radio"
-            name={`${option.name}`}
-            id={option.id}
-            value={option.value}
-            onChange={handleCategorySelection}
-            className="peer hidden"
-          />
-          <label
-            htmlFor={option.id}
-            className="inline-flex items-center justify-between gap-2 w-full p-1.5 md:p-2 text-gray-500 hover:text-black peer-checked:text-blue-500 peer-checked:font-bold bg-white hover:bg-gray-100 border peer-checked:bg-gray-100 border-gray-200 hover:border-gray-300 peer-checked:border-blue-300 rounded-lg cursor-pointer"
-          >
-            <span>{option.icon}</span>
-            {option.value.charAt(0).toUpperCase() + option.value.slice(1)}
-          </label>
-        </li>
-      ))}
-    </ul>
+    <div className="w-full">
+      <ul className="flex items-center gap-2 py-2 px-4 categories-options-scrollbar overflow-x-auto">
+        {options.map((option) => (
+          <li key={option.id} className="flex items-center">
+            <input
+              type="radio"
+              name={`${option.name}`}
+              id={option.id}
+              value={option.value}
+              onChange={handleCategorySelection}
+              className="peer hidden"
+            />
+            <label
+              htmlFor={option.id}
+              className="inline-flex items-center justify-between gap-2 w-full p-1.5 md:p-2 text-gray-500 hover:text-black peer-checked:text-blue-500 peer-checked:font-bold bg-white hover:bg-gray-100 border peer-checked:bg-gray-100 border-gray-200 hover:border-gray-300 peer-checked:border-blue-300 rounded-lg cursor-pointer"
+            >
+              <span>{option.icon}</span>
+              {option.value.charAt(0).toUpperCase() + option.value.slice(1)}
+            </label>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
