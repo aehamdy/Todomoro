@@ -106,7 +106,7 @@ function PomodoroRestCounter(props) {
       <div>
         {cycles > 0 && isSessionFinished && (
           <div className="flex md:gap-2 items-center">
-            <div className="flex md:flex-col items-center gap-1 text-8xl select-none">
+            <div className="flex md:flex-col items-center gap-1 text-6xl md:text-8xl select-none">
               <span className={`font-semibold text-rest-counter-text`}>
                 {rest.minutes < 10 ? `0${rest.minutes}` : rest.minutes}
               </span>

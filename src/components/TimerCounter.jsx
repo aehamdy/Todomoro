@@ -6,7 +6,7 @@ function TimerCounter(props) {
   const textColor = "#739ab9";
 
   return (
-    <div className="flex md:flex-col items-center gap-1 text-8xl select-none">
+    <div className="flex md:flex-col items-center gap-1 text-6xl md:text-8xl select-none">
       <div className="font-semibold" style={{ color: textColor }}>
         {timer.minutes < 10 ? `0${timer.minutes}` : timer.minutes}{" "}
       </div>
