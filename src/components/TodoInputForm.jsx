@@ -89,12 +89,12 @@ function TodoInputForm(props) {
           <div className="relative">
             <label
               htmlFor="taskInput"
-              className="flex items-center relative w-72"
+              className="flex items-center relative w-60 md:w-72"
             >
               <input
                 type="text"
                 id="taskInput"
-                className="py-1 ps-3 pe-20 h-10 w-80 text-black bg-[#fffafa] border-0 rounded-2xl focus:outline-none transition duration-medium caret-black"
+                className="py-1 ps-3 pe-20 h-10 w-full text-black bg-[#fffafa] border-0 rounded-2xl focus:outline-none transition duration-medium caret-black"
                 value={userInput}
                 onChange={handleInputChange}
                 onKeyDown={handleKeyPress}
