@@ -17,7 +17,7 @@ function TodoCategoryOptions(props) {
   };
 
   return (
-    <ul className="flex items-center gap-2">
+    <ul className="categories-options-scrollbar flex items-center gap-2">
       {options.map((option) => (
         <li key={option.id} className="flex items-center">
           <input
@@ -30,7 +30,7 @@ function TodoCategoryOptions(props) {
           />
           <label
             htmlFor={option.id}
-            className="inline-flex items-center justify-between gap-2 w-full p-2 text-gray-500 hover:text-black peer-checked:text-blue-500 peer-checked:font-bold bg-white hover:bg-gray-100 border peer-checked:bg-gray-100 border-gray-200 hover:border-gray-300 peer-checked:border-blue-300 rounded-lg cursor-pointer"
+            className="inline-flex items-center justify-between gap-2 w-full p-1.5 md:p-2 text-gray-500 hover:text-black peer-checked:text-blue-500 peer-checked:font-bold bg-white hover:bg-gray-100 border peer-checked:bg-gray-100 border-gray-200 hover:border-gray-300 peer-checked:border-blue-300 rounded-lg cursor-pointer"
           >
             <span>{option.icon}</span>
             {option.value.charAt(0).toUpperCase() + option.value.slice(1)}

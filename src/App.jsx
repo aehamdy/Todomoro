@@ -76,6 +76,7 @@ export default App;
  # [x] fix left todos count upon click on a category button
  # [x] fix when add a new todo to a category it removes todos of other categories (when a category button is selected but works normall if 'All' is selected)
  # [x] clear only checked todos of selected category button when click on ClearCompleted button
+ # [ ] add different messages for PomodoroCounter and PomodoroRestCounter that displayed dynamically
  # [ ] add transition to body background
  # [ ] display different icons depending on user's gender
  # [ ] button to hide all checked todos

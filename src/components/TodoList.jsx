@@ -222,7 +222,7 @@ function TodoList(props) {
 
   return (
     <>
-      <ul className="list-scrollbar relative border border-white rounded-lg h-[370px] overflow-y-auto overflow-x-hidden py-2 px-4">
+      <ul className="list-scrollbar relative border border-white rounded-lg h-[270px] overflow-y-auto overflow-x-hidden py-2 px-4">
         {todos.length < 1 ? (
           <TodoEmptyList />
         ) : (

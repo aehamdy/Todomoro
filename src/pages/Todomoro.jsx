@@ -4,7 +4,7 @@ import TodoApp from "../components/TodoApp";
 
 function Todomoro() {
   return (
-    <main className="font-nunitosans flex flex-col gap-3 bg-app-bg py-9 px-8 rounded-3xl">
+    <main className="font-nunitosans flex flex-col gap-3 bg-app-bg py-6 px-5 md:px-8 rounded-3xl">
       <div>
         <UserGreeting />
       </div>

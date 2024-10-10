@@ -49,10 +49,10 @@ function PomodoroCounter(props) {
     setIsSessionFinished(false);
 
     setInputValue({
-      // minutes: cycles * duration,
-      // seconds: 0,
-      minutes: 0,
-      seconds: 10,
+      minutes: cycles * duration,
+      seconds: 0,
+      // minutes: 0,
+      // seconds: 10,
     });
 
     // Clear previous interval if any
@@ -120,7 +120,7 @@ function PomodoroCounter(props) {
     <div>
       {isSessionRunning && (
         <CountersMessage
-          message="Get Things Done"
+          message="Get Things Done, "
           messageStyle="flex flex-col mt-2 text-normal text-xl text-black animate-pulse"
           username={getUsername()}
           nameStyle="text-orange-500 font-bold"
