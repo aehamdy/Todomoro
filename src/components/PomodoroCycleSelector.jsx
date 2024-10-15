@@ -11,23 +11,43 @@ function PomodoroCycleSelector(props) {
   return (
     <div>
       <div className="flex justify-evenly items-center">
-        <label htmlFor="cycles" className="text-black">
-          <select
-            id="cycles"
-            onChange={onSelectChange}
-            defaultValue=""
-            className=" w-fit block p-1 rounded text-black bg-white focus:outline-none"
-            // className=" w-fit block p-1 rounded text-white bg-blue-500 focus:outline-none"
-          >
-            <option value="" defaultValue disabled>
-              Select Cycles
-            </option>
-            <option className="flex flex-col hover:bg-red-500" value="1">
-              One Cycle
-            </option>
-            <option value="2">Two Cycles</option>
-          </select>
-        </label>
+        <div className="flex justify-between gap-10">
+          <div className="flex">
+            <input
+              type="radio"
+              name="cycles"
+              id="one-cycle"
+              value="1"
+              onChange={onSelectChange}
+              className="peer hidden"
+            />
+            <label
+              htmlFor="one-cycle"
+              className="py-3 px-4 text-white bg-blue-400 hover:bg-blue-500 peer-checked:bg-blue-500 rounded-full hover:shadow-lg peer-checked:shadow-lg duration-short cursor-pointer"
+              // className="peer-checked:outline-dashed peer-checked:outline-blue-400 peer-checked:border-4 border-white rounded-full cursor-pointer"
+            >
+              <span>1</span>
+              Cycle
+            </label>
+          </div>
+          <div className="flex">
+            <input
+              type="radio"
+              name="cycles"
+              id="two-cycle"
+              value="2"
+              onChange={onSelectChange}
+              className="peer hidden"
+            />
+            <label
+              htmlFor="two-cycle"
+              className="py-3 px-4 text-white bg-blue-400 hover:bg-blue-500 peer-checked:bg-blue-500 rounded-full hover:shadow-lg peer-checked:shadow-lg duration-short cursor-pointer"
+            >
+              <span>2</span>
+              Cycles
+            </label>
+          </div>
+        </div>
       </div>
     </div>
   );

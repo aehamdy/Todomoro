@@ -6,8 +6,6 @@ import SecondsCounter from "./SecondsCounter";
 function TimerCounter(props) {
   const { timer } = props;
 
-  // const textColor = "#739ab9";
-
   return (
     <div className="flex md:flex-col items-center gap-1 text-6xl md:text-8xl select-none">
       <MinutesCounter minutes={timer.minutes} textColor="timer-text" />

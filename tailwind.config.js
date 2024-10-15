@@ -28,6 +28,8 @@ export default {
         // 'counter-text': '#acdbeb',
         // 'counter-text': '#211F60',
         'counter-text': '#6aa5a9',
+        'cycle-selector': '#6aa5a960',
+        'cycle-selector-bg': 'rgb(240, 239, 244)',
         // 'counter-bg': '#CAD9EB',
 
         // 'counter-text': 'rgb(123, 162, 205)',
