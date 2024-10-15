@@ -51,10 +51,10 @@ function PomodoroCounter(props) {
     setIsSessionFinished(false);
 
     setInputValue({
-      minutes: cycles * duration,
-      seconds: 0,
-      // minutes: 0,
-      // seconds: 10,
+      // minutes: cycles * duration,
+      // seconds: 0,
+      minutes: 0,
+      seconds: 10,
     });
 
     // Clear previous interval if any

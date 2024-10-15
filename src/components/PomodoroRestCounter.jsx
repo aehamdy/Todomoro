@@ -5,6 +5,7 @@ import finishSound from "../sounds/finish-sound.mp3";
 import { useEffect, useRef, useState } from "react";
 import Speaker from "./Speaker";
 import CountersMessage from "./CountersMessage";
+import MinutesCounter from "./MinutesCounter";
 
 function PomodoroRestCounter(props) {
   const { cycles, isSessionFinished } = props;
@@ -107,9 +108,10 @@ function PomodoroRestCounter(props) {
         {cycles > 0 && isSessionFinished && (
           <div className="flex md:gap-2 items-center">
             <div className="flex md:flex-col items-center gap-1 text-6xl md:text-8xl select-none">
-              <span className={`font-semibold text-rest-counter-text`}>
+              {/* <span className={`font-semibold text-rest-counter-text`}>
                 {rest.minutes < 10 ? `0${rest.minutes}` : rest.minutes}
-              </span>
+              </span> */}
+              <MinutesCounter minutes={rest.minutes} />
               <span className={`md:hidden font-thin text-rest-counter-text`}>
                 :
               </span>
