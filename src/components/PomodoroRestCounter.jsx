@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import Speaker from "./Speaker";
 import CountersMessage from "./CountersMessage";
 import MinutesCounter from "./MinutesCounter";
+import SecondsCounter from "./SecondsCounter";
 
 function PomodoroRestCounter(props) {
   const { cycles, isSessionFinished } = props;
@@ -108,16 +109,11 @@ function PomodoroRestCounter(props) {
         {cycles > 0 && isSessionFinished && (
           <div className="flex md:gap-2 items-center">
             <div className="flex md:flex-col items-center gap-1 text-6xl md:text-8xl select-none">
-              {/* <span className={`font-semibold text-rest-counter-text`}>
-                {rest.minutes < 10 ? `0${rest.minutes}` : rest.minutes}
-              </span> */}
               <MinutesCounter minutes={rest.minutes} />
               <span className={`md:hidden font-thin text-rest-counter-text`}>
                 :
               </span>
-              <span className={`font-thin text-rest-counter-text`}>
-                {rest.seconds < 10 ? `0${rest.seconds}` : rest.seconds}
-              </span>
+              <SecondsCounter seconds={rest.seconds} />
             </div>
             <Speaker toggleSound={toggleSound} color="pomodoro-rest-theme" />
           </div>
