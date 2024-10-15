@@ -58,6 +58,9 @@ function TimerInput(props) {
 
   return (
     <div className="flex justify-between items-center gap-4 divide-x-2 text-black rounded-md">
+      <button className="py-1 px-2 text-white bg-gray-700 hover:bg-gray-600 rounded-md">
+        -
+      </button>
       <input
         type="text"
         value={value}
@@ -65,6 +68,9 @@ function TimerInput(props) {
         className="w-12 py-1 px-2 text-[#222] bg-white rounded-md focus:outline-none"
         required
       />
+      <button className="py-1 px-2 text-white bg-gray-700 hover:bg-gray-600 rounded-md">
+        +
+      </button>
     </div>
   );
 }
