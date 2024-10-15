@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import Speaker from "./Speaker";
 import CountersMessage from "./CountersMessage";
 import { getUsername } from "../constants";
+import MinutesCounter from "./MinutesCounter";
 
 const sessionDuration = 25; // 25 minutes per session
 
@@ -128,11 +129,7 @@ function PomodoroCounter(props) {
       )}
       <div className="flex md:gap-2 items-center mt-4">
         <div className="flex md:flex-col items-center gap-1 text-6xl md:text-8xl select-none">
-          <span className={`font-semibold text-counter-text`}>
-            {inputValue.minutes < 10
-              ? `0${inputValue.minutes}`
-              : inputValue.minutes}
-          </span>
+          <MinutesCounter minutes={inputValue.minutes} />
           <span className={`md:hidden font-thin text-counter-text`}>:</span>
           <span className={`font-thin text-counter-text`}>
             {inputValue.seconds < 10
