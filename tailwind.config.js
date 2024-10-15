@@ -33,6 +33,7 @@ export default {
         // 'counter-text': 'rgb(123, 162, 205)',
         'rest-counter-text': '#2AB470',
         // 'rest-counter-text': '#3BB245',
+        'timer-text': '#739ab9',
 
         // 'rest-counter-bg': '#CAD9EB',
         // 'all-color': 'rgb(96, 120, 120)',
