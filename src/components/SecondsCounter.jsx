@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-function SecondsCounter({ seconds }) {
+function SecondsCounter({ seconds, textColor }) {
   return (
-    <span className={`font-thin text-counter-text`}>
+    <span className={`font-thin text-${textColor}`}>
       {seconds < 10 ? `0${seconds}` : seconds}
     </span>
   );

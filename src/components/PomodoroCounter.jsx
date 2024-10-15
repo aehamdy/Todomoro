@@ -51,10 +51,10 @@ function PomodoroCounter(props) {
     setIsSessionFinished(false);
 
     setInputValue({
-      minutes: cycles * duration,
-      seconds: 0,
-      // minutes: 0,
-      // seconds: 10,
+      // minutes: cycles * duration,
+      // seconds: 0,
+      minutes: 0,
+      seconds: 10,
     });
 
     // Clear previous interval if any
@@ -130,9 +130,15 @@ function PomodoroCounter(props) {
       )}
       <div className="flex md:gap-2 items-center mt-4">
         <div className="flex md:flex-col items-center gap-1 text-6xl md:text-8xl select-none">
-          <MinutesCounter minutes={inputValue.minutes} />
+          <MinutesCounter
+            minutes={inputValue.minutes}
+            textColor="counter-text"
+          />
           <span className={`md:hidden font-thin text-counter-text`}>:</span>
-          <SecondsCounter seconds={inputValue.seconds} />
+          <SecondsCounter
+            seconds={inputValue.seconds}
+            textColor="counter-text"
+          />
         </div>
         <Speaker toggleSound={toggleSound} />
       </div>

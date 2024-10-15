@@ -109,11 +109,17 @@ function PomodoroRestCounter(props) {
         {cycles > 0 && isSessionFinished && (
           <div className="flex md:gap-2 items-center">
             <div className="flex md:flex-col items-center gap-1 text-6xl md:text-8xl select-none">
-              <MinutesCounter minutes={rest.minutes} />
+              <MinutesCounter
+                minutes={rest.minutes}
+                textColor="rest-counter-text"
+              />
               <span className={`md:hidden font-thin text-rest-counter-text`}>
                 :
               </span>
-              <SecondsCounter seconds={rest.seconds} />
+              <SecondsCounter
+                seconds={rest.seconds}
+                textColor="rest-counter-text"
+              />
             </div>
             <Speaker toggleSound={toggleSound} color="pomodoro-rest-theme" />
           </div>

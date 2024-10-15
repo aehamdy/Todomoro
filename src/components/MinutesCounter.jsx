@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-function MinutesCounter({ minutes }) {
+function MinutesCounter({ minutes, textColor }) {
   return (
-    <span className={`font-semibold text-counter-text`}>
+    <span className={`font-semibold text-${textColor}`}>
       {minutes < 10 ? `0${minutes}` : minutes}
     </span>
   );
