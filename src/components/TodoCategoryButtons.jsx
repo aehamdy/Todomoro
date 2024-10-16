@@ -100,7 +100,7 @@ function TodoCategoryButtons({
             selectedButton === button.id ? "text-white" : ""
           } ${
             selectedButton === button.id ? button.bg : "bg-tabs-bg"
-          } rounded-lg cursor-pointer select-none`}
+          } hover:text-black rounded-lg duration-short cursor-pointer select-none`}
         >
           <span>{button.icon}</span>
           <input
