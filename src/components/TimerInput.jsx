@@ -43,15 +43,23 @@ function TimerInput(props) {
   const [value, setValue] = useState(0);
 
   const increaseTimer = () => {
-    setValue((value) => value + 1);
+    const newValue = value + 1;
+    setValue(newValue);
+    onValueChange(newValue);
+    setError(false);
   };
 
   const decreaseTimer = () => {
-    setValue((value) => value - 1);
+    const newValue = value > 0 ? value - 1 : 0;
+    setValue(newValue);
+    onValueChange(newValue);
+    setError(false);
   };
 
   const onInputChange = (e) => {
+    console.log(e.target.value);
     const inputValue = parseInt(e.target.value, 10);
+    console.log(inputValue);
 
     if (!isNaN(inputValue) && inputValue > 0) {
       setError(false);
@@ -68,7 +76,7 @@ function TimerInput(props) {
     <div className="flex justify-between items-center gap-4 divide-x-2 text-black rounded-md">
       <button
         onClick={decreaseTimer}
-        className="py-1 px-2 text-white bg-gray-700 hover:bg-gray-600 rounded-md"
+        className="py-1 px-2 text-white bg-gray-700 hover:bg-gray-600 rounded-md duration-short"
       >
         -
       </button>
@@ -81,7 +89,7 @@ function TimerInput(props) {
       />
       <button
         onClick={increaseTimer}
-        className="py-1 px-2 text-white bg-gray-700 hover:bg-gray-600 rounded-md"
+        className="py-1 px-2 text-white bg-gray-700 hover:bg-gray-600 rounded-md duration-short"
       >
         +
       </button>
