@@ -28,6 +28,7 @@ function TodoCategoryOptions(props) {
               value={option.value}
               onChange={handleCategorySelection}
               className="peer hidden"
+              defaultChecked={option.value === "personal"}
             />
             <label
               htmlFor={option.id}
