@@ -131,7 +131,7 @@ function Timer() {
         />
       ) : (
         <div className="flex flex-col gap-2">
-          <div className="flex justify-evenly">
+          <div className="flex justify-between gap-4">
             <TimerInput setError={setError} onValueChange={onValueChange} />
             <TimerButton onStartTimer={onStartTimer} />
           </div>

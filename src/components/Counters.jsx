@@ -95,7 +95,7 @@ function Counters() {
   // Colors: #C4F0C5 #F1FFF1 #9EBFCB
 
   return (
-    <section className="relative">
+    <section className="relative flex flex-col gap-3">
       <div className="flex md:flex-col items-center py-2 md:py-2 md:px-4 border-2 border-solid rounded-lg">
         <div className="w-fit flex items-center divide-x mx-auto text-black bg-[#fffafa] rounded-lg">
           <label
