@@ -23,7 +23,7 @@ function PomodoroCycleSelector(props) {
             />
             <label
               htmlFor="one-cycle"
-              className="py-3 px-4 text-white bg-blue-400 hover:bg-blue-500 peer-checked:bg-blue-500 rounded-full hover:shadow-lg peer-checked:shadow-lg duration-short cursor-pointer"
+              className="py-2 px-2 md:py-3 md:px-4 text-sm md:text-base text-white bg-blue-400 hover:bg-blue-500 peer-checked:bg-blue-500 rounded-full hover:shadow-lg peer-checked:shadow-lg duration-short cursor-pointer"
               // className="peer-checked:outline-dashed peer-checked:outline-blue-400 peer-checked:border-4 border-white rounded-full cursor-pointer"
             >
               <span>1</span>
@@ -41,7 +41,7 @@ function PomodoroCycleSelector(props) {
             />
             <label
               htmlFor="two-cycle"
-              className="py-3 px-4 text-white bg-blue-400 hover:bg-blue-500 peer-checked:bg-blue-500 rounded-full hover:shadow-lg peer-checked:shadow-lg duration-short cursor-pointer"
+              className="py-2 px-2 md:py-3 md:px-4 text-sm md:text-base text-white bg-blue-400 hover:bg-blue-500 peer-checked:bg-blue-500 rounded-full hover:shadow-lg peer-checked:shadow-lg duration-short cursor-pointer"
             >
               <span>2</span>
               Cycles
