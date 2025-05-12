@@ -1,5 +1,11 @@
+import { LuCircle, LuCircleCheckBig, LuTrash2 } from "react-icons/lu";
+
 /* eslint-disable react/prop-types */
-const iconMap = {};
+const iconMap = {
+  trash: LuTrash2,
+  emptyCircle: LuCircle,
+  checkedCircle: LuCircleCheckBig,
+};
 
 function Icon({ name, size, className = "" }) {
   const IconComponent = iconMap[name];
