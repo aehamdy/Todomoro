@@ -16,7 +16,17 @@ const initialState = {
 const todoSlice = createSlice({
   name: "todo",
   initialState,
-  reducers: {},
+  reducers: {
+    addTodo: (state, action) => {
+      const todo = {
+        id: state.list.length + 1,
+        content: action.payload,
+      };
+      state.list.unshift(todo);
+    },
+  },
 });
+
+export const { addTodo } = todoSlice.actions;
 
 export default todoSlice.reducer;
