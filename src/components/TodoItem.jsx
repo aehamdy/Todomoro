@@ -58,9 +58,11 @@ function TodoItem({ todo }) {
               name={`${todo.isChecked ? "checkedCircle" : "emptyCircle"}`}
               className={`${todo.isChecked && "text-gray-300"}`}
             />
-            <div>
-              <TodoItemContent todo={todo} />
-              <div className="flex items-center gap-3">
+
+            <div className="flex items-center gap-1">
+              <Icon name={todo.category} />
+              <div className="flex flex-col items-start">
+                <TodoItemContent todo={todo} />
                 <TodoItemFullTime todo={todo} />
               </div>
             </div>
