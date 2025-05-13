@@ -10,6 +10,10 @@ function TodoInputForm() {
   const inputRef = useRef();
   const dispatch = useDispatch();
 
+  const handleInputChange = (e) => {
+    setUserInput(e.target.value);
+  };
+
   const handleOnAddClick = () => {
     if (userInput.trim()) {
       dispatch(addTodo(userInput));
@@ -19,8 +23,10 @@ function TodoInputForm() {
     }
   };
 
-  const handleInputChange = (e) => {
-    setUserInput(e.target.value);
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleOnAddClick();
+    }
   };
 
   return (
@@ -39,6 +45,7 @@ function TodoInputForm() {
                 className="h-10 w-full py-1 ps-3 pe-20 text-black bg-[#fffafa] border-0 rounded-2xl focus:outline-none transition duration-medium caret-black"
                 value={userInput}
                 onChange={handleInputChange}
+                onKeyDown={handleKeyPress}
                 ref={inputRef}
               />
               <button
