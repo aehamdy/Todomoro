@@ -1,0 +1,20 @@
+/* eslint-disable react/prop-types */
+import { useDispatch } from "react-redux";
+import { removeTodo } from "../features/todo/todoSlice";
+import Icon from "./Icon";
+
+function TodoItemDeleteButton({ todoId }) {
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    dispatch(removeTodo(todoId));
+  };
+
+  return (
+    <button onClick={handleDelete} type="button">
+      <Icon name="trash" className="text-stone-400 hover:text-warning-color" />
+    </button>
+  );
+}
+
+export default TodoItemDeleteButton;
