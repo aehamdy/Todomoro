@@ -7,6 +7,8 @@ import {
   LuCircleCheckBig,
   LuFileText,
   LuList,
+  LuListCheck,
+  LuListPlus,
   LuTrash2,
   LuUserRound,
 } from "react-icons/lu";
@@ -36,6 +38,10 @@ const iconMap = {
   work: briefcaseIcon,
   study: bookIcon,
   other: otherIcon,
+
+  // lists
+  "list-plus": LuListPlus,
+  "list-check": LuListCheck,
 };
 
 function Icon({ name, size = 18, className = "" }) {
