@@ -8,16 +8,24 @@ const initialState = {
       id: 1,
       content: "Task 1",
       category: "personal",
-      date: `May 09`,
-      time: "05:37",
+      timing: {
+        createdAt: {
+          date: `May 09`,
+          time: "05:37",
+        },
+      },
       isChecked: true,
     },
     {
       id: 2,
       content: "Task 2",
       category: "work",
-      date: `May 12`,
-      time: "11:50",
+      timing: {
+        createdAt: {
+          date: `May 12`,
+          time: "11:50",
+        },
+      },
       isChecked: false,
     },
   ],
@@ -35,8 +43,12 @@ const todoSlice = createSlice({
         id: state.list.length + 1,
         content: action.payload,
         category: state.selectedCategory,
-        time: fullTime,
-        date: fullDate,
+        timing: {
+          createdAt: {
+            time: fullTime,
+            date: fullDate,
+          },
+        },
       };
 
       state.list.unshift(todo);
@@ -47,11 +59,23 @@ const todoSlice = createSlice({
     },
 
     toggleTodo: (state, action) => {
-      state.list = state.list.map((todo) =>
-        todo.id === action.payload
-          ? { ...todo, isChecked: !todo.isChecked }
-          : todo
-      );
+      const { fullTime, fullDate } = getDateAndTime();
+
+      state.list = state.list.map((todo) => {
+        if (todo.id === action.payload) {
+          return {
+            ...todo,
+            isChecked: !todo.isChecked,
+            timing: {
+              ...todo.timing,
+              checkedAt: !todo.isChecked
+                ? { time: fullTime, date: fullDate }
+                : null,
+            },
+          };
+        }
+        return todo;
+      });
     },
 
     setSelectedCategory: (state, action) => {
