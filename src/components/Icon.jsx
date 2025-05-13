@@ -11,17 +11,31 @@ import {
   LuUserRound,
 } from "react-icons/lu";
 
+// common icons
+const userIcon = LuUserRound;
+const briefcaseIcon = LuBriefcaseBusiness;
+const bookIcon = LuBookText;
+const otherIcon = LuFileText;
+
 const iconMap = {
+  // actions
   trash: LuTrash2,
   edit: BiSolidEdit,
   emptyCircle: LuCircle,
   checkedCircle: LuCircleCheckBig,
+
   //categories options
   all: LuList,
-  user: LuUserRound,
-  briefcase: LuBriefcaseBusiness,
-  book: LuBookText,
-  list: LuFileText,
+  user: userIcon,
+  briefcase: briefcaseIcon,
+  book: bookIcon,
+  list: otherIcon,
+
+  // todo/categories buttons
+  personal: userIcon,
+  work: briefcaseIcon,
+  study: bookIcon,
+  other: otherIcon,
 };
 
 function Icon({ name, size = 18, className = "" }) {
