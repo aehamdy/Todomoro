@@ -2,12 +2,14 @@
 import { categoryTypes } from "../constants";
 import categories from "../data/categoryOptions";
 import TodoCategoryOption from "./TodoCategoryOption";
+import { useDispatch } from "react-redux";
+import { setSelectedCategory } from "../features/todo/todoSlice";
 
-function TodoCategoryOptions(props) {
-  const { setCategory } = props;
+function TodoCategoryOptions() {
+  const dispatch = useDispatch();
 
   const handleCategorySelection = (e) => {
-    setCategory(e.target.value);
+    dispatch(setSelectedCategory(e.target.value));
   };
 
   return (
