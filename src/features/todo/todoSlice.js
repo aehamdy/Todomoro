@@ -30,6 +30,7 @@ const initialState = {
     },
   ],
   selectedCategory: categoryTypes.PERSONAL,
+  selectedFilter: categoryTypes.ALL,
 };
 
 const todoSlice = createSlice({
@@ -81,10 +82,19 @@ const todoSlice = createSlice({
     setSelectedCategory: (state, action) => {
       state.selectedCategory = action.payload;
     },
+
+    setSelectedFilter: (state, action) => {
+      state.selectedFilter = action.payload;
+    },
   },
 });
 
-export const { addTodo, removeTodo, toggleTodo, setSelectedCategory } =
-  todoSlice.actions;
+export const {
+  addTodo,
+  removeTodo,
+  toggleTodo,
+  setSelectedCategory,
+  setSelectedFilter,
+} = todoSlice.actions;
 
 export default todoSlice.reducer;
