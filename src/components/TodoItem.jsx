@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { toggleTodo } from "../features/todo/todoSlice";
 import Icon from "./Icon";
 import TodoItemEditButton from "./TodoItemEditButton";
-import TodoItemFullTime from "./TodoItemFullTime";
 import { categoryTypes } from "../constants";
 
 function TodoItem({ todo }) {
@@ -34,9 +33,8 @@ function TodoItem({ todo }) {
 
   return (
     <li
-      className="mb-2 last:mb-0 text-xl text-black bg-todo-bg hover:bg-todo-bg-hover hover:shadow-md rounded-lg transition-all duration-300"
+      className="mb-2 last:mb-0 text-black bg-todo-bg hover:bg-todo-bg-hover hover:shadow-md rounded-lg transition-all duration-300"
       style={{
-        color: todo.isChecked && "#928e85",
         backgroundColor: getCheckedBgColor(),
       }}
     >
@@ -56,14 +54,14 @@ function TodoItem({ todo }) {
           <div className="flex items-center gap-4">
             <Icon
               name={`${todo.isChecked ? "checkedCircle" : "emptyCircle"}`}
-              className={`${todo.isChecked && "text-gray-300"}`}
+              className={`${
+                todo.isChecked ? "text-gray-600" : "text-gray-400"
+              }`}
             />
 
             <div className="flex items-center gap-1">
-              <Icon name={todo.category} />
               <div className="flex flex-col items-start">
                 <TodoItemContent todo={todo} />
-                <TodoItemFullTime todo={todo} />
               </div>
             </div>
           </div>
