@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { toggleTodo } from "../features/todo/todoSlice";
 import Icon from "./Icon";
 import TodoItemEditButton from "./TodoItemEditButton";
+import TodoItemFullTime from "./TodoItemFullTime";
 import { categoryTypes } from "../constants";
 
 function TodoItem({ todo }) {
@@ -69,6 +70,12 @@ function TodoItem({ todo }) {
               />
               <div className="flex flex-col items-start">
                 <TodoItemContent todo={todo} />
+                <div className="flex items-center gap-2">
+                  <TodoItemFullTime
+                    isTodoChecked={todo.isChecked}
+                    timing={todo.timing}
+                  />
+                </div>
               </div>
             </div>
           </div>
