@@ -3,7 +3,9 @@ function TodoItemContent({ todo }) {
   return (
     <p
       className={`${
-        !todo.isChecked ? "text-black" : "text-stone-400 line-through"
+        !todo.isChecked
+          ? "text-sm md:text-base text-stone-900"
+          : "text-xs md:text-sm text-stone-500 line-through"
       } select-none`}
     >
       {todo.content}
