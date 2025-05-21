@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import getDateAndTime from "../../utils/getDateAndTime";
 import { categoryTypes } from "../../constants";
+import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
   list: [
@@ -41,7 +42,7 @@ const todoSlice = createSlice({
       const { fullDate, fullTime } = getDateAndTime();
 
       const todo = {
-        id: state.list.length + 1,
+        id: uuidv4(),
         content: action.payload,
         category: state.selectedCategory,
         timing: {
