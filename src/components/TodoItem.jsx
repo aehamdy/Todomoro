@@ -60,6 +60,13 @@ function TodoItem({ todo }) {
             />
 
             <div className="flex items-center gap-1">
+              <Icon
+                name={todo.category}
+                className={`${
+                  todo.isChecked ? "text-stone-400" : "text-stone-800"
+                }
+                }`}
+              />
               <div className="flex flex-col items-start">
                 <TodoItemContent todo={todo} />
               </div>
