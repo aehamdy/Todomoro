@@ -1,5 +1,4 @@
 // import { TODOMORO_USER } from "../pages/Home";
-import { getUsername } from "../constants";
 import ThemeToggleButton from "./ThemeToggleButton";
 
 const wavingHandIcon = (
@@ -61,7 +60,7 @@ function UserGreeting() {
           {/* <p>What&apos;s up </p> */}
           <p className="text-lg font-semibold">Hello, </p>
         </div>
-        <p className="text-2xl font-bold">{getUsername()}</p>
+        <p className="text-2xl font-bold">User</p>
       </div>
       <ThemeToggleButton />
     </header>

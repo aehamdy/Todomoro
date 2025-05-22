@@ -1,13 +1,10 @@
 /* eslint-disable react/prop-types */
-
 import tickSound from "../sounds/timer-tick-sound.mp3";
 import warningSound from "../sounds/pomodoro-tick-sound.mp3";
 import finishSound from "../sounds/finish-sound.mp3";
-
 import { useEffect, useRef, useState } from "react";
 import Speaker from "./Speaker";
 import CountersMessage from "./CountersMessage";
-import { getUsername } from "../constants";
 import MinutesCounter from "./MinutesCounter";
 import SecondsCounter from "./SecondsCounter";
 
@@ -124,7 +121,7 @@ function PomodoroCounter(props) {
         <CountersMessage
           message="Get Things Done, "
           messageStyle="flex flex-col mt-2 text-normal text-xl text-black animate-pulse"
-          username={getUsername()}
+          username="User"
           nameStyle="text-orange-500 font-bold"
         />
       )}
