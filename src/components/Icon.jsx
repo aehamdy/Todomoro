@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { BiSolidEdit } from "react-icons/bi";
 import {
   LuBookText,
   LuBriefcaseBusiness,
@@ -10,6 +9,7 @@ import {
   LuListCheck,
   LuListPlus,
   LuMoon,
+  LuPencilLine,
   LuSunMedium,
   LuTrash2,
   LuUserRound,
@@ -24,7 +24,7 @@ const otherIcon = LuFileText;
 const iconMap = {
   // actions
   trash: LuTrash2,
-  edit: BiSolidEdit,
+  edit: LuPencilLine,
   emptyCircle: LuCircle,
   checkedCircle: LuCircleCheckBig,
 
