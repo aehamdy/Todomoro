@@ -21,12 +21,10 @@ const emptyListIcon = (
 
 function TodoEmptyList() {
   return (
-    <div className="flex flex-col items-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] gap-2">
+    <div className="flex flex-col items-center gap-2 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-slate-500">
       <span>{emptyListIcon}</span>
-      <p className="text-slate-500">
-        The list is empty,
-        <br /> lets add tasks
-      </p>
+      <p>The list is empty</p>
+      <p>lets add tasks</p>
     </div>
   );
 }
