@@ -19,7 +19,7 @@ function TodoCategoryOption({ option }) {
         htmlFor={option.id}
         className={`inline-flex items-center justify-between gap-2 w-full p-1.5 md:p-2 ${
           selectedCategory === option.value
-            ? "font-bold text-stone-700 bg-blue-100 border-blue-500"
+            ? "font-bold text-blue-500 bg-blue-100 border-blue-200 hover:border-blue-500 duration-medium"
             : "text-stone-500 bg-white hover:bg-gray-100 border-gray-100"
         } border rounded-lg cursor-pointer`}
       >
