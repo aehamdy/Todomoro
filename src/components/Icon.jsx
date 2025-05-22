@@ -9,6 +9,8 @@ import {
   LuList,
   LuListCheck,
   LuListPlus,
+  LuMoon,
+  LuSunMedium,
   LuTrash2,
   LuUserRound,
 } from "react-icons/lu";
@@ -42,6 +44,10 @@ const iconMap = {
   // lists
   "list-plus": LuListPlus,
   "list-check": LuListCheck,
+
+  // theme icons
+  sun: LuSunMedium,
+  moon: LuMoon,
 };
 
 function Icon({ name, size = 18, className = "" }) {
