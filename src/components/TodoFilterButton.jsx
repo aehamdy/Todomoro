@@ -2,14 +2,37 @@
 import Icon from "./Icon";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedFilter } from "../features/todo/todoSlice";
+import { categoryTypes } from "../constants";
 
-function TodoCategoryButton({ button }) {
+function TodoFilterButton({ button }) {
   const dispatch = useDispatch();
   const selectedFilter = useSelector((state) => state.todos.selectedFilter);
+  const allTodos = useSelector((state) => state.todos.list) || [];
+  const { allChecked, allList, checkedCount, uncheckedCount } = getTodosCount();
 
-  const handleCategoryClick = (e) => {
-    dispatch(setSelectedFilter(e.target.value));
+  const handleCategoryClick = () => {
+    dispatch(setSelectedFilter(button.value));
   };
+
+  function getTodosCount() {
+    const allTodosList = allTodos.length;
+    const allCheckedList = allTodos.filter((todo) => todo.isChecked);
+
+    const uncheckedFilteredlist = allTodos.filter(
+      (todo) => todo.category === button.value
+    );
+
+    const checkedFilteredList = allTodos.filter(
+      (todo) => todo.isChecked && todo.category === button.value
+    );
+
+    return {
+      allList: allTodosList,
+      allChecked: allCheckedList.length,
+      uncheckedCount: uncheckedFilteredlist.length,
+      checkedCount: checkedFilteredList.length,
+    };
+  }
 
   return (
     <label
@@ -26,13 +49,18 @@ function TodoCategoryButton({ button }) {
         name={"filter-button"}
         value={button.value}
         className="hidden"
-        checked={selectedFilter === button.id}
+        checked={selectedFilter === button.value}
         onChange={handleCategoryClick}
       />
       {button.value.charAt(0).toUpperCase() + button.value.slice(1)}
-      {/* <span>{getTodosCount(button.id)}</span> */}
+
+      <span>
+        {button.value === categoryTypes.ALL
+          ? `${allChecked}/${allList}`
+          : `${checkedCount}/${uncheckedCount}`}
+      </span>
     </label>
   );
 }
 
-export default TodoCategoryButton;
+export default TodoFilterButton;
