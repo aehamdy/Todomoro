@@ -91,6 +91,18 @@ const todoSlice = createSlice({
     setSelectedFilter: (state, action) => {
       state.selectedFilter = action.payload;
     },
+
+    removeCompletedTodos: (state, action) => {
+      const selectedFilter = action.payload;
+
+      state.list = state.list.filter((todo) => {
+        if (!todo.isChecked) return true;
+
+        if (selectedFilter === "all") return false;
+
+        return todo.category !== selectedFilter;
+      });
+    },
   },
 });
 
@@ -101,6 +113,7 @@ export const {
   setTodosFromLocalStorage,
   setSelectedCategory,
   setSelectedFilter,
+  removeCompletedTodos,
 } = todoSlice.actions;
 
 export default todoSlice.reducer;
