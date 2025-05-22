@@ -1,65 +1,28 @@
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { setTodosFromLocalStorage } from "../features/todo/todoSlice";
 import TodoInputForm from "./TodoInputForm";
 import TodoList from "./TodoList";
-import TodoCategoryButtons from "./TodoCategoryButtons";
-import TodoFlags from "./TodoFlags";
-
-export const LOCAL_STORAGE_KEY = "TodomoroTasks";
+import TodoCategoryButtons from "./TodoFilterButtons";
+import getFromLocalStorage from "../utils/getFromLocalStorage";
+import appConfig from "../config/appConfig";
 
 function TodoApp() {
-  const [allTodos, setAllTodos] = useState([]);
-  const [todos, setTodos] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [leftTodos, setLeftTodos] = useState();
+  const dispatch = useDispatch();
 
-  const handleLeftTodos = (todoRemain) => {
-    setLeftTodos(todoRemain);
-  };
+  useEffect(() => {
+    const savedTodos = getFromLocalStorage(appConfig.LOCAL_STORAGE_KEY)?.list;
 
-  const save = (items) => {
-    const list = JSON.stringify(items);
-    localStorage.setItem(LOCAL_STORAGE_KEY, list);
-    setAllTodos(items);
-  };
+    if (savedTodos) {
+      dispatch(setTodosFromLocalStorage(savedTodos));
+    }
+  }, []);
 
   return (
     <section className="flex flex-col-reverse md:flex-col">
-      <TodoInputForm
-        todos={todos}
-        setTodos={setTodos}
-        allTodos={allTodos}
-        setAllTodos={setAllTodos}
-        save={save}
-        setLeftTodos={setLeftTodos}
-        leftTodos={leftTodos}
-      />
-      <TodoCategoryButtons
-        allTodos={allTodos}
-        setAllTodos={setAllTodos}
-        setSelectedCategory={setSelectedCategory}
-        handleLeftTodos={handleLeftTodos}
-      />
-      <TodoFlags
-        leftTodos={leftTodos}
-        save={save}
-        setTodos={setTodos}
-        todos={todos}
-        allTodos={allTodos}
-        handleLeftTodos={handleLeftTodos}
-        selectedCategory={selectedCategory}
-      />
-      <TodoList
-        todos={todos}
-        setTodos={setTodos}
-        allTodos={allTodos}
-        setAllTodos={setAllTodos}
-        save={save}
-        setLeftTodos={setLeftTodos}
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-        leftTodos={leftTodos}
-        handleLeftTodos={handleLeftTodos}
-      />
+      <TodoInputForm />
+      <TodoCategoryButtons />
+      <TodoList />
     </section>
   );
 }
