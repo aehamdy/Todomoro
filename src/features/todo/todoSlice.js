@@ -80,6 +80,13 @@ const todoSlice = createSlice({
       });
     },
 
+    editTodo: (state, action) => {
+      const { id, newContent } = action.payload;
+      state.list = state.list.map((todo) =>
+        todo.id === id ? { ...todo, content: newContent } : todo
+      );
+    },
+
     setTodosFromLocalStorage: (state, action) => {
       state.list = action.payload;
     },
@@ -110,6 +117,7 @@ export const {
   addTodo,
   removeTodo,
   toggleTodo,
+  editTodo,
   setTodosFromLocalStorage,
   setSelectedCategory,
   setSelectedFilter,
