@@ -2,7 +2,7 @@
 import TodoItemDeleteButton from "./TodoItemDeleteButton";
 import TodoItemContent from "./TodoItemContent";
 import { useDispatch } from "react-redux";
-import { toggleTodo } from "../features/todo/todoSlice";
+import { editTodo, toggleTodo } from "../features/todo/todoSlice";
 import Icon from "./Icon";
 import TodoItemEditButton from "./TodoItemEditButton";
 import TodoItemFullTime from "./TodoItemFullTime";
@@ -22,6 +22,16 @@ function TodoItem({ todo }) {
 
   const handleEditChange = (e) => {
     setTodoEditState((prev) => ({ ...prev, editValue: e.target.value }));
+  };
+
+  const handleSaveEdit = () => {
+    const newValue = todoEditState.editValue.trim();
+
+    if (newValue == "") return;
+
+    dispatch(editTodo({ id: todo.id, newContent: newValue }));
+
+    setTodoEditState(editInitialState);
   };
 
   const getCheckedBgColor = () => {
@@ -108,7 +118,7 @@ function TodoItem({ todo }) {
 
       <div className="flex ps-1 pe-3 border-s">
         {todoEditState.edit ? (
-          <TodoItemEditActions />
+          <TodoItemEditActions handleSaveEdit={handleSaveEdit} />
         ) : (
           <div className="flex gap-1">
             <TodoItemEditButton
