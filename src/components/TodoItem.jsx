@@ -7,7 +7,7 @@ import Icon from "./Icon";
 import TodoItemEditButton from "./TodoItemEditButton";
 import TodoItemFullTime from "./TodoItemFullTime";
 import { categoryTypes } from "../constants";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import TodoItemEditActions from "./TodoItemEditActions";
 
 const editInitialState = { edit: false, editValue: "" };
@@ -15,6 +15,7 @@ const editInitialState = { edit: false, editValue: "" };
 function TodoItem({ todo }) {
   const [todoEditState, setTodoEditState] = useState(editInitialState);
   const dispatch = useDispatch();
+  const editRef = useRef(null);
 
   const handleOnChange = () => {
     dispatch(toggleTodo(todo.id));
@@ -54,6 +55,12 @@ function TodoItem({ todo }) {
         return "";
     }
   };
+
+  useEffect(() => {
+    if (todoEditState.edit && editRef.current) {
+      editRef.current.focus();
+    }
+  }, [todoEditState.edit]);
 
   return (
     <li
@@ -97,6 +104,7 @@ function TodoItem({ todo }) {
                     type="text"
                     name="edit-todo"
                     id="edit"
+                    ref={editRef}
                     value={todoEditState.editValue}
                     onChange={handleEditChange}
                     className="ps-1 bg-gray-300 rounded-sm"
