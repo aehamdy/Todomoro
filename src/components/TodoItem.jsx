@@ -34,6 +34,10 @@ function TodoItem({ todo }) {
     setTodoEditState(editInitialState);
   };
 
+  const handleCancelEdit = () => {
+    setTodoEditState(editInitialState);
+  };
+
   const getCheckedBgColor = () => {
     if (!todo.isChecked) return "";
 
@@ -118,7 +122,10 @@ function TodoItem({ todo }) {
 
       <div className="flex ps-1 pe-3 border-s">
         {todoEditState.edit ? (
-          <TodoItemEditActions handleSaveEdit={handleSaveEdit} />
+          <TodoItemEditActions
+            handleCancelEdit={handleCancelEdit}
+            handleSaveEdit={handleSaveEdit}
+          />
         ) : (
           <div className="flex gap-1">
             <TodoItemEditButton
