@@ -11,8 +11,12 @@ function TodoItemDeleteButton({ todoId }) {
   };
 
   return (
-    <button onClick={handleDelete} type="button">
-      <Icon name="trash" className="text-stone-400 hover:text-warning-color" />
+    <button
+      type="button"
+      onClick={handleDelete}
+      className="p-1 text-stone-400 hover:text-warning-color"
+    >
+      <Icon name="trash" />
     </button>
   );
 }
