@@ -2,6 +2,7 @@
 import {
   LuBookText,
   LuBriefcaseBusiness,
+  LuCheck,
   LuCircle,
   LuCircleCheckBig,
   LuFileText,
@@ -13,6 +14,7 @@ import {
   LuSunMedium,
   LuTrash2,
   LuUserRound,
+  LuX,
 } from "react-icons/lu";
 
 // common icons
@@ -48,6 +50,9 @@ const iconMap = {
   // theme icons
   sun: LuSunMedium,
   moon: LuMoon,
+
+  check: LuCheck,
+  close: LuX,
 };
 
 function Icon({ name, size = 18, className = "" }) {
