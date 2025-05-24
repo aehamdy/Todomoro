@@ -7,12 +7,21 @@ import Icon from "./Icon";
 import TodoItemEditButton from "./TodoItemEditButton";
 import TodoItemFullTime from "./TodoItemFullTime";
 import { categoryTypes } from "../constants";
+import { useState } from "react";
+import TodoItemEditActions from "./TodoItemEditActions";
+
+const editInitialState = { edit: false, editValue: "" };
 
 function TodoItem({ todo }) {
+  const [todoEditState, setTodoEditState] = useState(editInitialState);
   const dispatch = useDispatch();
 
   const handleOnChange = () => {
     dispatch(toggleTodo(todo.id));
+  };
+
+  const handleEditChange = (e) => {
+    setTodoEditState((prev) => ({ ...prev, editValue: e.target.value }));
   };
 
   const getCheckedBgColor = () => {
@@ -34,14 +43,14 @@ function TodoItem({ todo }) {
 
   return (
     <li
-      className="mb-2 last:mb-0 text-black bg-todo-bg hover:bg-todo-bg-hover hover:shadow-md rounded-lg transition-all duration-300"
+      className="flex justify-between mb-2 last:mb-0 text-black bg-todo-bg hover:bg-todo-bg-hover hover:shadow-md rounded-lg transition-all duration-300"
       style={{
         backgroundColor: getCheckedBgColor(),
       }}
     >
       <label
         htmlFor={`todo-${todo.id}`}
-        className="flex justify-between items-center py-2 px-3 cursor-pointer"
+        className="flex justify-between items-center flex-1 py-2 ps-3 cursor-pointer"
       >
         <div className="flex">
           <input
@@ -69,7 +78,19 @@ function TodoItem({ todo }) {
                 }`}
               />
               <div className="flex flex-col items-start">
-                <TodoItemContent todo={todo} />
+                {todoEditState.edit ? (
+                  <input
+                    type="text"
+                    name="edit-todo"
+                    id="edit"
+                    value={todoEditState.editValue}
+                    onChange={handleEditChange}
+                    className="ps-1 bg-gray-300 rounded-sm"
+                  />
+                ) : (
+                  <TodoItemContent todo={todo} />
+                )}
+
                 <div className="flex items-center gap-2">
                   <TodoItemFullTime
                     isTodoChecked={todo.isChecked}
@@ -83,12 +104,21 @@ function TodoItem({ todo }) {
         <div className="flex justify-between items-center gap-4">
           <div className="flex"></div>
         </div>
-
-        <div className="flex gap-3">
-          <TodoItemEditButton todo={todo} />
-          <TodoItemDeleteButton todoId={todo.id} />
-        </div>
       </label>
+
+      <div className="flex ps-1 pe-3 border-s">
+        {todoEditState.edit ? (
+          <TodoItemEditActions />
+        ) : (
+          <div className="flex gap-1">
+            <TodoItemEditButton
+              todo={todo}
+              setTodoEditState={setTodoEditState}
+            />
+            <TodoItemDeleteButton todoId={todo.id} />
+          </div>
+        )}
+      </div>
     </li>
   );
 }
